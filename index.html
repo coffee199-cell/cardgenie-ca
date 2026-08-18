@@ -54,6 +54,145 @@
   <!-- Hero + Calculator -->
   <section class="hero">
     <div class="container">
+
+      <div class="hero__genie-bg" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%">
+          <defs>
+            <radialGradient id="bgGenieBody" cx="45%" cy="35%" r="55%">
+              <stop offset="0%" stop-color="#7b2fbe"/>
+              <stop offset="45%" stop-color="#3d1f8a"/>
+              <stop offset="100%" stop-color="#1a0a2e"/>
+            </radialGradient>
+            <radialGradient id="bgGenieFace" cx="42%" cy="38%" r="55%">
+              <stop offset="0%" stop-color="#ffe0b0"/>
+              <stop offset="55%" stop-color="#d4a040"/>
+              <stop offset="100%" stop-color="#8a5010"/>
+            </radialGradient>
+            <radialGradient id="bgSmoke" cx="50%" cy="20%" r="80%">
+              <stop offset="0%" stop-color="#3d1f8a"/>
+              <stop offset="60%" stop-color="#2a1060"/>
+              <stop offset="100%" stop-color="#1a0a2e" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="bgSmokeTrail" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3d1f8a" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#6a30c0" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#3d1f8a" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="bgTurban" cx="38%" cy="32%" r="60%">
+              <stop offset="0%" stop-color="#9b4dca"/>
+              <stop offset="100%" stop-color="#3d1f8a"/>
+            </radialGradient>
+            <filter id="bgBlur">
+              <feGaussianBlur stdDeviation="2"/>
+            </filter>
+          </defs>
+
+          <!-- Smoke trail / body (wide, dramatic) -->
+          <path d="M 60 600 Q 20 520 30 440 Q 40 360 80 300 Q 100 260 200 240 Q 300 260 320 300 Q 360 360 370 440 Q 380 520 340 600 Z"
+                fill="url(#bgSmokeTrail)" opacity="0.6"/>
+          <!-- Inner smoke body -->
+          <ellipse cx="200" cy="380" rx="120" ry="180" fill="url(#bgGenieBody)" opacity="0.85"/>
+          <!-- Smoke wisps bottom -->
+          <path d="M 100 580 Q 80 540 100 500 Q 130 460 200 450 Q 270 460 300 500 Q 320 540 300 580"
+                fill="url(#bgGenieBody)" opacity="0.5"/>
+          <!-- Body highlight -->
+          <ellipse cx="155" cy="330" rx="35" ry="70" fill="rgba(180,120,255,0.2)" transform="rotate(-15,155,330)"/>
+
+          <!-- Arms crossed (large, dramatic) -->
+          <!-- Left arm -->
+          <path d="M 80 330 Q 110 310 160 320 Q 200 328 200 328" fill="none" stroke="#5a30b0" stroke-width="36" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 80 330 Q 110 310 160 320 Q 200 328 200 328" fill="none" stroke="#8050d0" stroke-width="22" stroke-linecap="round" opacity="0.6"/>
+          <!-- Right arm -->
+          <path d="M 320 330 Q 290 310 240 320 Q 200 328 200 328" fill="none" stroke="#4a20a0" stroke-width="36" stroke-linecap="round" opacity="0.9"/>
+          <path d="M 320 330 Q 290 310 240 320 Q 200 328 200 328" fill="none" stroke="#7040c0" stroke-width="22" stroke-linecap="round" opacity="0.6"/>
+          <!-- Fists -->
+          <circle cx="80" cy="330" r="28" fill="#5a30b0"/>
+          <circle cx="80" cy="330" r="18" fill="#7a50d0"/>
+          <circle cx="320" cy="330" r="28" fill="#4a20a0"/>
+          <circle cx="320" cy="330" r="18" fill="#6a40c0"/>
+
+          <!-- Neck -->
+          <rect x="182" y="220" width="36" height="30" rx="14" fill="url(#bgGenieFace)"/>
+
+          <!-- Head -->
+          <ellipse cx="200" cy="190" rx="72" ry="68" fill="url(#bgGenieFace)"/>
+          <!-- Head shading left -->
+          <ellipse cx="162" cy="195" rx="22" ry="38" fill="rgba(100,50,0,0.15)" transform="rotate(10,162,195)"/>
+          <!-- Cheek highlight right -->
+          <ellipse cx="234" cy="200" rx="18" ry="12" fill="rgba(255,220,150,0.25)" transform="rotate(-10,234,200)"/>
+          <!-- Ear left -->
+          <ellipse cx="130" cy="192" rx="13" ry="18" fill="#d4a040"/>
+          <ellipse cx="130" cy="192" rx="8" ry="11" fill="rgba(100,50,0,0.2)"/>
+          <!-- Ear right -->
+          <ellipse cx="270" cy="192" rx="13" ry="18" fill="#d4a040"/>
+          <ellipse cx="270" cy="192" rx="8" ry="11" fill="rgba(100,50,0,0.2)"/>
+
+          <!-- Eyes (large, expressive) -->
+          <!-- Left eye -->
+          <ellipse cx="174" cy="183" rx="18" ry="19" fill="white" opacity="0.95"/>
+          <ellipse cx="176" cy="185" rx="13" ry="14" fill="#1a3a7a"/>
+          <ellipse cx="178" cy="186" rx="9" ry="10" fill="#080e20"/>
+          <circle cx="181" cy="182" r="4" fill="white"/>
+          <circle cx="172" cy="188" r="2" fill="rgba(255,255,255,0.4)"/>
+          <!-- Right eye -->
+          <ellipse cx="226" cy="183" rx="18" ry="19" fill="white" opacity="0.95"/>
+          <ellipse cx="228" cy="185" rx="13" ry="14" fill="#1a3a7a"/>
+          <ellipse cx="230" cy="186" rx="9" ry="10" fill="#080e20"/>
+          <circle cx="233" cy="182" r="4" fill="white"/>
+          <circle cx="224" cy="188" r="2" fill="rgba(255,255,255,0.4)"/>
+          <!-- Eyelid shadow top -->
+          <path d="M 156 176 Q 174 170 192 176" fill="none" stroke="rgba(100,60,0,0.3)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M 208 176 Q 226 170 244 176" fill="none" stroke="rgba(100,60,0,0.3)" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- Eyebrows (thick, expressive) -->
+          <path d="M 154 168 Q 174 161 192 167" fill="none" stroke="#5a3000" stroke-width="5" stroke-linecap="round"/>
+          <path d="M 208 167 Q 226 161 244 168" fill="none" stroke="#5a3000" stroke-width="5" stroke-linecap="round"/>
+
+          <!-- Nose bridge + tip -->
+          <path d="M 190 193 Q 188 208 184 214 Q 192 220 200 218 Q 208 220 216 214 Q 212 208 210 193" fill="none" stroke="rgba(150,80,0,0.2)" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="200" cy="216" rx="10" ry="6" fill="rgba(150,80,0,0.12)"/>
+          <!-- Nostrils -->
+          <ellipse cx="194" cy="217" rx="4" ry="3" fill="rgba(120,60,0,0.15)"/>
+          <ellipse cx="206" cy="217" rx="4" ry="3" fill="rgba(120,60,0,0.15)"/>
+
+          <!-- Mouth — confident grin -->
+          <path d="M 172 232 Q 200 248 228 232" fill="none" stroke="#7a4000" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Upper lip -->
+          <path d="M 174 232 Q 188 228 200 230 Q 212 228 226 232" fill="rgba(180,80,40,0.2)" stroke="none"/>
+          <!-- Teeth -->
+          <path d="M 176 234 Q 200 246 224 234 L 220 238 Q 200 250 180 238 Z" fill="rgba(255,255,255,0.88)"/>
+          <!-- Lip gloss highlight -->
+          <ellipse cx="200" cy="231" rx="12" ry="2" fill="rgba(255,200,150,0.25)"/>
+
+          <!-- Turban -->
+          <path d="M 128 168 Q 134 110 200 100 Q 266 110 272 168 Q 240 148 200 148 Q 160 148 128 168 Z" fill="url(#bgTurban)"/>
+          <!-- Turban wrap bands -->
+          <path d="M 130 165 Q 165 140 200 136 Q 235 140 270 165" fill="none" stroke="rgba(255,200,100,0.3)" stroke-width="3"/>
+          <path d="M 136 157 Q 168 134 200 130 Q 232 134 264 157" fill="none" stroke="rgba(255,200,100,0.2)" stroke-width="2"/>
+          <!-- Turban highlight -->
+          <ellipse cx="172" cy="130" rx="28" ry="14" fill="rgba(160,80,255,0.2)" transform="rotate(-15,172,130)"/>
+          <!-- Top knot -->
+          <ellipse cx="200" cy="100" rx="24" ry="14" fill="#5a20a0"/>
+          <ellipse cx="200" cy="96" rx="14" ry="7" fill="#7b40c0"/>
+          <ellipse cx="196" cy="94" rx="5" ry="3" fill="rgba(160,100,255,0.4)"/>
+          <!-- Jewel on turban centre -->
+          <ellipse cx="200" cy="150" rx="16" ry="10" fill="#c8900a"/>
+          <ellipse cx="200" cy="150" rx="11" ry="7" fill="#f5c842"/>
+          <ellipse cx="197" cy="148" rx="4" ry="3" fill="rgba(255,255,200,0.7)"/>
+          <!-- Jewel facets -->
+          <path d="M 184 150 L 200 142 L 216 150 L 200 158 Z" fill="none" stroke="rgba(255,220,80,0.4)" stroke-width="1"/>
+          <path d="M 192 145 L 200 150 L 208 145" fill="none" stroke="rgba(255,255,200,0.3)" stroke-width="0.8"/>
+
+          <!-- Genie body glow aura -->
+          <ellipse cx="200" cy="370" rx="130" ry="60" fill="#6a30c0" opacity="0.12" filter="url(#bgBlur)"/>
+
+          <!-- Smoke wisps rising from bottom -->
+          <path d="M 150 600 Q 130 540 155 490 Q 175 450 200 440" fill="none" stroke="#5a30b0" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+          <path d="M 250 600 Q 270 540 245 490 Q 225 450 200 440" fill="none" stroke="#4a20a0" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+          <path d="M 200 600 Q 200 550 200 490 Q 200 450 200 440" fill="none" stroke="#6a40c0" stroke-width="24" stroke-linecap="round" opacity="0.2"/>
+        </svg>
+      </div>
+
       <div class="hero__layout">
         <div class="hero__left">
           <h1 class="hero__headline">Find Your Best Canadian Credit Card</h1>
