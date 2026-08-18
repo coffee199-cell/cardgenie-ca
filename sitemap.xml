@@ -9,19 +9,49 @@
   <url>
     <loc>https://cardgenie.ca/best/travel-credit-cards-canada/</loc>
     <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cardgenie.ca/best/cash-back-credit-cards-canada/</loc>
     <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cardgenie.ca/best/no-foreign-transaction-fee-canada/</loc>
     <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cardgenie.ca/compare/amex-cobalt-vs-gold/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cardgenie.ca/compare/td-aeroplan-vs-cibc-aeroplan/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cardgenie.ca/cards/american-express-cobalt-card/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cardgenie.ca/cards/scotiabank-gold-american-express/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cardgenie.ca/about/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
