@@ -1,13 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canadian Credit Card Calculator & Comparison | CardGenie</title>
-  <meta name="description" content="Find your best Canadian credit card. Enter your spending and CardGenie instantly shows which card earns you the most rewards.">
+  <title>Canadian Credit Card Calculator &amp; Comparison | CardGenie</title>
+  <meta name="description" content="CardGenie finds the best Canadian credit card for your spending. Enter your monthly spend — groceries, gas, travel, dining — and instantly see which card earns you the most.">
+  <link rel="canonical" href="https://cardgenie.ca/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Canadian Credit Card Calculator &amp; Comparison | CardGenie">
+  <meta property="og:description" content="CardGenie finds the best Canadian credit card for your spending. Enter your monthly spend — groceries, gas, travel, dining — and instantly see which card earns you the most.">
+  <meta property="og:url" content="https://cardgenie.ca/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CardGenie">
+
+  <!-- GA4 tag goes here -->
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema: WebSite + SiteSearchBox -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CardGenie",
+    "url": "https://cardgenie.ca/",
+    "description": "Canadian credit card calculator and comparison tool. Find the best card for your spending profile.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://cardgenie.ca/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
-  <h1>CardGenie — Coming Soon</h1>
-  <p>Canadian credit card calculator &amp; comparison.</p>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="https://cardgenie.ca/" class="nav__logo">CardGenie</a>
+      <ul class="nav__links">
+        <li><a href="https://cardgenie.ca/">Calculator</a></li>
+        <li><a href="https://cardgenie.ca/best/">Best Cards</a></li>
+        <li><a href="https://cardgenie.ca/guides/">Guides</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero + Calculator -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__headline">Find Your Best Canadian Credit Card</h1>
+      <p class="hero__sub">Enter your monthly spending below and we will show you which cards earn the most rewards, cash back, or travel points for your lifestyle.</p>
+
+      <div class="calc">
+        <div class="calc__title">Monthly Spending Calculator</div>
+        <form action="#" method="get" onsubmit="return false;">
+          <div class="calc__grid">
+            <div class="calc__field">
+              <label for="spend-groceries">Groceries</label>
+              <input type="number" id="spend-groceries" name="groceries" placeholder="$0" min="0" step="10">
+            </div>
+            <div class="calc__field">
+              <label for="spend-gas">Gas</label>
+              <input type="number" id="spend-gas" name="gas" placeholder="$0" min="0" step="10">
+            </div>
+            <div class="calc__field">
+              <label for="spend-dining">Dining</label>
+              <input type="number" id="spend-dining" name="dining" placeholder="$0" min="0" step="10">
+            </div>
+            <div class="calc__field">
+              <label for="spend-travel">Travel</label>
+              <input type="number" id="spend-travel" name="travel" placeholder="$0" min="0" step="10">
+            </div>
+            <div class="calc__field">
+              <label for="spend-bills">Bills</label>
+              <input type="number" id="spend-bills" name="bills" placeholder="$0" min="0" step="10">
+            </div>
+            <div class="calc__field">
+              <label for="spend-other">Other</label>
+              <input type="number" id="spend-other" name="other" placeholder="$0" min="0" step="10">
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary">Find My Best Card</button>
+        </form>
+
+        <div class="calc__results">
+          <div class="calc__results-label">Top matches for a balanced spender</div>
+          <div class="card-result">
+            <div>
+              <div class="card-result__name">Amex Cobalt Card</div>
+              <div class="card-result__tagline">5x points on dining &amp; groceries, 2x on travel</div>
+            </div>
+            <div class="card-result__badge">Best Overall</div>
+          </div>
+          <div class="card-result">
+            <div>
+              <div class="card-result__name">Scotia Gold American Express</div>
+              <div class="card-result__tagline">6x points on dining, 5x on groceries &amp; gas</div>
+            </div>
+            <div class="card-result__badge">No FX Fee</div>
+          </div>
+          <div class="card-result">
+            <div>
+              <div class="card-result__name">BMO Cashback World Elite</div>
+              <div class="card-result__tagline">5% on groceries, 4% on transit, 3% on gas</div>
+            </div>
+            <div class="card-result__badge">Cash Back</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Categories -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__heading">Browse by Category</h2>
+      <p class="section__sub">Not sure what you want? Start with a category that matches your biggest spending or travel goal.</p>
+      <div class="cat-grid">
+        <a href="https://cardgenie.ca/best/travel-credit-cards-canada/" class="cat-card">
+          <div class="cat-card__label">Best Travel Cards</div>
+          <div class="cat-card__desc">Earn points toward flights, hotels, and airport lounges. Great for frequent flyers.</div>
+        </a>
+        <a href="https://cardgenie.ca/best/cash-back-credit-cards-canada/" class="cat-card">
+          <div class="cat-card__label">Best Cash Back Cards</div>
+          <div class="cat-card__desc">Get a percentage of every purchase back as cash. Simple, predictable rewards.</div>
+        </a>
+        <a href="https://cardgenie.ca/best/no-foreign-transaction-fee-canada/" class="cat-card">
+          <div class="cat-card__label">No Foreign Transaction Fee</div>
+          <div class="cat-card__desc">Skip the 2.5% surcharge on international purchases and online USD shopping.</div>
+        </a>
+        <a href="https://cardgenie.ca/best/" class="cat-card">
+          <div class="cat-card__label">Best Aeroplan Cards</div>
+          <div class="cat-card__desc">Earn Aeroplan points on everyday spending and redeem for Air Canada flights.</div>
+        </a>
+        <a href="https://cardgenie.ca/best/" class="cat-card">
+          <div class="cat-card__label">Best Grocery Cards</div>
+          <div class="cat-card__desc">Maximize your largest household expense with elevated earn rates at grocery stores.</div>
+        </a>
+        <a href="https://cardgenie.ca/best/" class="cat-card">
+          <div class="cat-card__label">No Annual Fee Cards</div>
+          <div class="cat-card__desc">Strong rewards without paying a yearly fee. Ideal for occasional spenders.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section__heading">How CardGenie Works</h2>
+      <p class="section__sub">We analyze your actual spending patterns — not generic profiles — to surface the cards that pay you the most.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__title">Enter Your Monthly Spend</div>
+          <div class="step__desc">Fill in what you typically spend each month across groceries, gas, dining, travel, and other categories.</div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__title">We Compare Every Card</div>
+          <div class="step__desc">CardGenie runs your numbers against 40+ Canadian credit cards, accounting for annual fees, earn rates, and welcome bonuses.</div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__title">Pick Your Best Match</div>
+          <div class="step__desc">See your net annual value for each card ranked side by side. Apply directly with the issuer — no hidden referral pressure.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand">CardGenie</div>
+          <div class="footer__tagline">Canada's credit card calculator</div>
+        </div>
+        <ul class="footer__nav">
+          <li><a href="https://cardgenie.ca/">Calculator</a></li>
+          <li><a href="https://cardgenie.ca/best/travel-credit-cards-canada/">Travel Cards</a></li>
+          <li><a href="https://cardgenie.ca/best/cash-back-credit-cards-canada/">Cash Back Cards</a></li>
+          <li><a href="https://cardgenie.ca/best/no-foreign-transaction-fee-canada/">No FX Fee Cards</a></li>
+        </ul>
+        <div class="footer__legal">
+          &copy; 2026 CardGenie.ca. All rights reserved. For informational purposes only. Not financial advice. Credit card information is subject to change — always verify terms with the issuer before applying.
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
