@@ -164,119 +164,201 @@
         <div class="hero__art" aria-hidden="true">
 
           <!-- Genie lamp SVG with shake + smoke animations -->
-          <svg class="lamp" viewBox="0 0 170 130" width="170" height="130"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Smoke wisps from spout -->
-            <path class="smoke smoke--1"
-                  d="M28 52 C18 38 26 22 18 8"
-                  fill="none" stroke="#00b4a6" stroke-width="3"
-                  stroke-linecap="round" opacity="0"/>
-            <path class="smoke smoke--2"
-                  d="M34 50 C42 34 30 20 38 4"
-                  fill="none" stroke="#9b59b6" stroke-width="2"
-                  stroke-linecap="round" opacity="0"/>
-            <path class="smoke smoke--3"
-                  d="M22 55 C10 40 20 24 12 10"
-                  fill="none" stroke="#00b4a6" stroke-width="2"
-                  stroke-linecap="round" opacity="0"/>
-            <!-- Lamp base ellipse (shadow/bottom) -->
-            <ellipse cx="100" cy="112" rx="54" ry="14" fill="#b8890f" stroke="#f5c842" stroke-width="1"/>
-            <!-- Lamp bowl body -->
-            <path d="M46 112 Q44 88 62 78 Q80 68 100 68 Q120 68 138 78 Q154 88 154 112"
-                  fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
-            <!-- Lamp lid -->
-            <ellipse cx="100" cy="68" rx="54" ry="10" fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
-            <!-- Lid top dome -->
-            <ellipse cx="100" cy="58" rx="22" ry="7" fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
-            <!-- Bowl highlight -->
-            <path d="M70 82 Q85 74 105 74 Q120 74 132 80"
-                  fill="none" stroke="#f5c842" stroke-width="1.5"
-                  stroke-linecap="round" opacity="0.55"/>
-            <!-- Spout (left side) -->
-            <path d="M46 104 Q30 100 20 88 Q12 76 16 64 Q20 54 30 58"
-                  fill="none" stroke="#d4a017" stroke-width="10"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M46 104 Q30 100 20 88 Q12 76 16 64 Q20 54 30 58"
-                  fill="none" stroke="#f5c842" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Spout tip cap -->
-            <circle cx="30" cy="57" r="5" fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
-            <!-- Handle (right side) -->
-            <path d="M152 88 Q170 85 170 100 Q170 115 152 112"
-                  fill="none" stroke="#d4a017" stroke-width="9"
-                  stroke-linecap="round"/>
-            <path d="M152 88 Q170 85 170 100 Q170 115 152 112"
-                  fill="none" stroke="#f5c842" stroke-width="1.5"
-                  stroke-linecap="round"/>
-            <!-- Decorative band on bowl -->
-            <path d="M56 96 Q70 90 100 90 Q128 90 144 96"
-                  fill="none" stroke="#f5c842" stroke-width="1"
-                  stroke-linecap="round" opacity="0.4"/>
-          </svg>
+          <svg class="lamp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" width="180" height="140" aria-hidden="true">
+  <defs>
+    <!-- Lamp body gold gradient (3D sphere-like shading) -->
+    <radialGradient id="lampBody" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fff0a0"/>
+      <stop offset="30%" stop-color="#f5c842"/>
+      <stop offset="65%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#7a5500"/>
+    </radialGradient>
+    <!-- Spout gradient -->
+    <radialGradient id="spoutGrad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffe87a"/>
+      <stop offset="50%" stop-color="#c8900a"/>
+      <stop offset="100%" stop-color="#6a4400"/>
+    </radialGradient>
+    <!-- Lamp base shadow -->
+    <linearGradient id="baseGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#6a4400"/>
+    </linearGradient>
+    <!-- Glow filter for spout -->
+    <filter id="glowSpout">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Drop shadow -->
+    <filter id="lampShadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <!-- Smoke wisp gradients -->
+    <linearGradient id="smoke1" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#00b4a6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7b2fbe" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="smoke2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#7b2fbe" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#00b4a6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="smoke3" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00b4a6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Drop shadow layer -->
+  <ellipse cx="90" cy="135" rx="55" ry="6" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- Main lamp body -->
+  <g filter="url(#lampShadow)">
+    <!-- Body: rounded teapot shape -->
+    <ellipse cx="92" cy="95" rx="48" ry="32" fill="url(#lampBody)"/>
+    <!-- Top dome -->
+    <ellipse cx="92" cy="80" rx="30" ry="18" fill="url(#lampBody)"/>
+    <!-- Lid ring -->
+    <ellipse cx="92" cy="64" rx="22" ry="7" fill="url(#baseGrad)"/>
+    <!-- Spout (left-pointing) -->
+    <path d="M 44 88 Q 20 80 14 72 Q 18 68 28 72 Q 36 76 48 82 Z" fill="url(#spoutGrad)"/>
+    <!-- Spout tip cap -->
+    <ellipse cx="14" cy="71" rx="5" ry="4" fill="#ffe87a" transform="rotate(-10,14,71)"/>
+    <!-- Handle (right) -->
+    <path d="M 138 85 Q 165 82 165 95 Q 165 108 138 105" fill="none" stroke="url(#baseGrad)" stroke-width="8" stroke-linecap="round"/>
+    <!-- Base foot -->
+    <ellipse cx="92" cy="125" rx="38" ry="8" fill="url(#baseGrad)"/>
+    <!-- Body highlight (specular) -->
+    <ellipse cx="78" cy="78" rx="14" ry="8" fill="rgba(255,255,220,0.35)" transform="rotate(-15,78,78)"/>
+    <!-- Small rim highlight -->
+    <ellipse cx="92" cy="64" rx="12" ry="3" fill="rgba(255,255,200,0.4)"/>
+    <!-- Engraving lines (decorative) -->
+    <path d="M 60 90 Q 92 82 124 90" fill="none" stroke="rgba(120,70,0,0.4)" stroke-width="1.2"/>
+    <path d="M 65 100 Q 92 94 119 100" fill="none" stroke="rgba(120,70,0,0.3)" stroke-width="1"/>
+  </g>
+
+  <!-- Glow at spout -->
+  <circle cx="14" cy="71" r="8" fill="#f5c842" opacity="0.3" filter="url(#glowSpout)"/>
+
+  <!-- Smoke wisps from spout -->
+  <path class="wisp wisp-1 smoke smoke--1" d="M 14 68 Q 10 55 18 45 Q 26 35 16 22" fill="none" stroke="url(#smoke1)" stroke-width="4" stroke-linecap="round"/>
+  <path class="wisp wisp-2 smoke smoke--2" d="M 16 65 Q 6 50 14 38 Q 22 26 12 15" fill="none" stroke="url(#smoke2)" stroke-width="3" stroke-linecap="round"/>
+  <path class="wisp wisp-3 smoke smoke--3" d="M 18 62 Q 22 48 14 36 Q 6 24 18 12" fill="none" stroke="url(#smoke3)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
 
           <!-- Genie character SVG with float animation -->
-          <svg class="genie" viewBox="0 0 80 130" width="80" height="130"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="genie-smoke" x1="0.5" y1="0" x2="0.5" y2="1">
-                <stop offset="0%" stop-color="#2abfb5" stop-opacity="0.85"/>
-                <stop offset="100%" stop-color="#2abfb5" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <!-- Smoke/body trail -->
-            <path d="M16 130 Q6 110 10 95 Q18 78 40 72 Q62 78 70 95 Q74 110 64 130Z"
-                  fill="url(#genie-smoke)"/>
-            <!-- Upper torso -->
-            <path d="M22 96 Q18 82 26 74 Q33 66 40 64 Q47 66 54 74 Q62 82 58 96Z"
-                  fill="#1a9e95"/>
-            <!-- Arm left (crossed) -->
-            <path d="M24 84 Q30 80 38 82 Q42 83 40 88"
-                  fill="none" stroke="#1a9e95" stroke-width="7"
-                  stroke-linecap="round"/>
-            <!-- Arm right (crossed) -->
-            <path d="M56 84 Q50 80 42 82 Q38 83 40 88"
-                  fill="none" stroke="#1a9e95" stroke-width="7"
-                  stroke-linecap="round"/>
-            <!-- Belt/sash line -->
-            <path d="M24 92 Q40 96 56 92"
-                  fill="none" stroke="#d4a017" stroke-width="2"
-                  stroke-linecap="round" opacity="0.7"/>
-            <!-- Neck -->
-            <rect x="34" y="60" width="12" height="10" rx="5" fill="#2abfb5"/>
-            <!-- Head -->
-            <circle cx="40" cy="46" r="24" fill="#2abfb5"/>
-            <!-- Ear left -->
-            <circle cx="16" cy="46" r="6" fill="#2abfb5"/>
-            <!-- Ear right -->
-            <circle cx="64" cy="46" r="6" fill="#2abfb5"/>
-            <!-- Turban base -->
-            <path d="M16 42 Q16 24 40 22 Q64 24 64 42"
-                  fill="#7b2d8b"/>
-            <!-- Turban fold 1 -->
-            <path d="M18 38 Q22 30 40 28 Q58 30 62 38"
-                  fill="none" stroke="#9b4db5" stroke-width="3"
-                  stroke-linecap="round"/>
-            <!-- Turban fold 2 -->
-            <path d="M22 34 Q26 28 40 26 Q54 28 58 34"
-                  fill="none" stroke="#b070d0" stroke-width="2"
-                  stroke-linecap="round"/>
-            <!-- Turban jewel -->
-            <circle cx="40" cy="24" r="5" fill="#f5c842"/>
-            <circle cx="40" cy="24" r="2.5" fill="#ffffff" opacity="0.5"/>
-            <!-- Eyes -->
-            <circle cx="33" cy="48" r="3.5" fill="#1a0a2e"/>
-            <circle cx="47" cy="48" r="3.5" fill="#1a0a2e"/>
-            <!-- Eye highlights -->
-            <circle cx="34.2" cy="46.8" r="1.2" fill="#ffffff" opacity="0.8"/>
-            <circle cx="48.2" cy="46.8" r="1.2" fill="#ffffff" opacity="0.8"/>
-            <!-- Smile -->
-            <path d="M31 56 Q40 64 49 56"
-                  fill="none" stroke="#1a0a2e" stroke-width="2.5"
-                  stroke-linecap="round"/>
-            <!-- Cheek blush -->
-            <circle cx="26" cy="52" r="5" fill="#f0a0a0" opacity="0.25"/>
-            <circle cx="54" cy="52" r="5" fill="#f0a0a0" opacity="0.25"/>
-          </svg>
+          <svg class="genie" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160" width="100" height="160" aria-hidden="true">
+  <defs>
+    <!-- Smoke body gradient (teal-to-transparent) -->
+    <linearGradient id="genieSmoke" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00b4a6" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#0d6ea8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#7b2fbe" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Face skin gradient -->
+    <radialGradient id="genieface" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ffe0b0"/>
+      <stop offset="60%" stop-color="#f5c07a"/>
+      <stop offset="100%" stop-color="#d4900a"/>
+    </radialGradient>
+    <!-- Turban gradient -->
+    <radialGradient id="genieTurban" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#9b4dca"/>
+      <stop offset="100%" stop-color="#4a1080"/>
+    </radialGradient>
+    <!-- Arm gradient -->
+    <radialGradient id="genieArm" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#00d4c6"/>
+      <stop offset="100%" stop-color="#007a70"/>
+    </radialGradient>
+    <!-- Eye white -->
+    <radialGradient id="eyeWhite" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e8e0f0"/>
+    </radialGradient>
+    <!-- Glow -->
+    <filter id="genieGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Smoke/body trail (bottom, fades out) -->
+  <path d="M 30 160 Q 10 145 15 130 Q 18 118 50 115 Q 82 118 85 130 Q 90 145 70 160 Z" fill="url(#genieSmoke)" opacity="0.5"/>
+  <!-- Main smoke body -->
+  <path d="M 22 145 Q 8 125 12 105 Q 16 88 50 85 Q 84 88 88 105 Q 92 125 78 145 Z" fill="url(#genieSmoke)"/>
+  <!-- Body highlight -->
+  <ellipse cx="36" cy="108" rx="8" ry="14" fill="rgba(255,255,255,0.12)" transform="rotate(-15,36,108)"/>
+
+  <!-- Crossed arms -->
+  <!-- Left arm -->
+  <path d="M 20 108 Q 28 102 42 106 Q 50 108 50 108" fill="none" stroke="url(#genieArm)" stroke-width="10" stroke-linecap="round"/>
+  <!-- Right arm over left -->
+  <path d="M 80 108 Q 72 102 58 106 Q 50 108 50 108" fill="none" stroke="#00b4a6" stroke-width="10" stroke-linecap="round"/>
+  <!-- Hands -->
+  <circle cx="20" cy="108" r="7" fill="#00d4c6"/>
+  <circle cx="80" cy="108" r="7" fill="#00b4a6"/>
+  <!-- Knuckle highlights -->
+  <circle cx="18" cy="106" r="2" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="78" cy="106" r="2" fill="rgba(255,255,255,0.3)"/>
+
+  <!-- Neck -->
+  <rect x="43" y="72" width="14" height="14" rx="6" fill="url(#genieface)"/>
+
+  <!-- Head/face -->
+  <ellipse cx="50" cy="60" rx="26" ry="24" fill="url(#genieface)"/>
+  <!-- Face shadow/shading (left side) -->
+  <ellipse cx="36" cy="62" rx="8" ry="14" fill="rgba(180,100,0,0.1)" transform="rotate(10,36,62)"/>
+  <!-- Cheek highlight -->
+  <ellipse cx="62" cy="65" rx="6" ry="4" fill="rgba(255,220,160,0.35)" transform="rotate(-10,62,65)"/>
+
+  <!-- Ears -->
+  <ellipse cx="24" cy="62" rx="5" ry="7" fill="#f5c07a"/>
+  <ellipse cx="76" cy="62" rx="5" ry="7" fill="#f5c07a"/>
+  <!-- Ear inner -->
+  <ellipse cx="24" cy="62" rx="3" ry="4" fill="#d4900a" opacity="0.4"/>
+
+  <!-- Eyes -->
+  <!-- Left eye -->
+  <ellipse cx="40" cy="57" rx="7" ry="7.5" fill="url(#eyeWhite)"/>
+  <ellipse cx="41" cy="58" rx="5" ry="5.5" fill="#1a3a6e"/>
+  <ellipse cx="42" cy="58" rx="3.5" ry="4" fill="#0a1a3a"/>
+  <circle cx="43" cy="56" r="1.5" fill="white"/>
+  <!-- Right eye -->
+  <ellipse cx="60" cy="57" rx="7" ry="7.5" fill="url(#eyeWhite)"/>
+  <ellipse cx="61" cy="58" rx="5" ry="5.5" fill="#1a3a6e"/>
+  <ellipse cx="62" cy="58" rx="3.5" ry="4" fill="#0a1a3a"/>
+  <circle cx="63" cy="56" r="1.5" fill="white"/>
+  <!-- Eyebrows (expressive, slightly raised) -->
+  <path d="M 33 50 Q 40 47 47 50" fill="none" stroke="#6a3a00" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 53 50 Q 60 47 67 50" fill="none" stroke="#6a3a00" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <ellipse cx="50" cy="64" rx="3.5" ry="2.5" fill="rgba(180,100,0,0.2)"/>
+  <path d="M 46 66 Q 50 69 54 66" fill="none" stroke="#c08020" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Smile / grin -->
+  <path d="M 38 71 Q 50 80 62 71" fill="none" stroke="#7a4000" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Teeth -->
+  <path d="M 40 72 Q 50 79 60 72 Q 50 76 40 72 Z" fill="white" opacity="0.9"/>
+
+  <!-- Turban -->
+  <path d="M 24 50 Q 26 32 50 28 Q 74 32 76 50 Q 62 44 50 44 Q 38 44 24 50 Z" fill="url(#genieTurban)"/>
+  <!-- Turban wrap band -->
+  <path d="M 24 50 Q 50 42 76 50" fill="none" stroke="rgba(255,200,100,0.5)" stroke-width="2"/>
+  <!-- Turban highlight -->
+  <ellipse cx="42" cy="37" rx="8" ry="5" fill="rgba(180,100,255,0.3)" transform="rotate(-10,42,37)"/>
+  <!-- Turban top knot -->
+  <ellipse cx="50" cy="28" rx="8" ry="5" fill="#6a20a0"/>
+  <!-- Gold jewel on turban -->
+  <ellipse cx="50" cy="44" rx="6" ry="4" fill="#d4a017"/>
+  <ellipse cx="50" cy="44" rx="4" ry="2.5" fill="#f5c842"/>
+  <ellipse cx="49" cy="43" rx="1.5" ry="1" fill="rgba(255,255,200,0.7)"/>
+  <!-- Jewel facets -->
+  <path d="M 44 44 L 50 40 L 56 44 L 50 48 Z" fill="none" stroke="rgba(255,200,0,0.4)" stroke-width="0.5"/>
+
+  <!-- Body glow aura -->
+  <ellipse cx="50" cy="110" rx="40" ry="20" fill="#00b4a6" opacity="0.08" filter="url(#genieGlow)"/>
+</svg>
 
         </div><!-- /.hero__art -->
       </div><!-- /.hero__layout -->
