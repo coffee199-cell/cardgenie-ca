@@ -54,68 +54,236 @@
   <!-- Hero + Calculator -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero__headline">Find Your Best Canadian Credit Card</h1>
-      <p class="hero__sub">Enter your monthly spending below and we will show you which cards earn the most rewards, cash back, or travel points for your lifestyle.</p>
+      <div class="hero__layout">
+        <div class="hero__left">
+          <h1 class="hero__headline">Find Your Best Canadian Credit Card</h1>
+          <p class="hero__sub">Enter your monthly spending below and we will show you which cards earn the most rewards, cash back, or travel points for your lifestyle.</p>
 
-      <div class="calc">
-        <div class="calc__title">Monthly Spending Calculator</div>
-        <form action="#" method="get" onsubmit="return false;">
-          <div class="calc__grid">
-            <div class="calc__field">
-              <label for="spend-groceries">Groceries</label>
-              <input type="number" id="spend-groceries" name="groceries" placeholder="$0" min="0" step="10">
-            </div>
-            <div class="calc__field">
-              <label for="spend-gas">Gas</label>
-              <input type="number" id="spend-gas" name="gas" placeholder="$0" min="0" step="10">
-            </div>
-            <div class="calc__field">
-              <label for="spend-dining">Dining</label>
-              <input type="number" id="spend-dining" name="dining" placeholder="$0" min="0" step="10">
-            </div>
-            <div class="calc__field">
-              <label for="spend-travel">Travel</label>
-              <input type="number" id="spend-travel" name="travel" placeholder="$0" min="0" step="10">
-            </div>
-            <div class="calc__field">
-              <label for="spend-bills">Bills</label>
-              <input type="number" id="spend-bills" name="bills" placeholder="$0" min="0" step="10">
-            </div>
-            <div class="calc__field">
-              <label for="spend-other">Other</label>
-              <input type="number" id="spend-other" name="other" placeholder="$0" min="0" step="10">
-            </div>
-          </div>
-          <button type="submit" class="btn btn--primary">Find My Best Card</button>
-        </form>
+          <div class="calc">
+            <div class="calc__title">Monthly Spending Calculator</div>
+            <form action="#" method="get" onsubmit="return false;">
+              <div class="calc__grid">
 
-        <div class="calc__results">
-          <div class="calc__results-label">Top matches for a balanced spender</div>
-          <div class="card-result">
-            <div>
-              <div class="card-result__name">Amex Cobalt Card</div>
-              <div class="card-result__tagline">5x points on dining &amp; groceries, 2x on travel</div>
+                <div class="calc__field">
+                  <div class="calc__field-header">
+                    <label for="spend-groceries">Groceries</label>
+                    <span class="calc__value" id="val-groceries">$300</span>
+                  </div>
+                  <input type="range" id="spend-groceries" name="groceries"
+                         min="0" max="2000" step="50" value="300"
+                         class="slider"
+                         oninput="document.getElementById('val-groceries').textContent='$'+this.value">
+                </div>
+
+                <div class="calc__field">
+                  <div class="calc__field-header">
+                    <label for="spend-gas">Gas</label>
+                    <span class="calc__value" id="val-gas">$150</span>
+                  </div>
+                  <input type="range" id="spend-gas" name="gas"
+                         min="0" max="1000" step="50" value="150"
+                         class="slider"
+                         oninput="document.getElementById('val-gas').textContent='$'+this.value">
+                </div>
+
+                <div class="calc__field">
+                  <div class="calc__field-header">
+                    <label for="spend-dining">Dining</label>
+                    <span class="calc__value" id="val-dining">$200</span>
+                  </div>
+                  <input type="range" id="spend-dining" name="dining"
+                         min="0" max="1000" step="50" value="200"
+                         class="slider"
+                         oninput="document.getElementById('val-dining').textContent='$'+this.value">
+                </div>
+
+                <div class="calc__field">
+                  <div class="calc__field-header">
+                    <label for="spend-travel">Travel</label>
+                    <span class="calc__value" id="val-travel">$100</span>
+                  </div>
+                  <input type="range" id="spend-travel" name="travel"
+                         min="0" max="1000" step="50" value="100"
+                         class="slider"
+                         oninput="document.getElementById('val-travel').textContent='$'+this.value">
+                </div>
+
+                <div class="calc__field">
+                  <div class="calc__field-header">
+                    <label for="spend-bills">Bills</label>
+                    <span class="calc__value" id="val-bills">$150</span>
+                  </div>
+                  <input type="range" id="spend-bills" name="bills"
+                         min="0" max="2000" step="50" value="150"
+                         class="slider"
+                         oninput="document.getElementById('val-bills').textContent='$'+this.value">
+                </div>
+
+                <div class="calc__field">
+                  <div class="calc__field-header">
+                    <label for="spend-other">Other</label>
+                    <span class="calc__value" id="val-other">$100</span>
+                  </div>
+                  <input type="range" id="spend-other" name="other"
+                         min="0" max="1000" step="50" value="100"
+                         class="slider"
+                         oninput="document.getElementById('val-other').textContent='$'+this.value">
+                </div>
+
+              </div>
+              <button type="submit" class="btn btn--primary">Find My Best Card</button>
+            </form>
+
+            <div class="calc__results">
+              <div class="calc__results-label">Top matches for a balanced spender</div>
+              <div class="card-result">
+                <div>
+                  <div class="card-result__name">Amex Cobalt Card</div>
+                  <div class="card-result__tagline">5x points on dining &amp; groceries, 2x on travel</div>
+                </div>
+                <div class="card-result__badge">Best Overall</div>
+              </div>
+              <div class="card-result">
+                <div>
+                  <div class="card-result__name">Scotia Gold American Express</div>
+                  <div class="card-result__tagline">6x points on dining, 5x on groceries &amp; gas</div>
+                </div>
+                <div class="card-result__badge">No FX Fee</div>
+              </div>
+              <div class="card-result">
+                <div>
+                  <div class="card-result__name">BMO Cashback World Elite</div>
+                  <div class="card-result__tagline">5% on groceries, 4% on transit, 3% on gas</div>
+                </div>
+                <div class="card-result__badge">Cash Back</div>
+              </div>
             </div>
-            <div class="card-result__badge">Best Overall</div>
           </div>
-          <div class="card-result">
-            <div>
-              <div class="card-result__name">Scotia Gold American Express</div>
-              <div class="card-result__tagline">6x points on dining, 5x on groceries &amp; gas</div>
-            </div>
-            <div class="card-result__badge">No FX Fee</div>
-          </div>
-          <div class="card-result">
-            <div>
-              <div class="card-result__name">BMO Cashback World Elite</div>
-              <div class="card-result__tagline">5% on groceries, 4% on transit, 3% on gas</div>
-            </div>
-            <div class="card-result__badge">Cash Back</div>
-          </div>
-        </div>
-      </div>
+        </div><!-- /.hero__left -->
+
+        <div class="hero__art" aria-hidden="true">
+
+          <!-- Genie lamp SVG with shake + smoke animations -->
+          <svg class="lamp" viewBox="0 0 170 130" width="170" height="130"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Smoke wisps from spout -->
+            <path class="smoke smoke--1"
+                  d="M28 52 C18 38 26 22 18 8"
+                  fill="none" stroke="#00b4a6" stroke-width="3"
+                  stroke-linecap="round" opacity="0"/>
+            <path class="smoke smoke--2"
+                  d="M34 50 C42 34 30 20 38 4"
+                  fill="none" stroke="#9b59b6" stroke-width="2"
+                  stroke-linecap="round" opacity="0"/>
+            <path class="smoke smoke--3"
+                  d="M22 55 C10 40 20 24 12 10"
+                  fill="none" stroke="#00b4a6" stroke-width="2"
+                  stroke-linecap="round" opacity="0"/>
+            <!-- Lamp base ellipse (shadow/bottom) -->
+            <ellipse cx="100" cy="112" rx="54" ry="14" fill="#b8890f" stroke="#f5c842" stroke-width="1"/>
+            <!-- Lamp bowl body -->
+            <path d="M46 112 Q44 88 62 78 Q80 68 100 68 Q120 68 138 78 Q154 88 154 112"
+                  fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
+            <!-- Lamp lid -->
+            <ellipse cx="100" cy="68" rx="54" ry="10" fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
+            <!-- Lid top dome -->
+            <ellipse cx="100" cy="58" rx="22" ry="7" fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
+            <!-- Bowl highlight -->
+            <path d="M70 82 Q85 74 105 74 Q120 74 132 80"
+                  fill="none" stroke="#f5c842" stroke-width="1.5"
+                  stroke-linecap="round" opacity="0.55"/>
+            <!-- Spout (left side) -->
+            <path d="M46 104 Q30 100 20 88 Q12 76 16 64 Q20 54 30 58"
+                  fill="none" stroke="#d4a017" stroke-width="10"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M46 104 Q30 100 20 88 Q12 76 16 64 Q20 54 30 58"
+                  fill="none" stroke="#f5c842" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Spout tip cap -->
+            <circle cx="30" cy="57" r="5" fill="#d4a017" stroke="#f5c842" stroke-width="1.5"/>
+            <!-- Handle (right side) -->
+            <path d="M152 88 Q170 85 170 100 Q170 115 152 112"
+                  fill="none" stroke="#d4a017" stroke-width="9"
+                  stroke-linecap="round"/>
+            <path d="M152 88 Q170 85 170 100 Q170 115 152 112"
+                  fill="none" stroke="#f5c842" stroke-width="1.5"
+                  stroke-linecap="round"/>
+            <!-- Decorative band on bowl -->
+            <path d="M56 96 Q70 90 100 90 Q128 90 144 96"
+                  fill="none" stroke="#f5c842" stroke-width="1"
+                  stroke-linecap="round" opacity="0.4"/>
+          </svg>
+
+          <!-- Genie character SVG with float animation -->
+          <svg class="genie" viewBox="0 0 80 130" width="80" height="130"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="genie-smoke" x1="0.5" y1="0" x2="0.5" y2="1">
+                <stop offset="0%" stop-color="#2abfb5" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#2abfb5" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- Smoke/body trail -->
+            <path d="M16 130 Q6 110 10 95 Q18 78 40 72 Q62 78 70 95 Q74 110 64 130Z"
+                  fill="url(#genie-smoke)"/>
+            <!-- Upper torso -->
+            <path d="M22 96 Q18 82 26 74 Q33 66 40 64 Q47 66 54 74 Q62 82 58 96Z"
+                  fill="#1a9e95"/>
+            <!-- Arm left (crossed) -->
+            <path d="M24 84 Q30 80 38 82 Q42 83 40 88"
+                  fill="none" stroke="#1a9e95" stroke-width="7"
+                  stroke-linecap="round"/>
+            <!-- Arm right (crossed) -->
+            <path d="M56 84 Q50 80 42 82 Q38 83 40 88"
+                  fill="none" stroke="#1a9e95" stroke-width="7"
+                  stroke-linecap="round"/>
+            <!-- Belt/sash line -->
+            <path d="M24 92 Q40 96 56 92"
+                  fill="none" stroke="#d4a017" stroke-width="2"
+                  stroke-linecap="round" opacity="0.7"/>
+            <!-- Neck -->
+            <rect x="34" y="60" width="12" height="10" rx="5" fill="#2abfb5"/>
+            <!-- Head -->
+            <circle cx="40" cy="46" r="24" fill="#2abfb5"/>
+            <!-- Ear left -->
+            <circle cx="16" cy="46" r="6" fill="#2abfb5"/>
+            <!-- Ear right -->
+            <circle cx="64" cy="46" r="6" fill="#2abfb5"/>
+            <!-- Turban base -->
+            <path d="M16 42 Q16 24 40 22 Q64 24 64 42"
+                  fill="#7b2d8b"/>
+            <!-- Turban fold 1 -->
+            <path d="M18 38 Q22 30 40 28 Q58 30 62 38"
+                  fill="none" stroke="#9b4db5" stroke-width="3"
+                  stroke-linecap="round"/>
+            <!-- Turban fold 2 -->
+            <path d="M22 34 Q26 28 40 26 Q54 28 58 34"
+                  fill="none" stroke="#b070d0" stroke-width="2"
+                  stroke-linecap="round"/>
+            <!-- Turban jewel -->
+            <circle cx="40" cy="24" r="5" fill="#f5c842"/>
+            <circle cx="40" cy="24" r="2.5" fill="#ffffff" opacity="0.5"/>
+            <!-- Eyes -->
+            <circle cx="33" cy="48" r="3.5" fill="#1a0a2e"/>
+            <circle cx="47" cy="48" r="3.5" fill="#1a0a2e"/>
+            <!-- Eye highlights -->
+            <circle cx="34.2" cy="46.8" r="1.2" fill="#ffffff" opacity="0.8"/>
+            <circle cx="48.2" cy="46.8" r="1.2" fill="#ffffff" opacity="0.8"/>
+            <!-- Smile -->
+            <path d="M31 56 Q40 64 49 56"
+                  fill="none" stroke="#1a0a2e" stroke-width="2.5"
+                  stroke-linecap="round"/>
+            <!-- Cheek blush -->
+            <circle cx="26" cy="52" r="5" fill="#f0a0a0" opacity="0.25"/>
+            <circle cx="54" cy="52" r="5" fill="#f0a0a0" opacity="0.25"/>
+          </svg>
+
+        </div><!-- /.hero__art -->
+      </div><!-- /.hero__layout -->
     </div>
   </section>
+
+  <div class="divider">&#9670;</div>
 
   <!-- Top Categories -->
   <section class="section">
@@ -150,6 +318,8 @@
       </div>
     </div>
   </section>
+
+  <div class="divider">&#9670;</div>
 
   <!-- How it works -->
   <section class="section section--alt">
