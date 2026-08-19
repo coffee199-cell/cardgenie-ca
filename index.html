@@ -758,11 +758,19 @@ function applyClasses() {
 function centerCard(index) {
   const track   = document.getElementById('rolodex-track');
   const rolodex = document.getElementById('rolodex');
-  const cards   = track.querySelectorAll('.rolodex__card');
+  const cards   = [...track.querySelectorAll('.rolodex__card')];
   if (!cards[index]) return;
-  const CARD_W  = 240 + 16; // width + gap (matches CSS)
-  const offset  = (rolodex.offsetWidth / 2) - (index * CARD_W) - (CARD_W / 2);
-  track.style.transform = `translateX(${offset}px)`;
+
+  // Measure actual card positions (accounts for scale, borders, gap)
+  const gap = 16;
+  let cardLeft = 0;
+  for (let i = 0; i < index; i++) {
+    cardLeft += cards[i].offsetWidth + gap;
+  }
+  const cardCenter = cardLeft + cards[index].offsetWidth / 2;
+  const viewCenter = rolodex.offsetWidth / 2;
+
+  track.style.transform = `translateX(${viewCenter - cardCenter}px)`;
 }
 
 // ── Manual card select ─────────────────────────────────────────────────────
