@@ -761,16 +761,19 @@ function centerCard(index) {
   const cards   = [...track.querySelectorAll('.rolodex__card')];
   if (!cards[index]) return;
 
-  // Measure actual card positions (accounts for scale, borders, gap)
-  const gap = 16;
-  let cardLeft = 0;
-  for (let i = 0; i < index; i++) {
-    cardLeft += cards[i].offsetWidth + gap;
-  }
-  const cardCenter = cardLeft + cards[index].offsetWidth / 2;
-  const viewCenter = rolodex.offsetWidth / 2;
+  // Extract current translateX from computed transform so we can back it out
+  const matrix   = new DOMMatrix(window.getComputedStyle(track).transform);
+  const currentX = matrix.m41; // current translateX in px
 
-  track.style.transform = `translateX(${viewCenter - cardCenter}px)`;
+  // getBoundingClientRect reflects the CURRENT transform; subtract currentX
+  // to get where the card center sits at transform=0
+  const cardRect  = cards[index].getBoundingClientRect();
+  const roleRect  = rolodex.getBoundingClientRect();
+
+  const cardCenter0 = (cardRect.left + cardRect.width  / 2) - currentX;
+  const roleCenter  =  roleRect.left + roleRect.width  / 2;
+
+  track.style.transform = `translateX(${roleCenter - cardCenter0}px)`;
 }
 
 // ── Manual card select ─────────────────────────────────────────────────────
