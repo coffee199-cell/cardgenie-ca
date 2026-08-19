@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: #ffffff;
   background-image: url(../images/genie-bg.png);
   background-size: auto 100vh;
@@ -161,7 +161,7 @@ img {
 }
 
 .nav__logo {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.45rem;
   font-weight: 700;
   color: var(--color-purple);
@@ -251,7 +251,7 @@ img {
 }
 
 .hero__headline {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--color-purple);
@@ -280,7 +280,7 @@ img {
 }
 
 .calc__title {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-purple);
@@ -479,17 +479,20 @@ input[type="range"]::-moz-range-track {
 
 /* ===== Section headings ===== */
 .section__heading {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.65rem;
   font-weight: 700;
   color: var(--color-purple);
   margin-bottom: 8px;
+  text-align: right;
 }
 
 .section__sub {
   font-size: 1rem;
   color: var(--color-text-muted);
   max-width: 600px;
+  margin-left: auto;
+  text-align: right;
 }
 
 /* ===== Category grid ===== */
@@ -531,7 +534,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .cat-card__label {
-  font-family: 'Georgia', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
   font-weight: bold;
   color: var(--color-purple);
@@ -580,7 +583,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .step__title {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -620,7 +623,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .card-item__rank {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-gold);
@@ -672,7 +675,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .cta-box__text h3 {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-purple);
@@ -692,7 +695,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .page-intro__h1 {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.9rem;
   font-weight: 700;
   color: var(--color-purple);
@@ -724,7 +727,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .footer__brand {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--color-gold-light);
@@ -888,7 +891,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .rolodex__name {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-purple);
@@ -1178,6 +1181,12 @@ input[type="range"]::-moz-range-track {
   .hero__sub {
     margin-left: 0;
     text-align: left;
+  }
+
+  .section__heading,
+  .section__sub {
+    text-align: left;
+    margin-left: 0;
   }
 
   .calc__grid {
