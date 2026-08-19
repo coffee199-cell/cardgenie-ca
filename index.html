@@ -272,6 +272,13 @@
               </label>
               <span class="stack-toggle__hint">Combine complementary cards that share a points pool</span>
             </div>
+            <div class="stack-toggle">
+              <label>
+                <input type="checkbox" id="welcome-bonus">
+                Include welcome bonus
+              </label>
+              <span class="stack-toggle__hint">First-year value based on point value</span>
+            </div>
           </div>
         </div><!-- /.hero__left -->
 
@@ -678,13 +685,14 @@ function scoreCard(card, spend) {
   let r = 0;
   for (const cat of ['groceries','gas','dining','travel','bills','other'])
     r += spend[cat] * 12 * card.earn[cat] * card.pv;
-  return r - card.fee + card.welcome * 0.5;
+  return r - card.fee + (includeWelcome ? card.welcome : 0);
 }
 
 // ── State ──────────────────────────────────────────────────────────────────
 let activeFilter = 'all';
 let activeIndex  = 0;
-let stackMode    = false;
+let stackMode       = false;
+let includeWelcome  = false;
 let arranged     = [];
 let STACKS       = [];
 
@@ -888,6 +896,11 @@ document.getElementById('stack-mode').addEventListener('change', e => {
   stackMode = e.target.checked;
   activeFilter = 'all';
   document.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+  buildRolodex();
+});
+
+document.getElementById('welcome-bonus').addEventListener('change', e => {
+  includeWelcome = e.target.checked;
   buildRolodex();
 });
 

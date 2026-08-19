@@ -954,6 +954,11 @@ input[type="range"]::-moz-range-track {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+.stack-toggle:first-of-type {
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--color-border);
