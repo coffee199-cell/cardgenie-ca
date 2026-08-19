@@ -211,6 +211,14 @@
             </div>
           </div>
 
+          <div class="stack-toggle">
+            <label>
+              <input type="checkbox" id="stack-mode">
+              Stack cards
+            </label>
+            <span class="stack-toggle__hint">Combine complementary cards that share a points pool</span>
+          </div>
+
           <div class="calc">
             <div class="calc__title">Monthly Spending</div>
             <div class="calc__grid">
@@ -676,7 +684,49 @@ function scoreCard(card, spend) {
 // ── State ──────────────────────────────────────────────────────────────────
 let activeFilter = 'all';
 let activeIndex  = 0;
-let arranged     = []; // stable card order in the track
+let stackMode    = false;
+let arranged     = [];
+let STACKS       = [];
+
+function buildStacks() {
+  const PAIRS = [
+    ['rbc-ion-visa', 'rbc-avion-visa-infinite'],
+    ['rbc-ion-visa', 'rbc-avion-visa-infinite-privilege'],
+    ['american-express-cobalt-card', 'american-express-gold-rewards-card'],
+    ['american-express-cobalt-card', 'american-express-platinum-card'],
+    ['scotiabank-gold-american-express', 'scotiabank-passport-visa-infinite'],
+    ['td-aeroplan-visa-infinite', 'american-express-cobalt-card'],
+  ];
+  return PAIRS.map(([s1, s2]) => {
+    const c1 = CARDS.find(c => c.slug === s1);
+    const c2 = CARDS.find(c => c.slug === s2);
+    if (!c1 || !c2) return null;
+    const earn = {};
+    for (const k of ['groceries','gas','dining','travel','bills','other'])
+      earn[k] = Math.max(c1.earn[k], c2.earn[k]);
+    const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const short1 = c1.name.replace(new RegExp('^' + esc(c1.issuer) + '\\s*','i'),'');
+    const short2 = c2.name.replace(new RegExp('^' + esc(c2.issuer) + '\\s*','i'),'');
+    const sameIssuer = c1.issuer === c2.issuer;
+    const fee = c1.fee + c2.fee;
+    const pv  = Math.max(c1.pv, c2.pv);
+    const topTwo = Object.entries(earn).sort((a,b)=>b[1]-a[1]).slice(0,2).filter(([,v])=>v>0);
+    const earnStr = topTwo.map(([k,v])=>`${v}x ${k}`).join(' &amp; ');
+    return {
+      slug: s1 + '--' + s2,
+      name: short1 + ' + ' + short2,
+      issuer: sameIssuer ? c1.issuer : c1.issuer + ' &amp; ' + c2.issuer,
+      types: [...new Set([...c1.types, ...c2.types])],
+      fee, earn, pv,
+      welcome: c1.welcome + c2.welcome,
+      tag: sameIssuer ? c1.issuer + ' Combo' : 'Multi-Card Combo',
+      tc: c1.tc,
+      url: '/best/',
+      detail: `$${fee}/yr combined &middot; ${earnStr}`,
+      isStack: true,
+    };
+  }).filter(Boolean);
+}
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function getSpend() {
@@ -690,26 +740,21 @@ function getSpend() {
   };
 }
 function filteredCards() {
-  return activeFilter === 'all' ? CARDS : CARDS.filter(c => c.types.includes(activeFilter));
+  const pool = stackMode ? STACKS : CARDS;
+  return activeFilter === 'all' ? pool : pool.filter(c => c.types.includes(activeFilter));
 }
 
 // ── Build rolodex DOM (once per filter/ranking change) ────────────────────
 function buildRolodex() {
-  const spend  = getSpend();
-  const pool   = filteredCards();
+  const spend = getSpend();
+  const pool  = filteredCards();
   if (!pool.length) return;
 
-  const ranked = pool
+  // All filtered cards sorted best-first; only 5 displayed at a time via hidden-card CSS
+  arranged = pool
     .map(c => ({ ...c, score: scoreCard(c, spend) }))
     .sort((a, b) => b.score - a.score);
-
-  // Show max 5 cards: up to 3 lower-ranked on the left, BEST in centre, 2nd on right
-  // lowerLeft = [5th…3rd] reversed so worst is furthest left
-  const best      = ranked[0];
-  const second    = ranked[1];
-  const lowerLeft = ranked.slice(2, 5).reverse(); // max 3
-  arranged = second ? [...lowerLeft, best, second] : [...lowerLeft, best];
-  activeIndex = lowerLeft.length; // index of best card
+  activeIndex = 0; // best card always starts at centre
 
   const track = document.getElementById('rolodex-track');
   track.style.transition = 'none';
@@ -724,60 +769,68 @@ function buildRolodex() {
 
 function cardHTML(c, i) {
   const val = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
-  return `<div class="rolodex__card" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
+  const nameHtml = c.isStack
+    ? c.name.replace(' + ', ' <span class="rolodex__stack-plus">+</span> ')
+    : c.name;
+  const ctaLabel = c.isStack ? 'View Cards →' : 'View Card →';
+  return `<div class="rolodex__card${c.isStack ? ' rolodex__card--stack' : ''}" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
-    <div class="rolodex__name">${c.name}</div>
+    <div class="rolodex__name">${nameHtml}</div>
     <div class="rolodex__value" id="rv-${c.slug}">${val}</div>
     <div class="rolodex__detail">${c.detail}</div>
-    <a href="${c.url}" class="rolodex__cta">View Card →</a>
+    <a href="${c.url}" class="rolodex__cta">${ctaLabel}</a>
   </div>`;
 }
 
-// ── Update scores in place (no DOM rebuild unless rankings change enough) ──
+// ── Update scores in place (rebuild if best card leaves the visible window) ──
 function updateScores() {
   const spend = getSpend();
 
-  // Find overall winner across ALL filtered cards (not just the current 5)
-  let overallBestSlug = null, overallBestScore = -Infinity;
-  filteredCards().forEach(c => {
+  let bestIdx = 0, bestScore = -Infinity;
+  arranged.forEach((c, i) => {
     const s = scoreCard(c, spend);
-    if (s > overallBestScore) { overallBestScore = s; overallBestSlug = c.slug; }
+    arranged[i].score = s;
+    if (s > bestScore) { bestScore = s; bestIdx = i; }
   });
 
-  // If the new winner isn't in the current 5, rebuild entirely
-  if (!arranged.find(c => c.slug === overallBestSlug)) {
+  // If the new best is outside the ±2 visible window, snap to it via a full rebuild
+  if (Math.abs(bestIdx - activeIndex) > 2) {
     buildRolodex();
     return;
   }
 
-  // Otherwise update displayed values and slide to new winner
-  arranged.forEach(c => {
-    c.score = scoreCard(c, spend);
+  // Otherwise update displayed values in-place for visible cards only
+  arranged.forEach((c, i) => {
+    if (Math.abs(i - activeIndex) > 2) return;
     const valEl = document.getElementById('rv-' + c.slug);
     if (valEl) valEl.textContent = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
   });
 
-  const newIdx = arranged.findIndex(c => c.slug === overallBestSlug);
-  if (newIdx !== activeIndex) {
-    activeIndex = newIdx;
+  if (bestIdx !== activeIndex) {
+    activeIndex = bestIdx;
     applyClasses();
     centerCard(activeIndex);
   }
 }
 
-// ── Apply active/adjacent classes + 3D fan rotation per card ──────────────
+// ── Apply active/adjacent/hidden classes + 3D fan rotation per card ───────
 function applyClasses() {
   document.querySelectorAll('.rolodex__card').forEach((el, i) => {
     const dist     = i - activeIndex;
+    const abs      = Math.abs(dist);
+    const inView   = abs <= 2;
     const isActive = dist === 0;
-    const isAdj    = Math.abs(dist) === 1;
-    el.classList.toggle('active',   isActive);
-    el.classList.toggle('adjacent', isAdj);
-    // Fan: cards curve away from centre — clamped ±55°
-    const rotY  = Math.max(Math.min(dist * 20, 55), -55);
-    const scale = isActive ? 1.04 : isAdj ? 0.94 : 0.86;
-    el.style.transform = `scale(${scale}) rotateY(${rotY}deg)`;
+    const isAdj    = abs === 1;
+    el.classList.toggle('active',      isActive);
+    el.classList.toggle('adjacent',    isAdj);
+    el.classList.toggle('hidden-card', !inView);
+    if (inView) {
+      // Fan: cards curve away from centre — clamped ±40°
+      const rotY  = Math.max(Math.min(dist * 20, 40), -40);
+      const scale = isActive ? 1.04 : isAdj ? 0.94 : 0.86;
+      el.style.transform = `scale(${scale}) rotateY(${rotY}deg)`;
+    }
   });
 }
 
@@ -830,6 +883,14 @@ document.querySelectorAll('.pill').forEach(btn => {
   });
 });
 
+// ── Stack mode toggle ──────────────────────────────────────────────────────
+document.getElementById('stack-mode').addEventListener('change', e => {
+  stackMode = e.target.checked;
+  activeFilter = 'all';
+  document.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+  buildRolodex();
+});
+
 // ── Drag / swipe ───────────────────────────────────────────────────────────
 (function () {
   const rolodex = document.getElementById('rolodex');
@@ -852,6 +913,7 @@ window.addEventListener('load', async () => {
   const resp = await fetch('/data/cards.json');
   const raw = await resp.json();
   CARDS = raw.filter(c => c.is_active === 1).map(mapCard);
+  STACKS = buildStacks();
   buildRolodex();
 });
 window.addEventListener('resize', () => centerCard(activeIndex));
