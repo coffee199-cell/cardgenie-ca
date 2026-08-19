@@ -564,93 +564,106 @@
   </footer>
 
 <script>
-// ── Card database ──────────────────────────────────────────────────────────
-const CARDS = [
-  { slug:'amex-cobalt', name:'Amex Cobalt Card', issuer:'American Express',
-    types:['travel'], fee:155.88,
-    earn:{groceries:5,gas:1,dining:5,travel:2,bills:1,other:1}, pv:0.01,
-    welcome:150, tag:'Top Dining Pick', tc:'#3d1f8a',
-    url:'/cards/american-express-cobalt-card/',
-    detail:'$155.88/yr &middot; 5x dining &amp; groceries &middot; 2x travel' },
-  { slug:'scotia-gold-amex', name:'Scotiabank Gold Amex', issuer:'Scotiabank',
-    types:['travel','nofx'], fee:120,
-    earn:{groceries:6,gas:5,dining:6,travel:3,bills:3,other:1}, pv:0.01,
-    welcome:100, tag:'No FX Fee', tc:'#007a70',
-    url:'/cards/scotiabank-gold-american-express/',
-    detail:'$120/yr &middot; 6x dining &amp; groceries &middot; No FX fees' },
-  { slug:'amex-gold-rewards', name:'Amex Gold Rewards Card', issuer:'American Express',
-    types:['travel'], fee:250,
-    earn:{groceries:2,gas:2,dining:1,travel:2,bills:1,other:1}, pv:0.015,
-    welcome:300, tag:'Premium Travel', tc:'#b8860b',
-    url:'/cards/american-express-gold-rewards-card/',
-    detail:'$250/yr &middot; 2x groceries, gas &amp; travel &middot; Lounge access' },
-  { slug:'td-aeroplan-infinite', name:'TD Aeroplan Visa Infinite', issuer:'TD Bank',
-    types:['travel'], fee:139,
-    earn:{groceries:1.5,gas:1.5,dining:1.5,travel:3,bills:1,other:1}, pv:0.02,
-    welcome:200, tag:'Aeroplan', tc:'#c41230',
-    url:'/compare/td-aeroplan-vs-cibc-aeroplan/',
-    detail:'$139/yr &middot; 3x Air Canada &middot; Aeroplan rewards' },
-  { slug:'cibc-aeroplan-infinite', name:'CIBC Aeroplan Visa Infinite', issuer:'CIBC',
-    types:['travel'], fee:139,
-    earn:{groceries:1.5,gas:1.5,dining:1.5,travel:3,bills:1,other:1}, pv:0.02,
-    welcome:200, tag:'Aeroplan', tc:'#c41230',
-    url:'/compare/td-aeroplan-vs-cibc-aeroplan/',
-    detail:'$139/yr &middot; 3x Air Canada &middot; Aeroplan rewards' },
-  { slug:'bmo-ascend-world-elite', name:'BMO Ascend World Elite', issuer:'BMO',
-    types:['travel'], fee:150,
-    earn:{groceries:1,gas:1,dining:1,travel:5,bills:1,other:1}, pv:0.01,
-    welcome:300, tag:'Best for Flights', tc:'#0066cc',
-    url:'/best/travel-credit-cards-canada/',
-    detail:'$150/yr &middot; 5x on travel purchases &middot; Lounge access' },
-  { slug:'bmo-cashback-world-elite', name:'BMO CashBack World Elite', issuer:'BMO',
-    types:['cashback'], fee:120,
-    earn:{groceries:5,gas:3,dining:1,travel:1,bills:2,other:1}, pv:0.01,
-    welcome:50, tag:'Best Grocery CB', tc:'#0066cc',
-    url:'/best/cash-back-credit-cards-canada/',
-    detail:'$120/yr &middot; 5% groceries &middot; 3% gas &middot; 2% recurring bills' },
-  { slug:'cibc-dividend-infinite', name:'CIBC Dividend Visa Infinite', issuer:'CIBC',
-    types:['cashback'], fee:120,
-    earn:{groceries:4,gas:4,dining:2,travel:1,bills:1,other:1}, pv:0.01,
-    welcome:60, tag:'Cash Back', tc:'#c41230',
-    url:'/best/cash-back-credit-cards-canada/',
-    detail:'$120/yr &middot; 4% groceries &amp; gas &middot; 2% dining' },
-  { slug:'scotia-momentum-infinite', name:'Scotia Momentum Visa Infinite', issuer:'Scotiabank',
-    types:['cashback'], fee:120,
-    earn:{groceries:4,gas:4,dining:4,travel:1,bills:4,other:1}, pv:0.01,
-    welcome:50, tag:'Cash Back', tc:'#c8102e',
-    url:'/best/cash-back-credit-cards-canada/',
-    detail:'$120/yr &middot; 4% groceries, gas, dining &amp; recurring bills' },
-  { slug:'tangerine-money-back', name:'Tangerine Money-Back Card', issuer:'Tangerine',
-    types:['cashback','nofee'], fee:0,
-    earn:{groceries:2,gas:2,dining:2,travel:0.5,bills:0.5,other:0.5}, pv:0.01,
-    welcome:0, tag:'No Annual Fee', tc:'#e8500a',
-    url:'/best/cash-back-credit-cards-canada/',
-    detail:'$0/yr &middot; 2% in 2 categories of your choice' },
-  { slug:'rogers-world-elite', name:'Rogers Red World Elite', issuer:'Rogers Bank',
-    types:['cashback','nofee','nofx'], fee:0,
-    earn:{groceries:1.5,gas:1.5,dining:1.5,travel:1.5,bills:1.5,other:1.5}, pv:0.01,
-    welcome:0, tag:'No FX Fee', tc:'#e0000a',
-    url:'/best/no-foreign-transaction-fee-canada/',
-    detail:'$0/yr &middot; 1.5% everywhere &middot; No foreign transaction fees' },
-  { slug:'pc-financial-world-elite', name:'PC Financial World Elite', issuer:'PC Financial',
-    types:['cashback','nofee'], fee:0,
-    earn:{groceries:3,gas:1.5,dining:1,travel:1,bills:1,other:1}, pv:0.01,
-    welcome:0, tag:'No Annual Fee', tc:'#d4000e',
-    url:'/best/cash-back-credit-cards-canada/',
-    detail:'$0/yr &middot; 3% at Loblaws stores &middot; PC Optimum points' },
-  { slug:'home-trust-preferred', name:'Home Trust Preferred Visa', issuer:'Home Trust',
-    types:['cashback','nofee','nofx'], fee:0,
-    earn:{groceries:1,gas:1,dining:1,travel:1,bills:1,other:1}, pv:0.01,
-    welcome:0, tag:'No FX Fee', tc:'#2e6b3e',
-    url:'/best/no-foreign-transaction-fee-canada/',
-    detail:'$0/yr &middot; 1% everywhere &middot; No foreign transaction fees' },
-  { slug:'mbna-true-line-gold', name:'MBNA True Line Gold', issuer:'MBNA',
-    types:['balance'], fee:39,
-    earn:{groceries:0,gas:0,dining:0,travel:0,bills:0,other:0}, pv:0,
-    welcome:0, tag:'Balance Transfer', tc:'#555555',
-    url:'/best/',
-    detail:'$39/yr &middot; 8.99% purchase rate &middot; Low interest card' },
-];
+// ── Card mapping (loaded from /data/cards.json) ────────────────────────────
+const ISSUER_COLOR = {
+  'American Express':'#006fcf','TD Bank':'#007a33','CIBC':'#c41230',
+  'BMO':'#0066cc','Scotiabank':'#007a70','Tangerine':'#e8500a',
+  'Rogers Bank':'#e0000a','Fido':'#e31837','PC Financial':'#d4000e',
+  'RBC':'#004d99','National Bank':'#e31837','Desjardins':'#00874e',
+  'HSBC':'#db0011','Neo Financial':'#2c2c2c','Brim Financial':'#1a1a2e',
+  'MBNA':'#555555','Home Trust':'#2e6b3e',
+};
+const POINT_VALUE = {
+  'cash_back_pct':0.01,'Aeroplan':0.02,'MR points':0.015,
+  'Avion points':0.01,'BMO Rewards':0.01,'Scene+ points':0.01,
+  'PC Optimum':0.01,'À la carte':0.01,
+};
+const NO_FX_SLUGS = new Set([
+  'rogers-red-world-elite-mastercard','scotiabank-gold-american-express',
+  'scotiabank-passport-visa-infinite','hsbc-world-elite-mastercard',
+  'brim-world-elite-mastercard','brim-world-mastercard',
+  'home-trust-preferred-visa',
+]);
+const DETAIL_PAGE_SLUGS = new Set([
+  'american-express-cobalt-card','scotiabank-gold-american-express',
+]);
+const CAT_MAP = {
+  groceries:'groceries',gas:'gas',dining:'dining',restaurants:'dining',bars:'dining',
+  travel:'travel',air_canada:'travel',aeroplan_partner:'travel',
+  recurring_bills:'bills',all_other:'other',choice_2:'other',
+  streaming:'other',transit:'other',transportation:'other',
+  entertainment:'other',drugstore:'other',shoppers:'other',
+  loblaws_stores:'other',esso:'other',usd_spend:'other',
+};
+
+function mapCard(c) {
+  const rewards = c.rewards || [];
+  const primaryUnit = rewards[0]?.earn_unit;
+  const pv = POINT_VALUE[primaryUnit] ?? 0.01;
+  const isCashback = rewards.some(r => r.earn_unit === 'cash_back_pct');
+  const fallback = rewards.find(r => r.category === 'all_other')?.earn_rate ?? 0;
+  const earnMap = {};
+  for (const r of rewards) {
+    const key = CAT_MAP[r.category];
+    if (key && (!earnMap[key] || r.earn_rate > earnMap[key])) earnMap[key] = r.earn_rate;
+  }
+  const earn = {
+    groceries: earnMap.groceries ?? fallback,
+    gas:       earnMap.gas       ?? fallback,
+    dining:    earnMap.dining    ?? fallback,
+    travel:    earnMap.travel    ?? fallback,
+    bills:     earnMap.bills     ?? fallback,
+    other:     earnMap.other     ?? fallback,
+  };
+  const isPaid = c.annual_fee > 0;
+  const isBalance = /true.?line|balance.?transfer/i.test(c.name);
+  const isNofx = NO_FX_SLUGS.has(c.card_slug);
+  const types = [];
+  if (!isPaid) types.push('nofee');
+  if (isCashback) types.push('cashback');
+  if (!isCashback && isPaid && !isBalance) types.push('travel');
+  if (isNofx) types.push('nofx');
+  if (isBalance) types.push('balance');
+  if (types.length === 0) types.push('cashback');
+
+  const displayName = c.name.toLowerCase().startsWith(c.issuer.toLowerCase())
+    ? c.name : `${c.issuer} ${c.name}`;
+
+  const topEarn = ['groceries','gas','dining','travel','bills']
+    .map(k => ({k, v: earn[k]})).filter(x => x.v > earn.other)
+    .sort((a,b) => b.v - a.v)[0];
+  const tag = isBalance ? 'Balance Transfer'
+    : isNofx ? 'No FX Fee'
+    : isCashback && !isPaid ? 'No Annual Fee'
+    : isCashback ? 'Cash Back'
+    : topEarn?.k === 'groceries' ? 'Top Grocery Pick'
+    : topEarn?.k === 'dining' ? 'Top Dining Pick'
+    : topEarn?.k === 'travel' ? 'Top Travel Pick'
+    : 'Rewards Card';
+
+  const topTwo = Object.entries(earn)
+    .sort((a,b) => b[1] - a[1]).slice(0,2).filter(([,v]) => v > 0);
+  const earnStr = topTwo.map(([k,v]) => `${v}x ${k}`).join(' &amp; ');
+  const feeStr = c.annual_fee === 0 ? '$0/yr' : `$${c.annual_fee}/yr`;
+  const unitLabel = isCashback ? 'cash back' : (primaryUnit || 'rewards');
+
+  return {
+    slug: c.card_slug,
+    name: displayName,
+    issuer: c.issuer,
+    types,
+    fee: c.annual_fee,
+    earn,
+    pv,
+    welcome: c.welcome_bonus?.estimated_cad ?? 0,
+    tag,
+    tc: ISSUER_COLOR[c.issuer] ?? '#3d1f8a',
+    url: DETAIL_PAGE_SLUGS.has(c.card_slug) ? `/cards/${c.card_slug}/` : '/best/',
+    detail: `${feeStr} &middot; ${earnStr} &middot; ${unitLabel}`,
+  };
+}
+
+let CARDS = [];
 
 // ── Scoring ────────────────────────────────────────────────────────────────
 function scoreCard(card, spend) {
@@ -835,7 +848,12 @@ document.querySelectorAll('.pill').forEach(btn => {
 })();
 
 // ── Init ───────────────────────────────────────────────────────────────────
-window.addEventListener('load', buildRolodex);
+window.addEventListener('load', async () => {
+  const resp = await fetch('/data/cards.json');
+  const raw = await resp.json();
+  CARDS = raw.filter(c => c.is_active === 1).map(mapCard);
+  buildRolodex();
+});
 window.addEventListener('resize', () => centerCard(activeIndex));
 </script>
 </body>
