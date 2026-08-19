@@ -28,8 +28,13 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--color-bg);
-  background-image: none;
+  background-color: #ffffff;
+  background-image: url(../images/genie-bg.png);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
   color: var(--color-text);
   line-height: 1.6;
 }
@@ -105,7 +110,7 @@ img {
 }
 
 .section--alt {
-  background: #f4f0fa;
+  background: transparent;
 }
 
 /* ===== Decorative divider ===== */
@@ -204,7 +209,7 @@ img {
 
 /* ===== Hero section ===== */
 .hero {
-  background: linear-gradient(135deg, #f0eaf8 0%, #faf8f4 60%, #eef6f5 100%);
+  background: transparent;
   padding: 56px 0 48px;
   border-bottom: 1px solid var(--color-border);
   position: relative;
@@ -216,27 +221,17 @@ img {
   z-index: 1;
 }
 
-/* ===== Hero genie background layer ===== */
+/* ===== Hero genie background layer (hidden — replaced by body bg image) ===== */
 .hero__genie-bg {
-  position: absolute;
-  right: -40px;
-  top: -20px;
-  width: 520px;
-  height: 680px;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.18;
-  -webkit-mask-image: radial-gradient(ellipse at 55% 40%, black 25%, rgba(0,0,0,0.6) 50%, transparent 75%);
-  mask-image: radial-gradient(ellipse at 55% 40%, black 25%, rgba(0,0,0,0.6) 50%, transparent 75%);
+  display: none;
 }
 
 @media (max-width: 768px) {
   .hero__genie-bg {
-    width: 280px;
-    height: 360px;
-    right: -20px;
-    top: 0;
-    opacity: 0.10;
+    display: none;
+  }
+  body {
+    background-attachment: scroll;
   }
 }
 
@@ -694,7 +689,7 @@ input[type="range"]::-moz-range-track {
 
 /* ===== Page intro (category pages) ===== */
 .page-intro {
-  background: linear-gradient(135deg, #f0eaf8 0%, #faf8f4 60%, #eef6f5 100%);
+  background: transparent;
   padding: 44px 0 36px;
   border-bottom: 1px solid var(--color-border);
 }
