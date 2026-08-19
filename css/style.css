@@ -31,7 +31,7 @@ body {
   background-color: #ffffff;
   background-image: url(../images/genie-bg.png);
   background-size: auto 90vh;
-  background-position: right bottom;
+  background-position: 75% bottom;
   background-attachment: fixed;
   background-repeat: no-repeat;
   min-height: 100vh;
