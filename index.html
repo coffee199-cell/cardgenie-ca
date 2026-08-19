@@ -670,6 +670,7 @@ function mapCard(c) {
     fee: c.annual_fee,
     earn,
     pv,
+    earnUnit: primaryUnit,
     welcome: c.welcome_bonus?.estimated_cad ?? 0,
     tag,
     tc: ISSUER_COLOR[c.issuer] ?? '#3d1f8a',
@@ -726,6 +727,7 @@ function buildStacks() {
       issuer: sameIssuer ? c1.issuer : c1.issuer + ' &amp; ' + c2.issuer,
       types: [...new Set([...c1.types, ...c2.types])],
       fee, earn, pv,
+      earnUnit: c1.pv >= c2.pv ? c1.earnUnit : c2.earnUnit,
       welcome: c1.welcome + c2.welcome,
       tag: sameIssuer ? c1.issuer + ' Combo' : 'Multi-Card Combo',
       tc: c1.tc,
@@ -766,7 +768,7 @@ function buildRolodex() {
 
   const track = document.getElementById('rolodex-track');
   track.style.transition = 'none';
-  track.innerHTML = arranged.map((c, i) => cardHTML(c, i)).join('');
+  track.innerHTML = arranged.map((c, i) => cardHTML(c, i, spend)).join('');
 
   applyClasses();
   requestAnimationFrame(() => {
@@ -775,7 +777,21 @@ function buildRolodex() {
   });
 }
 
-function cardHTML(c, i) {
+const PTS_LABEL = {
+  'Aeroplan':'Aeroplan pts','Avion points':'Avion pts','MR points':'MR pts',
+  'BMO Rewards':'BMO pts','Scene+ points':'Scene+ pts','PC Optimum':'PC pts',
+  'À la carte':'pts',
+};
+
+function calcPts(c, spend) {
+  if (!c.earnUnit || c.earnUnit === 'cash_back_pct') return 0;
+  return Math.round(
+    ['groceries','gas','dining','travel','bills','other']
+      .reduce((sum, k) => sum + spend[k] * 12 * c.earn[k], 0)
+  );
+}
+
+function cardHTML(c, i, spend) {
   const score = c.score;
   const val = score >= 0 ? `+$${Math.round(score)}/yr` : `-$${Math.round(Math.abs(score))}/yr`;
   const valClass = score < 0 ? 'rolodex__value rolodex__value--negative' : 'rolodex__value';
@@ -783,11 +799,16 @@ function cardHTML(c, i) {
     ? c.name.replace(' + ', ' <span class="rolodex__stack-plus">+</span> ')
     : c.name;
   const ctaLabel = c.isStack ? 'View Cards →' : 'View Card →';
+  const pts = spend ? calcPts(c, spend) : 0;
+  const ptsHtml = pts > 0
+    ? `<div class="rolodex__pts" id="rp-${c.slug}">${pts.toLocaleString()} ${PTS_LABEL[c.earnUnit] || 'pts'}/yr</div>`
+    : `<div class="rolodex__pts" id="rp-${c.slug}"></div>`;
   return `<div class="rolodex__card${c.isStack ? ' rolodex__card--stack' : ''}" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
     <div class="rolodex__name">${nameHtml}</div>
     <div class="${valClass}" id="rv-${c.slug}">${val}</div>
+    ${ptsHtml}
     <div class="rolodex__detail">${c.detail}</div>
     <a href="${c.url}" class="rolodex__cta">${ctaLabel}</a>
   </div>`;
@@ -818,6 +839,11 @@ function updateScores() {
       const s = c.score;
       valEl.textContent = s >= 0 ? `+$${Math.round(s)}/yr` : `-$${Math.round(Math.abs(s))}/yr`;
       valEl.classList.toggle('rolodex__value--negative', s < 0);
+    }
+    const ptsEl = document.getElementById('rp-' + c.slug);
+    if (ptsEl) {
+      const pts = calcPts(c, spend);
+      ptsEl.textContent = pts > 0 ? `${pts.toLocaleString()} ${PTS_LABEL[c.earnUnit] || 'pts'}/yr` : '';
     }
   });
 
