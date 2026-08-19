@@ -520,6 +520,15 @@
     <button class="compare-panel__btn" id="compare-open">Compare in New Window</button>
   </div>
 
+  <div class="compare-panel compare-panel--hidden" id="hidden-panel">
+    <div class="compare-panel__header">
+      <span class="compare-panel__title">Hidden</span>
+      <button class="compare-panel__clear" id="hidden-clear" aria-label="Show all">&#10005;</button>
+    </div>
+    <ul class="compare-panel__list" id="hidden-list"></ul>
+    <button class="compare-panel__btn compare-panel__btn--secondary" id="hidden-show-all">Show All</button>
+  </div>
+
   <div class="divider">&#9670;</div>
 
   <!-- Top Categories -->
@@ -722,6 +731,7 @@ let stackMode       = false;
 let includeWelcome  = false;
 let excludeAmex     = false;
 let compareSet      = new Set();
+let hiddenSet       = new Set();
 let arranged     = [];
 let STACKS       = [];
 
@@ -784,6 +794,7 @@ function filteredCards() {
     !c.slug.includes('american-express') &&
     !c.name.toLowerCase().includes('american express')
   );
+  if (hiddenSet.size) pool = pool.filter(c => !hiddenSet.has(c.slug));
   return activeFilter === 'all' ? pool : pool.filter(c => c.types.includes(activeFilter));
 }
 
@@ -847,6 +858,9 @@ function cardHTML(c, i, spend) {
     <a href="${c.url}" class="rolodex__cta" onclick="event.stopPropagation()">${ctaLabel}</a>
     <label class="rolodex__compare" onclick="event.stopPropagation()">
       <input type="checkbox" class="compare-cb" data-slug="${c.slug}"${isCompared ? ' checked' : ''}> Add to compare
+    </label>
+    <label class="rolodex__compare rolodex__compare--hide" onclick="event.stopPropagation()">
+      <input type="checkbox" class="hide-cb" data-slug="${c.slug}"> Hide card
     </label>
   </div>`;
 }
@@ -1030,12 +1044,38 @@ document.getElementById('exclude-amex').addEventListener('change', e => {
   buildRolodex();
 });
 
+function updateHiddenPanel() {
+  const pool  = [...CARDS, ...STACKS];
+  const cards = [...hiddenSet].map(s => pool.find(c => c.slug === s)).filter(Boolean);
+  const panel = document.getElementById('hidden-panel');
+  const list  = document.getElementById('hidden-list');
+  list.innerHTML = cards.map(c =>
+    `<li class="compare-panel__item">
+      <span>${c.name}</span>
+      <button class="compare-panel__remove hidden-unhide" data-slug="${c.slug}" aria-label="Unhide">&#10005;</button>
+    </li>`
+  ).join('');
+  panel.classList.toggle('compare-panel--active', cards.length > 0);
+}
+
 // Compare checkboxes (event delegation — rolodex DOM is rebuilt on filter changes)
 document.getElementById('rolodex').addEventListener('change', e => {
-  if (!e.target.classList.contains('compare-cb')) return;
-  const slug = e.target.dataset.slug;
-  e.target.checked ? compareSet.add(slug) : compareSet.delete(slug);
-  updateComparePanel();
+  if (e.target.classList.contains('compare-cb')) {
+    const slug = e.target.dataset.slug;
+    e.target.checked ? compareSet.add(slug) : compareSet.delete(slug);
+    updateComparePanel();
+  }
+  if (e.target.classList.contains('hide-cb')) {
+    const slug = e.target.dataset.slug;
+    if (e.target.checked) {
+      hiddenSet.add(slug);
+      compareSet.delete(slug);
+    } else {
+      hiddenSet.delete(slug);
+    }
+    updateHiddenPanel();
+    buildRolodex();
+  }
 });
 
 document.getElementById('compare-panel').addEventListener('click', e => {
@@ -1051,6 +1091,20 @@ document.getElementById('compare-panel').addEventListener('click', e => {
     const cb = document.querySelector(`.compare-cb[data-slug="${CSS.escape(slug)}"]`);
     if (cb) cb.checked = false;
     updateComparePanel();
+  }
+});
+
+document.getElementById('hidden-panel').addEventListener('click', e => {
+  if (e.target.id === 'hidden-clear' || e.target.id === 'hidden-show-all') {
+    hiddenSet.clear();
+    updateHiddenPanel();
+    buildRolodex();
+  }
+  if (e.target.classList.contains('hidden-unhide')) {
+    const slug = e.target.dataset.slug;
+    hiddenSet.delete(slug);
+    updateHiddenPanel();
+    buildRolodex();
   }
 });
 

@@ -957,6 +957,22 @@ input[type="range"]::-moz-range-track {
   right: 0;
 }
 
+.compare-panel--hidden {
+  top: auto;
+  bottom: 24px;
+  transform: none;
+}
+
+.compare-panel__btn--secondary {
+  background: none;
+  color: var(--color-purple);
+  border: 1.5px solid var(--color-purple);
+}
+
+.compare-panel__btn--secondary:hover {
+  background: #f5f0ff;
+}
+
 .compare-panel__header {
   display: flex;
   align-items: center;
