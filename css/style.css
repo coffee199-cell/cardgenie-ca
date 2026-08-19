@@ -952,7 +952,9 @@ input[type="range"]::-moz-range-track {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
 }
 
 .stack-toggle label {
