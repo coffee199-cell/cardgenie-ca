@@ -679,7 +679,7 @@ function filteredCards() {
   return activeFilter === 'all' ? CARDS : CARDS.filter(c => c.types.includes(activeFilter));
 }
 
-// ── Build rolodex DOM (once per filter change) ─────────────────────────────
+// ── Build rolodex DOM (once per filter/ranking change) ────────────────────
 function buildRolodex() {
   const spend  = getSpend();
   const pool   = filteredCards();
@@ -689,10 +689,11 @@ function buildRolodex() {
     .map(c => ({ ...c, score: scoreCard(c, spend) }))
     .sort((a, b) => b.score - a.score);
 
-  // Layout: [lowest … 3rd] [BEST] [2nd]  — lower ranked fan left, 2nd right
-  const lowerLeft = ranked.slice(2).reverse();
+  // Show max 5 cards: up to 3 lower-ranked on the left, BEST in centre, 2nd on right
+  // lowerLeft = [5th…3rd] reversed so worst is furthest left
   const best      = ranked[0];
   const second    = ranked[1];
+  const lowerLeft = ranked.slice(2, 5).reverse(); // max 3
   arranged = second ? [...lowerLeft, best, second] : [...lowerLeft, best];
   activeIndex = lowerLeft.length; // index of best card
 
@@ -719,19 +720,31 @@ function cardHTML(c, i) {
   </div>`;
 }
 
-// ── Update scores in place (no DOM rebuild) ────────────────────────────────
+// ── Update scores in place (no DOM rebuild unless rankings change enough) ──
 function updateScores() {
   const spend = getSpend();
-  let newBestSlug = null, newBestScore = -Infinity;
 
+  // Find overall winner across ALL filtered cards (not just the current 5)
+  let overallBestSlug = null, overallBestScore = -Infinity;
+  filteredCards().forEach(c => {
+    const s = scoreCard(c, spend);
+    if (s > overallBestScore) { overallBestScore = s; overallBestSlug = c.slug; }
+  });
+
+  // If the new winner isn't in the current 5, rebuild entirely
+  if (!arranged.find(c => c.slug === overallBestSlug)) {
+    buildRolodex();
+    return;
+  }
+
+  // Otherwise update displayed values and slide to new winner
   arranged.forEach(c => {
     c.score = scoreCard(c, spend);
     const valEl = document.getElementById('rv-' + c.slug);
     if (valEl) valEl.textContent = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
-    if (c.score > newBestScore) { newBestScore = c.score; newBestSlug = c.slug; }
   });
 
-  const newIdx = arranged.findIndex(c => c.slug === newBestSlug);
+  const newIdx = arranged.findIndex(c => c.slug === overallBestSlug);
   if (newIdx !== activeIndex) {
     activeIndex = newIdx;
     applyClasses();
