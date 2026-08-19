@@ -776,7 +776,11 @@ function getSpend() {
 }
 function filteredCards() {
   let pool = stackMode ? STACKS : CARDS;
-  if (excludeAmex) pool = pool.filter(c => !c.issuer.toLowerCase().includes('american express'));
+  if (excludeAmex) pool = pool.filter(c =>
+    !c.issuer.toLowerCase().includes('american express') &&
+    !c.slug.includes('american-express') &&
+    !c.name.toLowerCase().includes('american express')
+  );
   return activeFilter === 'all' ? pool : pool.filter(c => c.types.includes(activeFilter));
 }
 
