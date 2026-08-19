@@ -811,7 +811,11 @@ input[type="range"]::-moz-range-track {
 
 /* ===== Rolodex carousel ===== */
 .rolodex {
-  width: 100%;
+  /* break out of .container max-width so we can centre against the full viewport */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
   padding: 28px 0 8px;
   cursor: grab;
