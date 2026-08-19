@@ -766,6 +766,7 @@ input[type="range"]::-moz-range-track {
 /* ===== Card type filter pills ===== */
 .card-filter {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
@@ -785,6 +786,7 @@ input[type="range"]::-moz-range-track {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pill {
