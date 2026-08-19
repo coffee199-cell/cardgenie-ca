@@ -823,8 +823,16 @@ input[type="range"]::-moz-range-track {
 .rolodex__track {
   display: flex;
   gap: 16px;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
+}
+
+@keyframes rolodex-arrive {
+  0%   { box-shadow: 0 2px 16px rgba(61,31,138,0.07); }
+  40%  { box-shadow: 0 12px 40px rgba(61,31,138,0.28), 0 0 0 2px rgba(184,134,11,0.5); }
+  100% { box-shadow: 0 8px 32px rgba(61,31,138,0.18), 0 0 0 1px rgba(184,134,11,0.3); }
 }
 
 .rolodex__card {
@@ -837,21 +845,21 @@ input[type="range"]::-moz-range-track {
   box-shadow: 0 2px 16px rgba(61,31,138,0.07);
   padding: 20px;
   opacity: 0.45;
-  transform: scale(0.88);
-  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  /* transform set by JS per-card for 3D fan effect */
+  transition: opacity 0.38s, transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.38s, border-color 0.38s, background 0.38s;
 }
 
 .rolodex__card.adjacent {
   opacity: 0.72;
-  transform: scale(0.94);
 }
 
 .rolodex__card.active {
   opacity: 1;
-  transform: scale(1.04);
   border-color: var(--color-gold);
   box-shadow: 0 8px 32px rgba(61,31,138,0.18), 0 0 0 1px rgba(184,134,11,0.3);
   background: #fff;
+  animation: rolodex-arrive 0.45s ease-out;
 }
 
 .rolodex__tag {

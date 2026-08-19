@@ -564,7 +564,6 @@
 
 <script>
 // ── Card database ──────────────────────────────────────────────────────────
-// earn rates = points per dollar; pointValue = dollar value per point
 const CARDS = [
   { slug:'amex-cobalt', name:'Amex Cobalt Card', issuer:'American Express',
     types:['travel'], fee:155.88,
@@ -572,92 +571,79 @@ const CARDS = [
     welcome:150, tag:'Top Dining Pick', tc:'#3d1f8a',
     url:'/cards/american-express-cobalt-card/',
     detail:'$155.88/yr &middot; 5x dining &amp; groceries &middot; 2x travel' },
-
   { slug:'scotia-gold-amex', name:'Scotiabank Gold Amex', issuer:'Scotiabank',
     types:['travel','nofx'], fee:120,
     earn:{groceries:6,gas:5,dining:6,travel:3,bills:3,other:1}, pv:0.01,
     welcome:100, tag:'No FX Fee', tc:'#007a70',
     url:'/cards/scotiabank-gold-american-express/',
     detail:'$120/yr &middot; 6x dining &amp; groceries &middot; No FX fees' },
-
   { slug:'amex-gold-rewards', name:'Amex Gold Rewards Card', issuer:'American Express',
     types:['travel'], fee:250,
     earn:{groceries:2,gas:2,dining:1,travel:2,bills:1,other:1}, pv:0.015,
     welcome:300, tag:'Premium Travel', tc:'#b8860b',
     url:'/cards/american-express-gold-rewards-card/',
     detail:'$250/yr &middot; 2x groceries, gas &amp; travel &middot; Lounge access' },
-
   { slug:'td-aeroplan-infinite', name:'TD Aeroplan Visa Infinite', issuer:'TD Bank',
     types:['travel'], fee:139,
     earn:{groceries:1.5,gas:1.5,dining:1.5,travel:3,bills:1,other:1}, pv:0.02,
     welcome:200, tag:'Aeroplan', tc:'#c41230',
     url:'/compare/td-aeroplan-vs-cibc-aeroplan/',
     detail:'$139/yr &middot; 3x Air Canada &middot; Aeroplan rewards' },
-
   { slug:'cibc-aeroplan-infinite', name:'CIBC Aeroplan Visa Infinite', issuer:'CIBC',
     types:['travel'], fee:139,
     earn:{groceries:1.5,gas:1.5,dining:1.5,travel:3,bills:1,other:1}, pv:0.02,
     welcome:200, tag:'Aeroplan', tc:'#c41230',
     url:'/compare/td-aeroplan-vs-cibc-aeroplan/',
     detail:'$139/yr &middot; 3x Air Canada &middot; Aeroplan rewards' },
-
   { slug:'bmo-ascend-world-elite', name:'BMO Ascend World Elite', issuer:'BMO',
     types:['travel'], fee:150,
     earn:{groceries:1,gas:1,dining:1,travel:5,bills:1,other:1}, pv:0.01,
     welcome:300, tag:'Best for Flights', tc:'#0066cc',
     url:'/best/travel-credit-cards-canada/',
     detail:'$150/yr &middot; 5x on travel purchases &middot; Lounge access' },
-
   { slug:'bmo-cashback-world-elite', name:'BMO CashBack World Elite', issuer:'BMO',
     types:['cashback'], fee:120,
     earn:{groceries:5,gas:3,dining:1,travel:1,bills:2,other:1}, pv:0.01,
     welcome:50, tag:'Best Grocery CB', tc:'#0066cc',
     url:'/best/cash-back-credit-cards-canada/',
     detail:'$120/yr &middot; 5% groceries &middot; 3% gas &middot; 2% recurring bills' },
-
   { slug:'cibc-dividend-infinite', name:'CIBC Dividend Visa Infinite', issuer:'CIBC',
     types:['cashback'], fee:120,
     earn:{groceries:4,gas:4,dining:2,travel:1,bills:1,other:1}, pv:0.01,
     welcome:60, tag:'Cash Back', tc:'#c41230',
     url:'/best/cash-back-credit-cards-canada/',
     detail:'$120/yr &middot; 4% groceries &amp; gas &middot; 2% dining' },
-
   { slug:'scotia-momentum-infinite', name:'Scotia Momentum Visa Infinite', issuer:'Scotiabank',
     types:['cashback'], fee:120,
     earn:{groceries:4,gas:4,dining:4,travel:1,bills:4,other:1}, pv:0.01,
     welcome:50, tag:'Cash Back', tc:'#c8102e',
     url:'/best/cash-back-credit-cards-canada/',
     detail:'$120/yr &middot; 4% groceries, gas, dining &amp; recurring bills' },
-
   { slug:'tangerine-money-back', name:'Tangerine Money-Back Card', issuer:'Tangerine',
     types:['cashback','nofee'], fee:0,
     earn:{groceries:2,gas:2,dining:2,travel:0.5,bills:0.5,other:0.5}, pv:0.01,
     welcome:0, tag:'No Annual Fee', tc:'#e8500a',
     url:'/best/cash-back-credit-cards-canada/',
     detail:'$0/yr &middot; 2% in 2 categories of your choice' },
-
   { slug:'rogers-world-elite', name:'Rogers Red World Elite', issuer:'Rogers Bank',
     types:['cashback','nofee','nofx'], fee:0,
     earn:{groceries:1.5,gas:1.5,dining:1.5,travel:1.5,bills:1.5,other:1.5}, pv:0.01,
     welcome:0, tag:'No FX Fee', tc:'#e0000a',
     url:'/best/no-foreign-transaction-fee-canada/',
     detail:'$0/yr &middot; 1.5% everywhere &middot; No foreign transaction fees' },
-
   { slug:'pc-financial-world-elite', name:'PC Financial World Elite', issuer:'PC Financial',
     types:['cashback','nofee'], fee:0,
     earn:{groceries:3,gas:1.5,dining:1,travel:1,bills:1,other:1}, pv:0.01,
     welcome:0, tag:'No Annual Fee', tc:'#d4000e',
     url:'/best/cash-back-credit-cards-canada/',
     detail:'$0/yr &middot; 3% at Loblaws stores &middot; PC Optimum points' },
-
   { slug:'home-trust-preferred', name:'Home Trust Preferred Visa', issuer:'Home Trust',
     types:['cashback','nofee','nofx'], fee:0,
     earn:{groceries:1,gas:1,dining:1,travel:1,bills:1,other:1}, pv:0.01,
     welcome:0, tag:'No FX Fee', tc:'#2e6b3e',
     url:'/best/no-foreign-transaction-fee-canada/',
     detail:'$0/yr &middot; 1% everywhere &middot; No foreign transaction fees' },
-
-  { slug:'mbna-true-line-gold', name:'MBNA True Line Gold Mastercard', issuer:'MBNA',
+  { slug:'mbna-true-line-gold', name:'MBNA True Line Gold', issuer:'MBNA',
     types:['balance'], fee:39,
     earn:{groceries:0,gas:0,dining:0,travel:0,bills:0,other:0}, pv:0,
     welcome:0, tag:'Balance Transfer', tc:'#555555',
@@ -667,16 +653,16 @@ const CARDS = [
 
 // ── Scoring ────────────────────────────────────────────────────────────────
 function scoreCard(card, spend) {
-  let rewards = 0;
-  for (const cat of ['groceries','gas','dining','travel','bills','other']) {
-    rewards += spend[cat] * 12 * card.earn[cat] * card.pv;
-  }
-  return rewards - card.fee + card.welcome * 0.5;
+  let r = 0;
+  for (const cat of ['groceries','gas','dining','travel','bills','other'])
+    r += spend[cat] * 12 * card.earn[cat] * card.pv;
+  return r - card.fee + card.welcome * 0.5;
 }
 
 // ── State ──────────────────────────────────────────────────────────────────
 let activeFilter = 'all';
 let activeIndex  = 0;
+let arranged     = []; // stable card order in the track
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function getSpend() {
@@ -689,70 +675,110 @@ function getSpend() {
     other:     +document.getElementById('spend-other').value,
   };
 }
-
 function filteredCards() {
-  return activeFilter === 'all'
-    ? CARDS
-    : CARDS.filter(c => c.types.includes(activeFilter));
+  return activeFilter === 'all' ? CARDS : CARDS.filter(c => c.types.includes(activeFilter));
 }
 
-// ── Render rolodex ─────────────────────────────────────────────────────────
-function render() {
-  const spend = getSpend();
-  const pool  = filteredCards();
+// ── Build rolodex DOM (once per filter change) ─────────────────────────────
+function buildRolodex() {
+  const spend  = getSpend();
+  const pool   = filteredCards();
   if (!pool.length) return;
 
-  // Score and sort
   const ranked = pool
     .map(c => ({ ...c, score: scoreCard(c, spend) }))
     .sort((a, b) => b.score - a.score);
 
-  activeIndex = 0; // best card is always index 0 after sort
+  // Layout: [lowest … 3rd] [BEST] [2nd]  — lower ranked fan left, 2nd right
+  const lowerLeft = ranked.slice(2).reverse();
+  const best      = ranked[0];
+  const second    = ranked[1];
+  arranged = second ? [...lowerLeft, best, second] : [...lowerLeft, best];
+  activeIndex = lowerLeft.length; // index of best card
 
   const track = document.getElementById('rolodex-track');
-  track.innerHTML = ranked.map((c, i) => {
-    const val = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
-    return `
-      <div class="rolodex__card${i === 0 ? ' active' : i === 1 ? ' adjacent' : ''}"
-           data-index="${i}" onclick="selectCard(${i})">
-        <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
-        <div class="rolodex__issuer">${c.issuer}</div>
-        <div class="rolodex__name">${c.name}</div>
-        <div class="rolodex__value">${val}</div>
-        <div class="rolodex__detail">${c.detail}</div>
-        <a href="${c.url}" class="rolodex__cta">View Card →</a>
-      </div>`;
-  }).join('');
+  track.style.transition = 'none';
+  track.innerHTML = arranged.map((c, i) => cardHTML(c, i)).join('');
 
-  centerCard(0);
-}
-
-function selectCard(index) {
-  activeIndex = index;
-  document.querySelectorAll('.rolodex__card').forEach((el, i) => {
-    el.classList.toggle('active',   i === index);
-    el.classList.toggle('adjacent', Math.abs(i - index) === 1);
+  applyClasses();
+  requestAnimationFrame(() => {
+    track.style.transition = '';
+    centerCard(activeIndex);
   });
-  centerCard(index);
 }
 
+function cardHTML(c, i) {
+  const val = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
+  return `<div class="rolodex__card" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
+    <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
+    <div class="rolodex__issuer">${c.issuer}</div>
+    <div class="rolodex__name">${c.name}</div>
+    <div class="rolodex__value" id="rv-${c.slug}">${val}</div>
+    <div class="rolodex__detail">${c.detail}</div>
+    <a href="${c.url}" class="rolodex__cta">View Card →</a>
+  </div>`;
+}
+
+// ── Update scores in place (no DOM rebuild) ────────────────────────────────
+function updateScores() {
+  const spend = getSpend();
+  let newBestSlug = null, newBestScore = -Infinity;
+
+  arranged.forEach(c => {
+    c.score = scoreCard(c, spend);
+    const valEl = document.getElementById('rv-' + c.slug);
+    if (valEl) valEl.textContent = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
+    if (c.score > newBestScore) { newBestScore = c.score; newBestSlug = c.slug; }
+  });
+
+  const newIdx = arranged.findIndex(c => c.slug === newBestSlug);
+  if (newIdx !== activeIndex) {
+    activeIndex = newIdx;
+    applyClasses();
+    centerCard(activeIndex);
+  }
+}
+
+// ── Apply active/adjacent classes + 3D fan rotation per card ──────────────
+function applyClasses() {
+  document.querySelectorAll('.rolodex__card').forEach((el, i) => {
+    const dist     = i - activeIndex;
+    const isActive = dist === 0;
+    const isAdj    = Math.abs(dist) === 1;
+    el.classList.toggle('active',   isActive);
+    el.classList.toggle('adjacent', isAdj);
+    // Fan: cards curve away from centre — clamped ±55°
+    const rotY  = Math.max(Math.min(dist * 20, 55), -55);
+    const scale = isActive ? 1.04 : isAdj ? 0.94 : 0.86;
+    el.style.transform = `scale(${scale}) rotateY(${rotY}deg)`;
+  });
+}
+
+// ── Centre card in viewport ────────────────────────────────────────────────
 function centerCard(index) {
-  const track    = document.getElementById('rolodex-track');
-  const rolodex  = document.getElementById('rolodex');
-  const cards    = track.querySelectorAll('.rolodex__card');
+  const track   = document.getElementById('rolodex-track');
+  const rolodex = document.getElementById('rolodex');
+  const cards   = track.querySelectorAll('.rolodex__card');
   if (!cards[index]) return;
-  const cardW    = cards[index].offsetWidth + 16; // card + gap
-  const offset   = (rolodex.offsetWidth / 2) - (index * cardW) - (cardW / 2);
+  const CARD_W  = 240 + 16; // width + gap (matches CSS)
+  const offset  = (rolodex.offsetWidth / 2) - (index * CARD_W) - (CARD_W / 2);
   track.style.transform = `translateX(${offset}px)`;
 }
 
-// ── Slider live labels + update ────────────────────────────────────────────
+// ── Manual card select ─────────────────────────────────────────────────────
+function selectCard(index) {
+  activeIndex = index;
+  applyClasses();
+  centerCard(index);
+}
+
+// ── Sliders ────────────────────────────────────────────────────────────────
 ['groceries','gas','dining','travel','bills','other'].forEach(cat => {
-  const el = document.getElementById('spend-' + cat);
+  const el  = document.getElementById('spend-' + cat);
   const lbl = document.getElementById('val-' + cat);
   el.addEventListener('input', () => {
     lbl.textContent = '$' + el.value;
-    render();
+    updateScores(); // smooth in-place update — no DOM rebuild
   });
 });
 
@@ -762,32 +788,29 @@ document.querySelectorAll('.pill').forEach(btn => {
     document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeFilter = btn.dataset.filter;
-    render();
+    buildRolodex(); // full rebuild only on filter change
   });
 });
 
-// ── Drag / swipe on rolodex ────────────────────────────────────────────────
-(function() {
+// ── Drag / swipe ───────────────────────────────────────────────────────────
+(function () {
   const rolodex = document.getElementById('rolodex');
-  let startX = 0, dragging = false;
-  rolodex.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; });
+  let startX = 0, live = false;
+  rolodex.addEventListener('pointerdown', e => { startX = e.clientX; live = true; });
   rolodex.addEventListener('pointermove', e => {
-    if (!dragging) return;
+    if (!live) return;
     const dx = e.clientX - startX;
-    if (Math.abs(dx) > 40) {
-      dragging = false;
-      const cards = document.querySelectorAll('.rolodex__card');
-      const next  = dx < 0
-        ? Math.min(activeIndex + 1, cards.length - 1)
-        : Math.max(activeIndex - 1, 0);
-      selectCard(next);
+    if (Math.abs(dx) > 36) {
+      live = false;
+      const total = document.querySelectorAll('.rolodex__card').length;
+      selectCard(dx < 0 ? Math.min(activeIndex + 1, total - 1) : Math.max(activeIndex - 1, 0));
     }
   });
-  rolodex.addEventListener('pointerup', () => { dragging = false; });
+  rolodex.addEventListener('pointerup', () => { live = false; });
 })();
 
 // ── Init ───────────────────────────────────────────────────────────────────
-window.addEventListener('load', render);
+window.addEventListener('load', buildRolodex);
 window.addEventListener('resize', () => centerCard(activeIndex));
 </script>
 </body>
