@@ -904,6 +904,10 @@ input[type="range"]::-moz-range-track {
   line-height: 1;
 }
 
+.rolodex__value--negative {
+  color: #b0442a;
+}
+
 .rolodex__detail {
   font-size: 0.8rem;
   color: var(--color-text-muted);

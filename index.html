@@ -776,7 +776,9 @@ function buildRolodex() {
 }
 
 function cardHTML(c, i) {
-  const val = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
+  const score = c.score;
+  const val = score >= 0 ? `+$${Math.round(score)}/yr` : `-$${Math.round(Math.abs(score))}/yr`;
+  const valClass = score < 0 ? 'rolodex__value rolodex__value--negative' : 'rolodex__value';
   const nameHtml = c.isStack
     ? c.name.replace(' + ', ' <span class="rolodex__stack-plus">+</span> ')
     : c.name;
@@ -785,7 +787,7 @@ function cardHTML(c, i) {
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
     <div class="rolodex__name">${nameHtml}</div>
-    <div class="rolodex__value" id="rv-${c.slug}">${val}</div>
+    <div class="${valClass}" id="rv-${c.slug}">${val}</div>
     <div class="rolodex__detail">${c.detail}</div>
     <a href="${c.url}" class="rolodex__cta">${ctaLabel}</a>
   </div>`;
@@ -812,7 +814,11 @@ function updateScores() {
   arranged.forEach((c, i) => {
     if (Math.abs(i - activeIndex) > 2) return;
     const valEl = document.getElementById('rv-' + c.slug);
-    if (valEl) valEl.textContent = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
+    if (valEl) {
+      const s = c.score;
+      valEl.textContent = s >= 0 ? `+$${Math.round(s)}/yr` : `-$${Math.round(Math.abs(s))}/yr`;
+      valEl.classList.toggle('rolodex__value--negative', s < 0);
+    }
   });
 
   if (bestIdx !== activeIndex) {
