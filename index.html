@@ -265,19 +265,32 @@
 
             </div>
 
-            <div class="stack-toggle">
-              <label>
-                <input type="checkbox" id="stack-mode">
-                Stack cards
-              </label>
-              <span class="stack-toggle__hint">Combine complementary cards that share a points pool</span>
-            </div>
-            <div class="stack-toggle">
-              <label>
-                <input type="checkbox" id="welcome-bonus">
-                Include welcome bonus
-              </label>
-              <span class="stack-toggle__hint">First-year value based on point value</span>
+            <div class="calc-options">
+              <div class="calc-options__col">
+                <div class="stack-toggle">
+                  <label>
+                    <input type="checkbox" id="stack-mode">
+                    Stack cards
+                  </label>
+                  <span class="stack-toggle__hint">Combine cards that share a points pool</span>
+                </div>
+                <div class="stack-toggle">
+                  <label>
+                    <input type="checkbox" id="welcome-bonus">
+                    Include welcome bonus
+                  </label>
+                  <span class="stack-toggle__hint">First-year value based on point value</span>
+                </div>
+              </div>
+              <div class="calc-options__col calc-options__col--right">
+                <div class="stack-toggle">
+                  <label>
+                    <input type="checkbox" id="exclude-amex">
+                    Exclude AMEX
+                  </label>
+                  <span class="stack-toggle__hint">Hide American Express cards</span>
+                </div>
+              </div>
             </div>
           </div>
         </div><!-- /.hero__left -->
@@ -494,6 +507,16 @@
 
   </section>
 
+  <!-- Compare sidebar panel -->
+  <div class="compare-panel" id="compare-panel">
+    <div class="compare-panel__header">
+      <span class="compare-panel__title">Compare</span>
+      <button class="compare-panel__clear" id="compare-clear" aria-label="Clear all">&#10005;</button>
+    </div>
+    <ul class="compare-panel__list" id="compare-list"></ul>
+    <button class="compare-panel__btn" id="compare-open">Compare in New Window</button>
+  </div>
+
   <div class="divider">&#9670;</div>
 
   <!-- Top Categories -->
@@ -694,6 +717,8 @@ let activeFilter = 'all';
 let activeIndex  = 0;
 let stackMode       = false;
 let includeWelcome  = false;
+let excludeAmex     = false;
+let compareSet      = new Set();
 let arranged     = [];
 let STACKS       = [];
 
@@ -750,7 +775,8 @@ function getSpend() {
   };
 }
 function filteredCards() {
-  const pool = stackMode ? STACKS : CARDS;
+  let pool = stackMode ? STACKS : CARDS;
+  if (excludeAmex) pool = pool.filter(c => !c.issuer.toLowerCase().includes('american express'));
   return activeFilter === 'all' ? pool : pool.filter(c => c.types.includes(activeFilter));
 }
 
@@ -803,6 +829,7 @@ function cardHTML(c, i, spend) {
   const ptsHtml = pts > 0
     ? `<div class="rolodex__pts" id="rp-${c.slug}">${pts.toLocaleString()} ${PTS_LABEL[c.earnUnit] || 'pts'}/yr</div>`
     : `<div class="rolodex__pts" id="rp-${c.slug}"></div>`;
+  const isCompared = compareSet.has(c.slug);
   return `<div class="rolodex__card${c.isStack ? ' rolodex__card--stack' : ''}" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
@@ -810,8 +837,63 @@ function cardHTML(c, i, spend) {
     <div class="${valClass}" id="rv-${c.slug}">${val}</div>
     ${ptsHtml}
     <div class="rolodex__detail">${c.detail}</div>
-    <a href="${c.url}" class="rolodex__cta">${ctaLabel}</a>
+    <a href="${c.url}" class="rolodex__cta" onclick="event.stopPropagation()">${ctaLabel}</a>
+    <label class="rolodex__compare" onclick="event.stopPropagation()">
+      <input type="checkbox" class="compare-cb" data-slug="${c.slug}"${isCompared ? ' checked' : ''}> Add to compare
+    </label>
   </div>`;
+}
+
+// ── Compare panel ──────────────────────────────────────────────────────────
+function updateComparePanel() {
+  const pool = [...CARDS, ...STACKS];
+  const cards = [...compareSet].map(s => pool.find(c => c.slug === s)).filter(Boolean);
+  const panel = document.getElementById('compare-panel');
+  const list  = document.getElementById('compare-list');
+  list.innerHTML = cards.map(c =>
+    `<li class="compare-panel__item">
+      <span>${c.name}</span>
+      <button class="compare-panel__remove" data-slug="${c.slug}" aria-label="Remove">&#10005;</button>
+    </li>`
+  ).join('');
+  panel.classList.toggle('compare-panel--active', cards.length > 0);
+}
+
+function openCompareWindow() {
+  const pool  = [...CARDS, ...STACKS];
+  const cards = [...compareSet].map(s => pool.find(c => c.slug === s)).filter(Boolean);
+  if (!cards.length) return;
+  const spend = getSpend();
+  const CATS  = ['groceries','gas','dining','travel','bills','other'];
+  const th = cards.map(c => `<th>${c.name.replace(' + ','<br>+ ')}</th>`).join('');
+  const feeRow  = `<tr><td>Annual fee</td>${cards.map(c=>`<td>$${c.fee}/yr</td>`).join('')}</tr>`;
+  const earnRows = CATS.map(k =>
+    `<tr><td>${k[0].toUpperCase()+k.slice(1)}</td>${cards.map(c=>`<td>${c.earn[k]}x</td>`).join('')}</tr>`
+  ).join('');
+  const pvRow = `<tr><td>Point value</td>${cards.map(c => {
+    const u = c.earnUnit;
+    return `<td>${u && u !== 'cash_back_pct' ? '$' + c.pv + '/pt (' + (PTS_LABEL[u]||u) + ')' : 'Cash back'}</td>`;
+  }).join('')}</tr>`;
+  const wbRow = `<tr><td>Welcome bonus</td>${cards.map(c=>`<td>${c.welcome?'$'+c.welcome:'—'}</td>`).join('')}</tr>`;
+  const netRow = `<tr><td><strong>Net annual value</strong></td>${cards.map(c => {
+    const s = scoreCard(c, spend);
+    const color = s >= 0 ? '#007a70' : '#b0442a';
+    return `<td style="color:${color};font-weight:700">${s>=0?'+':'-'}$${Math.round(Math.abs(s))}/yr</td>`;
+  }).join('')}</tr>`;
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>CardGenie — Comparison</title>
+<style>*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:32px;max-width:960px;margin:0 auto;color:#1a1a2e}
+h1{color:#3d1f8a;margin-bottom:4px}p.sub{color:#888;font-size:.85rem;margin-bottom:24px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid #e0d8f0;padding:10px 14px;text-align:left;vertical-align:top}
+th{background:#f5f0ff;color:#3d1f8a;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+tr:nth-child(even) td{background:#fafafa}td:first-child{font-weight:600;color:#555;white-space:nowrap}
+</style></head><body>
+<h1>CardGenie — Card Comparison</h1>
+<p class="sub">Based on your current spending profile. For informational purposes only.</p>
+<table><thead><tr><th>Feature</th>${th}</tr></thead><tbody>
+${feeRow}${earnRows}${pvRow}${wbRow}${netRow}
+</tbody></table></body></html>`;
+  const w = window.open('', '_blank');
+  if (w) { w.document.write(html); w.document.close(); }
 }
 
 // ── Update scores in place (rebuild if best card leaves the visible window) ──
@@ -934,6 +1016,35 @@ document.getElementById('stack-mode').addEventListener('change', e => {
 document.getElementById('welcome-bonus').addEventListener('change', e => {
   includeWelcome = e.target.checked;
   buildRolodex();
+});
+
+document.getElementById('exclude-amex').addEventListener('change', e => {
+  excludeAmex = e.target.checked;
+  buildRolodex();
+});
+
+// Compare checkboxes (event delegation — rolodex DOM is rebuilt on filter changes)
+document.getElementById('rolodex').addEventListener('change', e => {
+  if (!e.target.classList.contains('compare-cb')) return;
+  const slug = e.target.dataset.slug;
+  e.target.checked ? compareSet.add(slug) : compareSet.delete(slug);
+  updateComparePanel();
+});
+
+document.getElementById('compare-panel').addEventListener('click', e => {
+  if (e.target.id === 'compare-clear') {
+    compareSet.clear();
+    document.querySelectorAll('.compare-cb').forEach(cb => { cb.checked = false; });
+    updateComparePanel();
+  }
+  if (e.target.id === 'compare-open') openCompareWindow();
+  if (e.target.classList.contains('compare-panel__remove')) {
+    const slug = e.target.dataset.slug;
+    compareSet.delete(slug);
+    const cb = document.querySelector(`.compare-cb[data-slug="${CSS.escape(slug)}"]`);
+    if (cb) cb.checked = false;
+    updateComparePanel();
+  }
 });
 
 // ── Drag / swipe ───────────────────────────────────────────────────────────
