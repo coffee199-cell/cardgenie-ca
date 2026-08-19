@@ -761,6 +761,169 @@ input[type="range"]::-moz-range-track {
   color: #9980c0;
 }
 
+/* ===== Card type filter pills ===== */
+.card-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.card-filter__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.card-filter__pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(61,31,138,0.2);
+  background: rgba(255,255,255,0.85);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  border-color: var(--color-purple);
+  color: var(--color-purple);
+}
+
+.pill.active {
+  background: var(--color-purple);
+  border-color: var(--color-purple);
+  color: #fff;
+}
+
+/* ===== Rolodex carousel ===== */
+.rolodex {
+  width: 100%;
+  overflow: hidden;
+  padding: 28px 0 8px;
+  cursor: grab;
+  user-select: none;
+}
+
+.rolodex:active { cursor: grabbing; }
+
+.rolodex__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.rolodex__card {
+  flex-shrink: 0;
+  width: 240px;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  border: 1.5px solid rgba(61,31,138,0.1);
+  box-shadow: 0 2px 16px rgba(61,31,138,0.07);
+  padding: 20px;
+  opacity: 0.45;
+  transform: scale(0.88);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.rolodex__card.adjacent {
+  opacity: 0.72;
+  transform: scale(0.94);
+}
+
+.rolodex__card.active {
+  opacity: 1;
+  transform: scale(1.04);
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 32px rgba(61,31,138,0.18), 0 0 0 1px rgba(184,134,11,0.3);
+  background: #fff;
+}
+
+.rolodex__tag {
+  display: inline-block;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 12px;
+}
+
+.rolodex__issuer {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.rolodex__name {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-purple);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.rolodex__value {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.rolodex__detail {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  min-height: 48px;
+}
+
+.rolodex__cta {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-purple);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--color-gold);
+  padding-bottom: 1px;
+  transition: color 0.15s;
+}
+
+.rolodex__cta:hover {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+.rolodex__hint {
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
 /* ===== Breadcrumb ===== */
 .breadcrumb {
   font-size: 0.85rem;

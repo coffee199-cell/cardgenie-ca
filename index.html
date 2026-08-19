@@ -196,106 +196,73 @@
       <div class="hero__layout">
         <div class="hero__left">
           <h1 class="hero__headline">Find Your Best Canadian Credit Card</h1>
-          <p class="hero__sub">Enter your monthly spending below and we will show you which cards earn the most rewards, cash back, or travel points for your lifestyle.</p>
+          <p class="hero__sub">Adjust your monthly spending — your best matches update instantly.</p>
+
+          <!-- Card type filter -->
+          <div class="card-filter">
+            <span class="card-filter__label">Card type:</span>
+            <div class="card-filter__pills">
+              <button class="pill active" data-filter="all">All</button>
+              <button class="pill" data-filter="travel">Travel</button>
+              <button class="pill" data-filter="cashback">Cash Back</button>
+              <button class="pill" data-filter="nofee">No Annual Fee</button>
+              <button class="pill" data-filter="nofx">No FX Fee</button>
+              <button class="pill" data-filter="balance">Balance Transfer</button>
+            </div>
+          </div>
 
           <div class="calc">
-            <div class="calc__title">Monthly Spending Calculator</div>
-            <form action="#" method="get" onsubmit="return false;">
-              <div class="calc__grid">
+            <div class="calc__title">Monthly Spending</div>
+            <div class="calc__grid">
 
-                <div class="calc__field">
-                  <div class="calc__field-header">
-                    <label for="spend-groceries">Groceries</label>
-                    <span class="calc__value" id="val-groceries">$300</span>
-                  </div>
-                  <input type="range" id="spend-groceries" name="groceries"
-                         min="0" max="2000" step="50" value="300"
-                         class="slider"
-                         oninput="document.getElementById('val-groceries').textContent='$'+this.value">
+              <div class="calc__field">
+                <div class="calc__field-header">
+                  <label for="spend-groceries">Groceries</label>
+                  <span class="calc__value" id="val-groceries">$300</span>
                 </div>
-
-                <div class="calc__field">
-                  <div class="calc__field-header">
-                    <label for="spend-gas">Gas</label>
-                    <span class="calc__value" id="val-gas">$150</span>
-                  </div>
-                  <input type="range" id="spend-gas" name="gas"
-                         min="0" max="1000" step="50" value="150"
-                         class="slider"
-                         oninput="document.getElementById('val-gas').textContent='$'+this.value">
-                </div>
-
-                <div class="calc__field">
-                  <div class="calc__field-header">
-                    <label for="spend-dining">Dining</label>
-                    <span class="calc__value" id="val-dining">$200</span>
-                  </div>
-                  <input type="range" id="spend-dining" name="dining"
-                         min="0" max="1000" step="50" value="200"
-                         class="slider"
-                         oninput="document.getElementById('val-dining').textContent='$'+this.value">
-                </div>
-
-                <div class="calc__field">
-                  <div class="calc__field-header">
-                    <label for="spend-travel">Travel</label>
-                    <span class="calc__value" id="val-travel">$100</span>
-                  </div>
-                  <input type="range" id="spend-travel" name="travel"
-                         min="0" max="1000" step="50" value="100"
-                         class="slider"
-                         oninput="document.getElementById('val-travel').textContent='$'+this.value">
-                </div>
-
-                <div class="calc__field">
-                  <div class="calc__field-header">
-                    <label for="spend-bills">Bills</label>
-                    <span class="calc__value" id="val-bills">$150</span>
-                  </div>
-                  <input type="range" id="spend-bills" name="bills"
-                         min="0" max="2000" step="50" value="150"
-                         class="slider"
-                         oninput="document.getElementById('val-bills').textContent='$'+this.value">
-                </div>
-
-                <div class="calc__field">
-                  <div class="calc__field-header">
-                    <label for="spend-other">Other</label>
-                    <span class="calc__value" id="val-other">$100</span>
-                  </div>
-                  <input type="range" id="spend-other" name="other"
-                         min="0" max="1000" step="50" value="100"
-                         class="slider"
-                         oninput="document.getElementById('val-other').textContent='$'+this.value">
-                </div>
-
+                <input type="range" id="spend-groceries" min="0" max="2000" step="50" value="300" class="slider">
               </div>
-              <button type="submit" class="btn btn--primary">Find My Best Card</button>
-            </form>
 
-            <div class="calc__results">
-              <div class="calc__results-label">Top matches for a balanced spender</div>
-              <div class="card-result">
-                <div>
-                  <div class="card-result__name">Amex Cobalt Card</div>
-                  <div class="card-result__tagline">5x points on dining &amp; groceries, 2x on travel</div>
+              <div class="calc__field">
+                <div class="calc__field-header">
+                  <label for="spend-gas">Gas</label>
+                  <span class="calc__value" id="val-gas">$150</span>
                 </div>
-                <div class="card-result__badge">Best Overall</div>
+                <input type="range" id="spend-gas" min="0" max="1000" step="50" value="150" class="slider">
               </div>
-              <div class="card-result">
-                <div>
-                  <div class="card-result__name">Scotia Gold American Express</div>
-                  <div class="card-result__tagline">6x points on dining, 5x on groceries &amp; gas</div>
+
+              <div class="calc__field">
+                <div class="calc__field-header">
+                  <label for="spend-dining">Dining</label>
+                  <span class="calc__value" id="val-dining">$200</span>
                 </div>
-                <div class="card-result__badge">No FX Fee</div>
+                <input type="range" id="spend-dining" min="0" max="1000" step="50" value="200" class="slider">
               </div>
-              <div class="card-result">
-                <div>
-                  <div class="card-result__name">BMO Cashback World Elite</div>
-                  <div class="card-result__tagline">5% on groceries, 4% on transit, 3% on gas</div>
+
+              <div class="calc__field">
+                <div class="calc__field-header">
+                  <label for="spend-travel">Travel</label>
+                  <span class="calc__value" id="val-travel">$100</span>
                 </div>
-                <div class="card-result__badge">Cash Back</div>
+                <input type="range" id="spend-travel" min="0" max="1000" step="50" value="100" class="slider">
               </div>
+
+              <div class="calc__field">
+                <div class="calc__field-header">
+                  <label for="spend-bills">Bills</label>
+                  <span class="calc__value" id="val-bills">$150</span>
+                </div>
+                <input type="range" id="spend-bills" min="0" max="2000" step="50" value="150" class="slider">
+              </div>
+
+              <div class="calc__field">
+                <div class="calc__field-header">
+                  <label for="spend-other">Other</label>
+                  <span class="calc__value" id="val-other">$100</span>
+                </div>
+                <input type="range" id="spend-other" min="0" max="1000" step="50" value="100" class="slider">
+              </div>
+
             </div>
           </div>
         </div><!-- /.hero__left -->
@@ -501,6 +468,13 @@
 
         </div><!-- /.hero__art -->
       </div><!-- /.hero__layout -->
+
+      <!-- Rolodex -->
+      <div class="rolodex" id="rolodex">
+        <div class="rolodex__track" id="rolodex-track"></div>
+      </div>
+      <p class="rolodex__hint">&#8592; scroll to compare &nbsp;&#183;&nbsp; best match centred automatically</p>
+
     </div>
   </section>
 
@@ -588,5 +562,233 @@
     </div>
   </footer>
 
+<script>
+// ── Card database ──────────────────────────────────────────────────────────
+// earn rates = points per dollar; pointValue = dollar value per point
+const CARDS = [
+  { slug:'amex-cobalt', name:'Amex Cobalt Card', issuer:'American Express',
+    types:['travel'], fee:155.88,
+    earn:{groceries:5,gas:1,dining:5,travel:2,bills:1,other:1}, pv:0.01,
+    welcome:150, tag:'Top Dining Pick', tc:'#3d1f8a',
+    url:'/cards/american-express-cobalt-card/',
+    detail:'$155.88/yr &middot; 5x dining &amp; groceries &middot; 2x travel' },
+
+  { slug:'scotia-gold-amex', name:'Scotiabank Gold Amex', issuer:'Scotiabank',
+    types:['travel','nofx'], fee:120,
+    earn:{groceries:6,gas:5,dining:6,travel:3,bills:3,other:1}, pv:0.01,
+    welcome:100, tag:'No FX Fee', tc:'#007a70',
+    url:'/cards/scotiabank-gold-american-express/',
+    detail:'$120/yr &middot; 6x dining &amp; groceries &middot; No FX fees' },
+
+  { slug:'amex-gold-rewards', name:'Amex Gold Rewards Card', issuer:'American Express',
+    types:['travel'], fee:250,
+    earn:{groceries:2,gas:2,dining:1,travel:2,bills:1,other:1}, pv:0.015,
+    welcome:300, tag:'Premium Travel', tc:'#b8860b',
+    url:'/cards/american-express-gold-rewards-card/',
+    detail:'$250/yr &middot; 2x groceries, gas &amp; travel &middot; Lounge access' },
+
+  { slug:'td-aeroplan-infinite', name:'TD Aeroplan Visa Infinite', issuer:'TD Bank',
+    types:['travel'], fee:139,
+    earn:{groceries:1.5,gas:1.5,dining:1.5,travel:3,bills:1,other:1}, pv:0.02,
+    welcome:200, tag:'Aeroplan', tc:'#c41230',
+    url:'/compare/td-aeroplan-vs-cibc-aeroplan/',
+    detail:'$139/yr &middot; 3x Air Canada &middot; Aeroplan rewards' },
+
+  { slug:'cibc-aeroplan-infinite', name:'CIBC Aeroplan Visa Infinite', issuer:'CIBC',
+    types:['travel'], fee:139,
+    earn:{groceries:1.5,gas:1.5,dining:1.5,travel:3,bills:1,other:1}, pv:0.02,
+    welcome:200, tag:'Aeroplan', tc:'#c41230',
+    url:'/compare/td-aeroplan-vs-cibc-aeroplan/',
+    detail:'$139/yr &middot; 3x Air Canada &middot; Aeroplan rewards' },
+
+  { slug:'bmo-ascend-world-elite', name:'BMO Ascend World Elite', issuer:'BMO',
+    types:['travel'], fee:150,
+    earn:{groceries:1,gas:1,dining:1,travel:5,bills:1,other:1}, pv:0.01,
+    welcome:300, tag:'Best for Flights', tc:'#0066cc',
+    url:'/best/travel-credit-cards-canada/',
+    detail:'$150/yr &middot; 5x on travel purchases &middot; Lounge access' },
+
+  { slug:'bmo-cashback-world-elite', name:'BMO CashBack World Elite', issuer:'BMO',
+    types:['cashback'], fee:120,
+    earn:{groceries:5,gas:3,dining:1,travel:1,bills:2,other:1}, pv:0.01,
+    welcome:50, tag:'Best Grocery CB', tc:'#0066cc',
+    url:'/best/cash-back-credit-cards-canada/',
+    detail:'$120/yr &middot; 5% groceries &middot; 3% gas &middot; 2% recurring bills' },
+
+  { slug:'cibc-dividend-infinite', name:'CIBC Dividend Visa Infinite', issuer:'CIBC',
+    types:['cashback'], fee:120,
+    earn:{groceries:4,gas:4,dining:2,travel:1,bills:1,other:1}, pv:0.01,
+    welcome:60, tag:'Cash Back', tc:'#c41230',
+    url:'/best/cash-back-credit-cards-canada/',
+    detail:'$120/yr &middot; 4% groceries &amp; gas &middot; 2% dining' },
+
+  { slug:'scotia-momentum-infinite', name:'Scotia Momentum Visa Infinite', issuer:'Scotiabank',
+    types:['cashback'], fee:120,
+    earn:{groceries:4,gas:4,dining:4,travel:1,bills:4,other:1}, pv:0.01,
+    welcome:50, tag:'Cash Back', tc:'#c8102e',
+    url:'/best/cash-back-credit-cards-canada/',
+    detail:'$120/yr &middot; 4% groceries, gas, dining &amp; recurring bills' },
+
+  { slug:'tangerine-money-back', name:'Tangerine Money-Back Card', issuer:'Tangerine',
+    types:['cashback','nofee'], fee:0,
+    earn:{groceries:2,gas:2,dining:2,travel:0.5,bills:0.5,other:0.5}, pv:0.01,
+    welcome:0, tag:'No Annual Fee', tc:'#e8500a',
+    url:'/best/cash-back-credit-cards-canada/',
+    detail:'$0/yr &middot; 2% in 2 categories of your choice' },
+
+  { slug:'rogers-world-elite', name:'Rogers Red World Elite', issuer:'Rogers Bank',
+    types:['cashback','nofee','nofx'], fee:0,
+    earn:{groceries:1.5,gas:1.5,dining:1.5,travel:1.5,bills:1.5,other:1.5}, pv:0.01,
+    welcome:0, tag:'No FX Fee', tc:'#e0000a',
+    url:'/best/no-foreign-transaction-fee-canada/',
+    detail:'$0/yr &middot; 1.5% everywhere &middot; No foreign transaction fees' },
+
+  { slug:'pc-financial-world-elite', name:'PC Financial World Elite', issuer:'PC Financial',
+    types:['cashback','nofee'], fee:0,
+    earn:{groceries:3,gas:1.5,dining:1,travel:1,bills:1,other:1}, pv:0.01,
+    welcome:0, tag:'No Annual Fee', tc:'#d4000e',
+    url:'/best/cash-back-credit-cards-canada/',
+    detail:'$0/yr &middot; 3% at Loblaws stores &middot; PC Optimum points' },
+
+  { slug:'home-trust-preferred', name:'Home Trust Preferred Visa', issuer:'Home Trust',
+    types:['cashback','nofee','nofx'], fee:0,
+    earn:{groceries:1,gas:1,dining:1,travel:1,bills:1,other:1}, pv:0.01,
+    welcome:0, tag:'No FX Fee', tc:'#2e6b3e',
+    url:'/best/no-foreign-transaction-fee-canada/',
+    detail:'$0/yr &middot; 1% everywhere &middot; No foreign transaction fees' },
+
+  { slug:'mbna-true-line-gold', name:'MBNA True Line Gold Mastercard', issuer:'MBNA',
+    types:['balance'], fee:39,
+    earn:{groceries:0,gas:0,dining:0,travel:0,bills:0,other:0}, pv:0,
+    welcome:0, tag:'Balance Transfer', tc:'#555555',
+    url:'/best/',
+    detail:'$39/yr &middot; 8.99% purchase rate &middot; Low interest card' },
+];
+
+// ── Scoring ────────────────────────────────────────────────────────────────
+function scoreCard(card, spend) {
+  let rewards = 0;
+  for (const cat of ['groceries','gas','dining','travel','bills','other']) {
+    rewards += spend[cat] * 12 * card.earn[cat] * card.pv;
+  }
+  return rewards - card.fee + card.welcome * 0.5;
+}
+
+// ── State ──────────────────────────────────────────────────────────────────
+let activeFilter = 'all';
+let activeIndex  = 0;
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+function getSpend() {
+  return {
+    groceries: +document.getElementById('spend-groceries').value,
+    gas:       +document.getElementById('spend-gas').value,
+    dining:    +document.getElementById('spend-dining').value,
+    travel:    +document.getElementById('spend-travel').value,
+    bills:     +document.getElementById('spend-bills').value,
+    other:     +document.getElementById('spend-other').value,
+  };
+}
+
+function filteredCards() {
+  return activeFilter === 'all'
+    ? CARDS
+    : CARDS.filter(c => c.types.includes(activeFilter));
+}
+
+// ── Render rolodex ─────────────────────────────────────────────────────────
+function render() {
+  const spend = getSpend();
+  const pool  = filteredCards();
+  if (!pool.length) return;
+
+  // Score and sort
+  const ranked = pool
+    .map(c => ({ ...c, score: scoreCard(c, spend) }))
+    .sort((a, b) => b.score - a.score);
+
+  activeIndex = 0; // best card is always index 0 after sort
+
+  const track = document.getElementById('rolodex-track');
+  track.innerHTML = ranked.map((c, i) => {
+    const val = c.score > 0 ? `+$${Math.round(c.score)}/yr` : `$${c.fee}/yr fee`;
+    return `
+      <div class="rolodex__card${i === 0 ? ' active' : i === 1 ? ' adjacent' : ''}"
+           data-index="${i}" onclick="selectCard(${i})">
+        <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
+        <div class="rolodex__issuer">${c.issuer}</div>
+        <div class="rolodex__name">${c.name}</div>
+        <div class="rolodex__value">${val}</div>
+        <div class="rolodex__detail">${c.detail}</div>
+        <a href="${c.url}" class="rolodex__cta">View Card →</a>
+      </div>`;
+  }).join('');
+
+  centerCard(0);
+}
+
+function selectCard(index) {
+  activeIndex = index;
+  document.querySelectorAll('.rolodex__card').forEach((el, i) => {
+    el.classList.toggle('active',   i === index);
+    el.classList.toggle('adjacent', Math.abs(i - index) === 1);
+  });
+  centerCard(index);
+}
+
+function centerCard(index) {
+  const track    = document.getElementById('rolodex-track');
+  const rolodex  = document.getElementById('rolodex');
+  const cards    = track.querySelectorAll('.rolodex__card');
+  if (!cards[index]) return;
+  const cardW    = cards[index].offsetWidth + 16; // card + gap
+  const offset   = (rolodex.offsetWidth / 2) - (index * cardW) - (cardW / 2);
+  track.style.transform = `translateX(${offset}px)`;
+}
+
+// ── Slider live labels + update ────────────────────────────────────────────
+['groceries','gas','dining','travel','bills','other'].forEach(cat => {
+  const el = document.getElementById('spend-' + cat);
+  const lbl = document.getElementById('val-' + cat);
+  el.addEventListener('input', () => {
+    lbl.textContent = '$' + el.value;
+    render();
+  });
+});
+
+// ── Filter pills ───────────────────────────────────────────────────────────
+document.querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+// ── Drag / swipe on rolodex ────────────────────────────────────────────────
+(function() {
+  const rolodex = document.getElementById('rolodex');
+  let startX = 0, dragging = false;
+  rolodex.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; });
+  rolodex.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) {
+      dragging = false;
+      const cards = document.querySelectorAll('.rolodex__card');
+      const next  = dx < 0
+        ? Math.min(activeIndex + 1, cards.length - 1)
+        : Math.max(activeIndex - 1, 0);
+      selectCard(next);
+    }
+  });
+  rolodex.addEventListener('pointerup', () => { dragging = false; });
+})();
+
+// ── Init ───────────────────────────────────────────────────────────────────
+window.addEventListener('load', render);
+window.addEventListener('resize', () => centerCard(activeIndex));
+</script>
 </body>
 </html>
