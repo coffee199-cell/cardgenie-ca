@@ -208,6 +208,9 @@
               <button class="pill active" data-filter="all">All</button>
               <button class="pill" data-filter="travel">Travel</button>
               <button class="pill" data-filter="cashback">Cash Back</button>
+              <button class="pill" data-filter="groceries">Groceries</button>
+              <button class="pill" data-filter="dining">Dining</button>
+              <button class="pill" data-filter="gas">Gas</button>
               <button class="pill" data-filter="nofee">No Annual Fee</button>
               <button class="pill" data-filter="nofx">No FX Fee</button>
               <button class="pill" data-filter="balance">Balance Transfer</button>
@@ -662,7 +665,7 @@ const CAT_MAP = {
   recurring_bills:'bills',all_other:'other',choice_2:'other',
   streaming:'other',transit:'other',transportation:'other',
   entertainment:'other',drugstore:'other',shoppers:'other',
-  loblaws_stores:'other',esso:'other',usd_spend:'other',
+  loblaws_stores:'groceries',esso:'gas',usd_spend:'other',
 };
 
 function mapCard(c) {
@@ -693,6 +696,9 @@ function mapCard(c) {
   if (!isCashback && isPaid && !isBalance) types.push('travel');
   if (isNofx) types.push('nofx');
   if (isBalance) types.push('balance');
+  if (earn.groceries * pv * 100 >= 2.5) types.push('groceries');
+  if (earn.dining   * pv * 100 >= 2.5) types.push('dining');
+  if (earn.gas      * pv * 100 >= 2.0) types.push('gas');
   if (types.length === 0) types.push('cashback');
 
   const displayName = c.name.toLowerCase().startsWith(c.issuer.toLowerCase())
