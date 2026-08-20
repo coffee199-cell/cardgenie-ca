@@ -903,7 +903,8 @@ input[type="range"]::-moz-range-track {
   line-height: 1;
 }
 
-.rolodex__value--negative {
+.rolodex__value--negative,
+.rolodex__yr-val.rolodex__value--negative {
   color: #b0442a;
 }
 
