@@ -842,9 +842,26 @@ function calcPts(c, spend) {
   );
 }
 
+function fmtScore(s) {
+  return s >= 0 ? `+$${Math.round(s)}/yr` : `-$${Math.round(Math.abs(s))}/yr`;
+}
+function scoreValHTML(slug, score, welcome) {
+  if (includeWelcome && welcome > 0) {
+    const yr2 = score - welcome;
+    const cls1 = 'rolodex__yr-val' + (score < 0 ? ' rolodex__value--negative' : '');
+    const cls2 = 'rolodex__yr-val' + (yr2 < 0 ? ' rolodex__value--negative' : '');
+    return `<div class="rolodex__value-block" id="rv-${slug}">
+      <div class="rolodex__yr-row"><span class="rolodex__yr-label">Yr 1</span><span class="${cls1}">${fmtScore(score)}</span></div>
+      <div class="rolodex__yr-row"><span class="rolodex__yr-label">Yr 2</span><span class="${cls2}">${fmtScore(yr2)}</span></div>
+    </div>`;
+  }
+  const cls = 'rolodex__value' + (score < 0 ? ' rolodex__value--negative' : '');
+  return `<div class="${cls}" id="rv-${slug}">${fmtScore(score)}</div>`;
+}
+
 function cardHTML(c, i, spend) {
   const score = c.score;
-  const val = score >= 0 ? `+$${Math.round(score)}/yr` : `-$${Math.round(Math.abs(score))}/yr`;
+  const val = fmtScore(score);
   const valClass = score < 0 ? 'rolodex__value rolodex__value--negative' : 'rolodex__value';
   const nameHtml = c.isStack
     ? c.name.replace(' + ', ' <span class="rolodex__stack-plus">+</span> ')
@@ -859,7 +876,7 @@ function cardHTML(c, i, spend) {
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
     <div class="rolodex__name">${nameHtml}</div>
-    <div class="${valClass}" id="rv-${c.slug}">${val}</div>
+    ${scoreValHTML(c.slug, score, c.welcome)}
     ${ptsHtml}
     <div class="rolodex__detail">${c.detail}</div>
     <a href="${c.url}" class="rolodex__cta" onclick="event.stopPropagation()">${ctaLabel}</a>
@@ -947,8 +964,11 @@ function updateScores() {
     const valEl = document.getElementById('rv-' + c.slug);
     if (valEl) {
       const s = c.score;
-      valEl.textContent = s >= 0 ? `+$${Math.round(s)}/yr` : `-$${Math.round(Math.abs(s))}/yr`;
-      valEl.classList.toggle('rolodex__value--negative', s < 0);
+      const newHTML = scoreValHTML(c.slug, s, c.welcome);
+      const tmp = document.createElement('div');
+      tmp.innerHTML = newHTML;
+      const newEl = tmp.firstElementChild;
+      valEl.replaceWith(newEl);
     }
     const ptsEl = document.getElementById('rp-' + c.slug);
     if (ptsEl) {

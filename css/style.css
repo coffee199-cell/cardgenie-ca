@@ -907,6 +907,34 @@ input[type="range"]::-moz-range-track {
   color: #b0442a;
 }
 
+.rolodex__value-block {
+  margin-bottom: 6px;
+}
+
+.rolodex__yr-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.rolodex__yr-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  width: 22px;
+  flex-shrink: 0;
+}
+
+.rolodex__yr-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  line-height: 1;
+}
+
 .rolodex__pts {
   font-size: 0.8rem;
   font-weight: 600;
