@@ -686,7 +686,7 @@ function mapCard(c) {
     dining:    earnMap.dining    ?? fallback,
     travel:    earnMap.travel    ?? fallback,
     bills:     earnMap.bills     ?? fallback,
-    other:     earnMap.other     ?? fallback,
+    other:     fallback !== 0 ? fallback : (earnMap.other ?? 0),
   };
   const isPaid = c.annual_fee > 0;
   const isBalance = /true.?line|balance.?transfer/i.test(c.name);
