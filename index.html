@@ -628,6 +628,11 @@ const POINT_VALUE = {
   'Avion points':0.01,'BMO Rewards':0.01,'Scene+ points':0.01,
   'PC Optimum':0.01,'À la carte':0.01,
 };
+// Cards where standalone point value is lower than the earn_unit suggests.
+// Ion+ earns basic RBC Rewards (no airline transfers without an Avion card).
+const PV_OVERRIDE = {
+  'rbc-ion-visa': 0.008,
+};
 const NO_FX_SLUGS = new Set([
   'rogers-red-world-elite-mastercard','scotiabank-gold-american-express',
   'scotiabank-passport-visa-infinite','hsbc-world-elite-mastercard',
@@ -649,7 +654,7 @@ const CAT_MAP = {
 function mapCard(c) {
   const rewards = c.rewards || [];
   const primaryUnit = rewards[0]?.earn_unit;
-  const pv = POINT_VALUE[primaryUnit] ?? 0.01;
+  const pv = PV_OVERRIDE[c.card_slug] ?? (POINT_VALUE[primaryUnit] ?? 0.01);
   const isCashback = rewards.some(r => r.earn_unit === 'cash_back_pct');
   const fallback = rewards.find(r => r.category === 'all_other')?.earn_rate ?? 0;
   const earnMap = {};
@@ -710,7 +715,8 @@ function mapCard(c) {
     tag,
     tc: ISSUER_COLOR[c.issuer] ?? '#3d1f8a',
     url: DETAIL_PAGE_SLUGS.has(c.card_slug) ? `/cards/${c.card_slug}/` : '/best/',
-    detail: `${feeStr} &middot; ${earnStr} &middot; ${unitLabel}`,
+    detail: `${feeStr} &middot; ${earnStr} &middot; ${unitLabel}`
+      + (PV_OVERRIDE[c.card_slug] ? ' &middot; <em>standalone value; pairs with Avion for full transfer access</em>' : ''),
   };
 }
 
@@ -770,7 +776,8 @@ function buildStacks() {
       tag: sameIssuer ? c1.issuer + ' Combo' : 'Multi-Card Combo',
       tc: c1.tc,
       url: '/best/',
-      detail: `$${fee}/yr combined &middot; ${earnStr}`,
+      detail: `$${fee}/yr combined &middot; ${earnStr}`
+        + (s1 === 'rbc-ion-visa' ? ' &middot; <em>Ion+ points convert to Avion for airline transfers</em>' : ''),
       isStack: true,
     };
   }).filter(Boolean);
