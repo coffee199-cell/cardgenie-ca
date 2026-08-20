@@ -1140,7 +1140,18 @@
       "purchase": 30.0,
       "cash_advance": 30.0
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 6,
+        "category": "all_other",
+        "earn_rate": 1.25,
+        "earn_unit": "MR points",
+        "earn_program": "American Express Membership Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1.25 pts/$1 on all eligible purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -1246,7 +1257,28 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 40,
+        "category": "groceries",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "RBC Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% at eligible grocery stores"
+      },
+      {
+        "card_id": 40,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "RBC Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% on all other purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -1273,7 +1305,38 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 13,
+        "category": "groceries",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "RBC Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% at eligible grocery stores"
+      },
+      {
+        "card_id": 13,
+        "category": "gas",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "RBC Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% on gas"
+      },
+      {
+        "card_id": 13,
+        "category": "all_other",
+        "earn_rate": 0.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "RBC Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "0.5% on all other purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -1706,7 +1769,58 @@
       "purchase": 20.99,
       "cash_advance": 23.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 23,
+        "category": "groceries",
+        "earn_rate": 5.0,
+        "earn_unit": "BMO Rewards",
+        "earn_program": "BMO Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "5 pts/$1 on groceries"
+      },
+      {
+        "card_id": 23,
+        "category": "dining",
+        "earn_rate": 5.0,
+        "earn_unit": "BMO Rewards",
+        "earn_program": "BMO Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "5 pts/$1 on dining & food delivery"
+      },
+      {
+        "card_id": 23,
+        "category": "recurring_bills",
+        "earn_rate": 5.0,
+        "earn_unit": "BMO Rewards",
+        "earn_program": "BMO Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "5 pts/$1 on recurring bills"
+      },
+      {
+        "card_id": 23,
+        "category": "transit",
+        "earn_rate": 5.0,
+        "earn_unit": "BMO Rewards",
+        "earn_program": "BMO Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "5 pts/$1 on transit & rideshare"
+      },
+      {
+        "card_id": 23,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "BMO Rewards",
+        "earn_program": "BMO Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1 pt/$1 everywhere else"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -1733,7 +1847,58 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 10,
+        "category": "travel",
+        "earn_rate": 8.0,
+        "earn_unit": "TD Rewards",
+        "earn_program": "TD Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "8 pts/$1 via Expedia for TD; 6 pts/$1 on other travel"
+      },
+      {
+        "card_id": 10,
+        "category": "dining",
+        "earn_rate": 6.0,
+        "earn_unit": "TD Rewards",
+        "earn_program": "TD Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "6 pts/$1 on dining"
+      },
+      {
+        "card_id": 10,
+        "category": "groceries",
+        "earn_rate": 4.0,
+        "earn_unit": "TD Rewards",
+        "earn_program": "TD Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "4 pts/$1 on groceries"
+      },
+      {
+        "card_id": 10,
+        "category": "recurring_bills",
+        "earn_rate": 4.0,
+        "earn_unit": "TD Rewards",
+        "earn_program": "TD Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "4 pts/$1 on recurring bills"
+      },
+      {
+        "card_id": 10,
+        "category": "all_other",
+        "earn_rate": 2.0,
+        "earn_unit": "TD Rewards",
+        "earn_program": "TD Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2 pts/$1 everywhere else"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -2264,7 +2429,28 @@
       "purchase": 21.99,
       "cash_advance": 22.97
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 30,
+        "category": "loblaws_stores",
+        "earn_rate": 25.0,
+        "earn_unit": "PC Optimum",
+        "earn_program": "PC Optimum",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "25 pts/$1 at Loblaw banner stores"
+      },
+      {
+        "card_id": 30,
+        "category": "all_other",
+        "earn_rate": 10.0,
+        "earn_unit": "PC Optimum",
+        "earn_program": "PC Optimum",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "10 pts/$1 everywhere else"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -2291,7 +2477,28 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 34,
+        "category": "recurring_bills",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Rogers Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on Rogers/Fido/Shaw bills"
+      },
+      {
+        "card_id": 34,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Rogers Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% on all other purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -2318,7 +2525,38 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 35,
+        "category": "recurring_bills",
+        "earn_rate": 1.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Fido Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1.5% on eligible recurring payments"
+      },
+      {
+        "card_id": 35,
+        "category": "streaming",
+        "earn_rate": 1.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Fido Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1.5% on streaming subscriptions"
+      },
+      {
+        "card_id": 35,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Fido Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% on all other eligible purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -2345,7 +2583,18 @@
       "purchase": 22.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 38,
+        "category": "all_other",
+        "earn_rate": 0.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Neo Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "0.5% guaranteed everywhere; up to 5% at Neo partner merchants"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -2618,7 +2867,58 @@
       "purchase": 19.9,
       "cash_advance": 19.9
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 27,
+        "category": "groceries",
+        "earn_rate": 3.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Desjardins BONUSDOLLARS",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "3% on grocery and pharmacy"
+      },
+      {
+        "card_id": 27,
+        "category": "dining",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Desjardins BONUSDOLLARS",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on restaurant purchases"
+      },
+      {
+        "card_id": 27,
+        "category": "gas",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Desjardins BONUSDOLLARS",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on gas"
+      },
+      {
+        "card_id": 27,
+        "category": "travel",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Desjardins BONUSDOLLARS",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on travel"
+      },
+      {
+        "card_id": 27,
+        "category": "all_other",
+        "earn_rate": 1.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Desjardins BONUSDOLLARS",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1.5% on all other purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -3021,7 +3321,38 @@
       "purchase": 20.99,
       "cash_advance": 22.49
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 26,
+        "category": "groceries",
+        "earn_rate": 2.0,
+        "earn_unit": "\u00c0 la carte",
+        "earn_program": "National Bank \u00c0 la carte",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2 pts/$1 on groceries"
+      },
+      {
+        "card_id": 26,
+        "category": "gas",
+        "earn_rate": 2.0,
+        "earn_unit": "\u00c0 la carte",
+        "earn_program": "National Bank \u00c0 la carte",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2 pts/$1 on gas"
+      },
+      {
+        "card_id": 26,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "\u00c0 la carte",
+        "earn_program": "National Bank \u00c0 la carte",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1 pt/$1 everywhere else"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -3048,7 +3379,28 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 17,
+        "category": "groceries",
+        "earn_rate": 3.0,
+        "earn_unit": "Scene+ points",
+        "earn_program": "Scene+",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "3x at Empire/Sobeys banner stores"
+      },
+      {
+        "card_id": 17,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "Scene+ points",
+        "earn_program": "Scene+",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1x everywhere else"
+      }
+    ],
     "welcome_bonus": {
       "card_id": 17,
       "bonus_type": "points",
@@ -3422,7 +3774,28 @@
       "purchase": 20.99,
       "cash_advance": 23.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 28,
+        "category": "travel",
+        "earn_rate": 3.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "HSBC Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "3% effective on travel (6 HSBC pts/$1 at ~0.5cpp)"
+      },
+      {
+        "card_id": 28,
+        "category": "all_other",
+        "earn_rate": 1.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "HSBC Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1.5% effective on all other (3 HSBC pts/$1)"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -3575,7 +3948,18 @@
       "purchase": 21.5,
       "cash_advance": 21.5
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 36,
+        "category": "all_other",
+        "earn_rate": 1.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Brim Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1.5% base cash back; higher at Brim partner merchants"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -3602,7 +3986,18 @@
       "purchase": 22.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 39,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Neo Cash Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% guaranteed everywhere; higher at Neo partner merchants"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -3629,7 +4024,48 @@
       "purchase": 20.99,
       "cash_advance": 22.99
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 32,
+        "category": "groceries",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Tangerine Money-Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on chosen money-back category"
+      },
+      {
+        "card_id": 32,
+        "category": "gas",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Tangerine Money-Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on chosen money-back category"
+      },
+      {
+        "card_id": 32,
+        "category": "dining",
+        "earn_rate": 2.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Tangerine Money-Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "2% on chosen money-back category"
+      },
+      {
+        "card_id": 32,
+        "category": "all_other",
+        "earn_rate": 0.5,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Tangerine Money-Back",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "0.5% on all other purchases"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   },
@@ -3656,7 +4092,18 @@
       "purchase": 21.5,
       "cash_advance": 21.5
     },
-    "rewards": [],
+    "rewards": [
+      {
+        "card_id": 37,
+        "category": "all_other",
+        "earn_rate": 1.0,
+        "earn_unit": "cash_back_pct",
+        "earn_program": "Brim Rewards",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "1% base cash back; higher at Brim partner merchants"
+      }
+    ],
     "welcome_bonus": null,
     "insurance": []
   }
