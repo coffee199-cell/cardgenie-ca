@@ -293,6 +293,20 @@
                   </label>
                   <span class="stack-toggle__hint">Hide American Express cards</span>
                 </div>
+                <div class="stack-toggle">
+                  <label>
+                    <input type="checkbox" id="exclude-mastercard">
+                    Exclude Mastercard
+                  </label>
+                  <span class="stack-toggle__hint">Hide Mastercard network cards</span>
+                </div>
+                <div class="stack-toggle">
+                  <label>
+                    <input type="checkbox" id="exclude-visa">
+                    Exclude Visa
+                  </label>
+                  <span class="stack-toggle__hint">Hide Visa network cards</span>
+                </div>
               </div>
             </div>
           </div>
@@ -706,6 +720,7 @@ function mapCard(c) {
     slug: c.card_slug,
     name: displayName,
     issuer: c.issuer,
+    network: c.network || '',
     types,
     fee: c.annual_fee,
     earn,
@@ -735,7 +750,9 @@ let activeFilter = 'all';
 let activeIndex  = 0;
 let stackMode       = false;
 let includeWelcome  = false;
-let excludeAmex     = false;
+let excludeAmex       = false;
+let excludeMastercard = false;
+let excludeVisa       = false;
 let compareSet      = new Set();
 let hiddenSet       = new Set();
 let arranged     = [];
@@ -801,6 +818,8 @@ function filteredCards() {
     !c.slug.includes('american-express') &&
     !c.name.toLowerCase().includes('american express')
   );
+  if (excludeMastercard) pool = pool.filter(c => c.network !== 'Mastercard');
+  if (excludeVisa)       pool = pool.filter(c => c.network !== 'Visa');
   if (hiddenSet.size) pool = pool.filter(c => !hiddenSet.has(c.slug));
   return activeFilter === 'all' ? pool : pool.filter(c => c.types.includes(activeFilter));
 }
@@ -1068,6 +1087,16 @@ document.getElementById('welcome-bonus').addEventListener('change', e => {
 
 document.getElementById('exclude-amex').addEventListener('change', e => {
   excludeAmex = e.target.checked;
+  buildRolodex();
+});
+
+document.getElementById('exclude-mastercard').addEventListener('change', e => {
+  excludeMastercard = e.target.checked;
+  buildRolodex();
+});
+
+document.getElementById('exclude-visa').addEventListener('change', e => {
+  excludeVisa = e.target.checked;
   buildRolodex();
 });
 
