@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">RBC Avion card stack</title>
+  <desc id="desc">ION Plus earns Avion Premium points, which transfer at one to one into an Avion Elite account for flexible travel redemption.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6f1ff"/>
+      <stop offset="1" stop-color="#fff9e8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#3d1f8a" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="28" fill="url(#background)"/>
+  <text x="600" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#3d1f8a">The RBC Avion Card Stack</text>
+  <text x="600" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="#5f5873">Earn faster in Premium, then redeem with Elite flexibility</text>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="180" width="360" height="290" rx="24" fill="#ffffff" stroke="#d6c9ee" stroke-width="2"/>
+    <rect x="72" y="180" width="360" height="18" rx="9" fill="#d4af37"/>
+    <text x="112" y="250" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="2" fill="#16877d">EARN</text>
+    <text x="112" y="302" font-family="Georgia, serif" font-size="36" font-weight="700" fill="#3d1f8a">RBC ION+ Visa</text>
+    <text x="112" y="352" font-family="Arial, sans-serif" font-size="23" fill="#29243a">3 points per CA$1</text>
+    <text x="112" y="386" font-family="Arial, sans-serif" font-size="19" fill="#5f5873">on eligible everyday categories</text>
+    <rect x="112" y="416" width="208" height="38" rx="19" fill="#eef9f7"/>
+    <text x="216" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#16877d">Avion Premium</text>
+  </g>
+
+  <g>
+    <path d="M465 315 H705" fill="none" stroke="#3d1f8a" stroke-width="12" stroke-linecap="round"/>
+    <path d="M680 285 L720 315 L680 345" fill="none" stroke="#3d1f8a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="505" y="245" width="164" height="48" rx="24" fill="#3d1f8a"/>
+    <text x="587" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#ffffff">Transfer 1:1</text>
+    <text x="587" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#5f5873">Premium to Elite</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="768" y="180" width="360" height="290" rx="24" fill="#ffffff" stroke="#d6c9ee" stroke-width="2"/>
+    <rect x="768" y="180" width="360" height="18" rx="9" fill="#16877d"/>
+    <text x="808" y="250" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="2" fill="#d09400">REDEEM</text>
+    <text x="808" y="302" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#3d1f8a">RBC Avion Visa</text>
+    <text x="808" y="350" font-family="Arial, sans-serif" font-size="21" fill="#29243a">Travel schedule</text>
+    <text x="808" y="384" font-family="Arial, sans-serif" font-size="21" fill="#29243a">Airline transfer partners</text>
+    <rect x="808" y="416" width="184" height="38" rx="19" fill="#f2ecff"/>
+    <text x="900" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#3d1f8a">Avion Elite</text>
+  </g>
+
+  <text x="600" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#5f5873">Verify account eligibility and the live transfer screen before moving points.</text>
+  <text x="600" y="592" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#3d1f8a">CardGenie.ca</text>
+</svg>
