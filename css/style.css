@@ -161,16 +161,19 @@ img {
 }
 
 .nav__logo {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: var(--color-purple);
-  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 .nav__logo:hover {
   text-decoration: none;
-  color: var(--color-gold);
+  opacity: 0.85;
 }
 
 .nav__links {
