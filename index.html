@@ -216,9 +216,10 @@
               <button class="pill" data-filter="balance">Balance Transfer</button>
             </div>
           </div>
+          <p class="data-freshness" id="data-freshness"></p>
 
           <div class="calc">
-            <div class="calc__title">Monthly Spending</div>
+            <div class="calc__title">Monthly Spending <span class="calc__privacy">Your spending data stays on your device and is never collected.</span></div>
             <div class="calc__grid">
 
               <div class="calc__field">
@@ -624,7 +625,7 @@
           <li><a href="https://cardgenie.ca/best/no-foreign-transaction-fee-canada/">No FX Fee Cards</a></li>
         </ul>
         <div class="footer__legal">
-          &copy; 2026 CardGenie.ca. All rights reserved. For informational purposes only. Not financial advice. Credit card information is subject to change — always verify terms with the issuer before applying.
+          &copy; 2026 CardGenie.ca. All rights reserved. CardGenie is for informational purposes only and does not constitute financial advice. Rankings are based solely on the spending inputs you provide and do not represent editorial endorsements. Card rates, fees, and earn structures change frequently — always verify current terms directly with the issuer before applying. CardGenie is not affiliated with any card issuer.
         </div>
       </div>
     </div>
@@ -711,9 +712,9 @@ function mapCard(c) {
     : isNofx ? 'No FX Fee'
     : isCashback && !isPaid ? 'No Annual Fee'
     : isCashback ? 'Cash Back'
-    : topEarn?.k === 'groceries' ? 'Top Grocery Pick'
-    : topEarn?.k === 'dining' ? 'Top Dining Pick'
-    : topEarn?.k === 'travel' ? 'Top Travel Pick'
+    : topEarn?.k === 'groceries' ? 'Strong Grocery Earner'
+    : topEarn?.k === 'dining' ? 'Strong Dining Earner'
+    : topEarn?.k === 'travel' ? 'Strong Travel Earner'
     : 'Rewards Card';
 
   const topTwo = Object.entries(earn)
@@ -1194,6 +1195,15 @@ window.addEventListener('load', async () => {
   CARDS = raw.filter(c => c.is_active === 1).map(mapCard);
   STACKS = buildStacks();
   buildRolodex();
+
+  // Freshness stamp — most recent last_scraped across all active cards
+  const dates = raw.filter(c => c && c.last_scraped).map(c => c.last_scraped);
+  if (dates.length) {
+    const latest = new Date(dates.sort().at(-1));
+    const label = latest.toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' });
+    const el = document.getElementById('data-freshness');
+    if (el) el.textContent = `Rates and earn data last updated ${label}. Always confirm terms with the issuer before applying.`;
+  }
 });
 window.addEventListener('resize', () => centerCard(activeIndex));
 </script>
