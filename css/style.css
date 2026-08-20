@@ -924,8 +924,9 @@ input[type="range"]::-moz-range-track {
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  width: 22px;
+  min-width: 30px;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .rolodex__yr-val {
