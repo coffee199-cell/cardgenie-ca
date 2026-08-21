@@ -286,7 +286,7 @@
                     <input type="checkbox" id="welcome-bonus">
                     Include welcome bonus
                   </label>
-                  <span class="stack-toggle__hint">First-year value based on point value</span>
+                  <span class="stack-toggle__hint">Included only when your entered spend meets the stored offer requirement</span>
                 </div>
               </div>
               <div class="calc-options__col calc-options__col--right">
@@ -642,7 +642,8 @@ const ISSUER_COLOR = {
   'MBNA':'#555555','Home Trust':'#2e6b3e',
 };
 const POINT_VALUE = {
-  'cash_back_pct':0.01,'Aeroplan':0.02,'MR points':0.015,
+  // Conservative redemption estimates, not guaranteed cash values.
+  'cash_back_pct':0.01,'Aeroplan':0.015,'MR points':0.01,
   'Avion points':0.01,'BMO Rewards':0.007,'Scene+ points':0.01,
   'PC Optimum':0.001,'À la carte':0.01,'TD Rewards':0.005,
 };
@@ -662,12 +663,9 @@ const DETAIL_PAGE_SLUGS = new Set([
 ]);
 const CAT_MAP = {
   groceries:'groceries',gas:'gas',dining:'dining',restaurants:'dining',bars:'dining',
-  travel:'travel',air_canada:'travel',aeroplan_partner:'travel',
-  recurring_bills:'bills',all_other:'other',choice_2:'other',
-  streaming:'other',transit:'other',transportation:'other',
-  entertainment:'other',drugstore:'other',shoppers:'other',
-  loblaws_stores:'groceries',esso:'gas',usd_spend:'other',
+  travel:'travel',recurring_bills:'bills',all_other:'other',
 };
+const CATS = ['groceries','gas','dining','travel','bills','other'];
 
 function mapCard(c) {
   const rewards = c.rewards || [];
@@ -675,18 +673,27 @@ function mapCard(c) {
   const pv = PV_OVERRIDE[c.card_slug] ?? (POINT_VALUE[primaryUnit] ?? 0.01);
   const isCashback = rewards.some(r => r.earn_unit === 'cash_back_pct');
   const fallback = rewards.find(r => r.category === 'all_other')?.earn_rate ?? 0;
-  const earnMap = {};
+  const ruleMap = {};
   for (const r of rewards) {
     const key = CAT_MAP[r.category];
-    if (key && (!earnMap[key] || r.earn_rate > earnMap[key])) earnMap[key] = r.earn_rate;
+    if (!key || (ruleMap[key] && r.earn_rate <= ruleMap[key].rate)) continue;
+    ruleMap[key] = {
+      rate: r.earn_rate,
+      capAnnual: r.earn_cap == null ? null
+        : r.earn_cap * (r.cap_period === 'monthly' ? 12 : 1),
+      capGroup: r.cap_group || key,
+      overflowRate: r.overflow_rate ?? fallback,
+    };
   }
+  const defaultRule = () => ({ rate:fallback, capAnnual:null, capGroup:null, overflowRate:fallback });
+  const rewardRules = Object.fromEntries(CATS.map(k => [k, ruleMap[k] || defaultRule()]));
   const earn = {
-    groceries: earnMap.groceries ?? fallback,
-    gas:       earnMap.gas       ?? fallback,
-    dining:    earnMap.dining    ?? fallback,
-    travel:    earnMap.travel    ?? fallback,
-    bills:     earnMap.bills     ?? fallback,
-    other:     fallback !== 0 ? fallback : (earnMap.other ?? 0),
+    groceries: rewardRules.groceries.rate,
+    gas:       rewardRules.gas.rate,
+    dining:    rewardRules.dining.rate,
+    travel:    rewardRules.travel.rate,
+    bills:     rewardRules.bills.rate,
+    other:     rewardRules.other.rate,
   };
   const isPaid = c.annual_fee > 0;
   const isBalance = /true.?line|balance.?transfer/i.test(c.name);
@@ -722,6 +729,7 @@ function mapCard(c) {
   const earnStr = topTwo.map(([k,v]) => `${v}x ${k}`).join(' &amp; ');
   const feeStr = c.annual_fee === 0 ? '$0/yr' : `$${c.annual_fee}/yr`;
   const unitLabel = isCashback ? 'cash back' : (primaryUnit || 'rewards');
+  const hasCap = Object.values(rewardRules).some(r => r.capAnnual != null);
 
   return {
     slug: c.card_slug,
@@ -730,14 +738,18 @@ function mapCard(c) {
     network: c.network || '',
     types,
     fee: c.annual_fee,
+    feeWaivedFirstYear: Boolean(c.annual_fee_waived_first_year),
     earn,
+    rewardRules,
     pv,
     earnUnit: primaryUnit,
     welcome: c.welcome_bonus?.estimated_cad ?? 0,
+    welcomeMeta: c.welcome_bonus || null,
     tag,
     tc: ISSUER_COLOR[c.issuer] ?? '#3d1f8a',
     url: DETAIL_PAGE_SLUGS.has(c.card_slug) ? `/cards/${c.card_slug}/` : '/best/',
     detail: `${feeStr} &middot; ${earnStr} &middot; ${unitLabel}`
+      + (hasCap ? ' &middot; <em>bonus caps applied</em>' : '')
       + (PV_OVERRIDE[c.card_slug] ? ' &middot; <em>standalone value; pairs with Avion for full transfer access</em>' : ''),
   };
 }
@@ -745,11 +757,83 @@ function mapCard(c) {
 let CARDS = [];
 
 // ── Scoring ────────────────────────────────────────────────────────────────
+function singleCardRewards(card, spend) {
+  const remaining = new Map();
+  const unitsByProgram = {};
+  let units = 0;
+  for (const cat of CATS) {
+    const rule = card.rewardRules[cat];
+    const annualSpend = spend[cat] * 12;
+    let acceleratedSpend = annualSpend;
+    if (rule.capAnnual != null) {
+      if (!remaining.has(rule.capGroup)) remaining.set(rule.capGroup, rule.capAnnual);
+      acceleratedSpend = Math.min(annualSpend, remaining.get(rule.capGroup));
+      remaining.set(rule.capGroup, remaining.get(rule.capGroup) - acceleratedSpend);
+    }
+    const earned = acceleratedSpend * rule.rate
+      + (annualSpend - acceleratedSpend) * rule.overflowRate;
+    units += earned;
+  }
+  unitsByProgram[card.earnUnit] = units;
+  return { value: units * card.pv, unitsByProgram };
+}
+
+function stackRewards(stack, spend) {
+  let best = { value:-Infinity, unitsByProgram:{} };
+  // Route each broad spending category to one card. This preserves each card's
+  // own caps and valuation instead of merging two reward currencies or rates.
+  for (let mask = 0; mask < (1 << CATS.length); mask++) {
+    const split = stack.cards.map(() => Object.fromEntries(CATS.map(k => [k, 0])));
+    CATS.forEach((cat, i) => { split[(mask >> i) & 1][cat] = spend[cat]; });
+    const parts = stack.cards.map((card, i) => singleCardRewards(
+      stack.pv == null ? card : { ...card, pv:stack.pv },
+      split[i],
+    ));
+    const value = parts.reduce((sum, p) => sum + p.value, 0);
+    if (value <= best.value) continue;
+    const unitsByProgram = {};
+    for (const part of parts) for (const [unit, amount] of Object.entries(part.unitsByProgram))
+      unitsByProgram[unit] = (unitsByProgram[unit] || 0) + amount;
+    best = { value, unitsByProgram };
+  }
+  return best;
+}
+
+function rewardBreakdown(card, spend) {
+  return card.isStack ? stackRewards(card, spend) : singleCardRewards(card, spend);
+}
+
+function qualifiesForWelcome(card, spend) {
+  const offer = card.welcomeMeta;
+  if (!offer || !card.welcome) return false;
+  if (offer.expiry_date && new Date(offer.expiry_date) < new Date()) return false;
+  if (!offer.spend_requirement) return true;
+  const months = Math.max(1, Math.min(12, offer.spend_window_months || 12));
+  const availableSpend = CATS.reduce((sum, cat) => sum + spend[cat], 0) * months;
+  return availableSpend >= offer.spend_requirement;
+}
+
+function welcomeValue(card, spend) {
+  if (card.isStack) return card.cards.reduce((sum, item) =>
+    sum + (qualifiesForWelcome(item, spend) ? item.welcome : 0), 0);
+  return qualifiesForWelcome(card, spend) ? card.welcome : 0;
+}
+
+function firstYearFee(card) {
+  if (card.isStack) return card.cards.reduce((sum, item) =>
+    sum + (item.feeWaivedFirstYear ? 0 : item.fee), 0);
+  return card.feeWaivedFirstYear ? 0 : card.fee;
+}
+
+function ongoingScore(card, spend) {
+  return rewardBreakdown(card, spend).value - card.fee;
+}
+
 function scoreCard(card, spend) {
-  let r = 0;
-  for (const cat of ['groceries','gas','dining','travel','bills','other'])
-    r += spend[cat] * 12 * card.earn[cat] * card.pv;
-  return r - card.fee + (includeWelcome ? card.welcome : 0);
+  const rewards = rewardBreakdown(card, spend).value;
+  const fee = includeWelcome ? firstYearFee(card) : card.fee;
+  const welcome = includeWelcome ? welcomeValue(card, spend) : 0;
+  return rewards - fee + welcome;
 }
 
 // ── State ──────────────────────────────────────────────────────────────────
@@ -772,7 +856,6 @@ function buildStacks() {
     ['american-express-cobalt-card', 'american-express-gold-rewards-card'],
     ['american-express-cobalt-card', 'american-express-platinum-card'],
     ['scotiabank-gold-american-express', 'scotiabank-passport-visa-infinite'],
-    ['td-aeroplan-visa-infinite', 'american-express-cobalt-card'],
   ];
   return PAIRS.map(([s1, s2]) => {
     const c1 = CARDS.find(c => c.slug === s1);
@@ -786,7 +869,7 @@ function buildStacks() {
     const short2 = c2.name.replace(new RegExp('^' + esc(c2.issuer) + '\\s*','i'),'');
     const sameIssuer = c1.issuer === c2.issuer;
     const fee = c1.fee + c2.fee;
-    const pv  = Math.max(c1.pv, c2.pv);
+    const pv  = c1.earnUnit === c2.earnUnit ? Math.max(c1.pv, c2.pv) : null;
     const topTwo = Object.entries(earn).sort((a,b)=>b[1]-a[1]).slice(0,2).filter(([,v])=>v>0);
     const earnStr = topTwo.map(([k,v])=>`${v}x ${k}`).join(' &amp; ');
     return {
@@ -795,8 +878,11 @@ function buildStacks() {
       issuer: sameIssuer ? c1.issuer : c1.issuer + ' &amp; ' + c2.issuer,
       types: [...new Set([...c1.types, ...c2.types])],
       fee, earn, pv,
-      earnUnit: c1.pv >= c2.pv ? c1.earnUnit : c2.earnUnit,
+      earnUnit: c1.earnUnit === c2.earnUnit ? c1.earnUnit : null,
       welcome: c1.welcome + c2.welcome,
+      welcomeMeta: null,
+      feeWaivedFirstYear: c1.feeWaivedFirstYear && c2.feeWaivedFirstYear,
+      cards: [c1, c2],
       tag: sameIssuer ? c1.issuer + ' Combo' : 'Multi-Card Combo',
       tc: c1.tc,
       url: '/best/',
@@ -860,29 +946,29 @@ const PTS_LABEL = {
   'À la carte':'pts',
 };
 
-function calcPts(c, spend) {
-  if (!c.earnUnit || c.earnUnit === 'cash_back_pct') return 0;
-  return Math.round(
-    ['groceries','gas','dining','travel','bills','other']
-      .reduce((sum, k) => sum + spend[k] * 12 * c.earn[k], 0)
-  );
+function pointsText(c, spend) {
+  const entries = Object.entries(rewardBreakdown(c, spend).unitsByProgram)
+    .filter(([unit, amount]) => unit && unit !== 'cash_back_pct' && amount > 0);
+  return entries.map(([unit, amount]) =>
+    `${Math.round(amount).toLocaleString()} ${PTS_LABEL[unit] || unit}/yr`
+  ).join(' + ');
 }
 
 function fmtScore(s) {
-  return s >= 0 ? `+$${Math.round(s)}/yr` : `-$${Math.round(Math.abs(s))}/yr`;
+  return s >= 0 ? `≈ +$${Math.round(s)}/yr` : `≈ -$${Math.round(Math.abs(s))}/yr`;
 }
-function scoreValHTML(slug, score, welcome) {
-  if (includeWelcome && welcome > 0) {
-    const yr2 = score - welcome;
+function scoreValHTML(card, score, spend) {
+  if (includeWelcome) {
+    const yr2 = ongoingScore(card, spend);
     const cls1 = 'rolodex__yr-val' + (score < 0 ? ' rolodex__value--negative' : '');
     const cls2 = 'rolodex__yr-val' + (yr2 < 0 ? ' rolodex__value--negative' : '');
-    return `<div class="rolodex__value-block" id="rv-${slug}">
+    return `<div class="rolodex__value-block" id="rv-${card.slug}">
       <div class="rolodex__yr-row"><span class="rolodex__yr-label">Yr 1</span><span class="${cls1}">${fmtScore(score)}</span></div>
       <div class="rolodex__yr-row"><span class="rolodex__yr-label">Yr 2</span><span class="${cls2}">${fmtScore(yr2)}</span></div>
     </div>`;
   }
   const cls = 'rolodex__value' + (score < 0 ? ' rolodex__value--negative' : '');
-  return `<div class="${cls}" id="rv-${slug}">${fmtScore(score)}</div>`;
+  return `<div class="${cls}" id="rv-${card.slug}">${fmtScore(score)}</div>`;
 }
 
 function cardHTML(c, i, spend) {
@@ -893,16 +979,16 @@ function cardHTML(c, i, spend) {
     ? c.name.replace(' + ', ' <span class="rolodex__stack-plus">+</span> ')
     : c.name;
   const ctaLabel = c.isStack ? 'View Cards →' : 'View Card →';
-  const pts = spend ? calcPts(c, spend) : 0;
-  const ptsHtml = pts > 0
-    ? `<div class="rolodex__pts" id="rp-${c.slug}">${pts.toLocaleString()} ${PTS_LABEL[c.earnUnit] || 'pts'}/yr</div>`
+  const pts = spend ? pointsText(c, spend) : '';
+  const ptsHtml = pts
+    ? `<div class="rolodex__pts" id="rp-${c.slug}">${pts}</div>`
     : `<div class="rolodex__pts" id="rp-${c.slug}"></div>`;
   const isCompared = compareSet.has(c.slug);
   return `<div class="rolodex__card${c.isStack ? ' rolodex__card--stack' : ''}" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
     <div class="rolodex__name">${nameHtml}</div>
-    ${scoreValHTML(c.slug, score, c.welcome)}
+    ${scoreValHTML(c, score, spend)}
     ${ptsHtml}
     <div class="rolodex__detail">${c.detail}</div>
     <a href="${c.url}" class="rolodex__cta" onclick="event.stopPropagation()">${ctaLabel}</a>
@@ -990,7 +1076,7 @@ function updateScores() {
     const valEl = document.getElementById('rv-' + c.slug);
     if (valEl) {
       const s = c.score;
-      const newHTML = scoreValHTML(c.slug, s, c.welcome);
+      const newHTML = scoreValHTML(c, s, spend);
       const tmp = document.createElement('div');
       tmp.innerHTML = newHTML;
       const newEl = tmp.firstElementChild;
@@ -998,8 +1084,7 @@ function updateScores() {
     }
     const ptsEl = document.getElementById('rp-' + c.slug);
     if (ptsEl) {
-      const pts = calcPts(c, spend);
-      ptsEl.textContent = pts > 0 ? `${pts.toLocaleString()} ${PTS_LABEL[c.earnUnit] || 'pts'}/yr` : '';
+      ptsEl.textContent = pointsText(c, spend);
     }
   });
 
@@ -1202,7 +1287,7 @@ window.addEventListener('load', async () => {
     const latest = new Date(dates.sort().at(-1));
     const label = latest.toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' });
     const el = document.getElementById('data-freshness');
-    if (el) el.textContent = `Rates and earn data last updated ${label}. Always confirm terms with the issuer before applying.`;
+    if (el) el.textContent = `Rates and earn data last updated ${label}. Dollar values use conservative redemption estimates; always confirm issuer terms before applying.`;
   }
 });
 window.addEventListener('resize', () => centerCard(activeIndex));

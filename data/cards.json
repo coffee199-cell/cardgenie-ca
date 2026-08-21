@@ -39,14 +39,16 @@
         "earn_rate": 1.5,
         "earn_unit": "Aeroplan",
         "earn_program": "Aeroplan",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 80000.0,
+        "cap_period": "annual",
+        "cap_group": "td_aeroplan_bonus",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
         "card_id": 7,
         "category": "dining",
-        "earn_rate": 1.5,
+        "earn_rate": 1.0,
         "earn_unit": "Aeroplan",
         "earn_program": "Aeroplan",
         "earn_cap": null,
@@ -59,8 +61,10 @@
         "earn_rate": 1.5,
         "earn_unit": "Aeroplan",
         "earn_program": "Aeroplan",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 80000.0,
+        "cap_period": "annual",
+        "cap_group": "td_aeroplan_bonus",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -254,7 +258,7 @@
       {
         "card_id": 19,
         "category": "dining",
-        "earn_rate": 1.5,
+        "earn_rate": 1.0,
         "earn_unit": "Aeroplan",
         "earn_program": "Aeroplan",
         "earn_cap": null,
@@ -1185,8 +1189,9 @@
         "earn_rate": 3.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 15000.0,
+        "cap_period": "annual",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -1195,8 +1200,9 @@
         "earn_rate": 3.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 15000.0,
+        "cap_period": "annual",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -1205,8 +1211,9 @@
         "earn_rate": 3.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 15000.0,
+        "cap_period": "annual",
+        "overflow_rate": 1.0,
         "notes": "Pre-authorized recurring bills"
       },
       {
@@ -1370,8 +1377,9 @@
         "earn_rate": 5.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 500.0,
+        "cap_period": "monthly",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -1380,8 +1388,9 @@
         "earn_rate": 4.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 300.0,
+        "cap_period": "monthly",
+        "overflow_rate": 1.0,
         "notes": "Recurring transit bills"
       },
       {
@@ -1390,8 +1399,9 @@
         "earn_rate": 3.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 300.0,
+        "cap_period": "monthly",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -1400,8 +1410,9 @@
         "earn_rate": 2.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 500.0,
+        "cap_period": "monthly",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -1459,9 +1470,11 @@
         "earn_rate": 5.0,
         "earn_unit": "MR points",
         "earn_program": "Membership Rewards",
-        "earn_cap": 30000.0,
-        "cap_period": "annual",
-        "notes": "Canadian grocery/food spend; $6k annual cap"
+        "earn_cap": 2500.0,
+        "cap_period": "monthly",
+        "cap_group": "cobalt_food_drink",
+        "overflow_rate": 1.0,
+        "notes": "Combined Canadian food and drink cap of $2,500 monthly"
       },
       {
         "card_id": 1,
@@ -1469,8 +1482,10 @@
         "earn_rate": 5.0,
         "earn_unit": "MR points",
         "earn_program": "Membership Rewards",
-        "earn_cap": 30000.0,
-        "cap_period": "annual",
+        "earn_cap": 2500.0,
+        "cap_period": "monthly",
+        "cap_group": "cobalt_food_drink",
+        "overflow_rate": 1.0,
         "notes": "Restaurants, food delivery"
       },
       {
@@ -1479,9 +1494,11 @@
         "earn_rate": 5.0,
         "earn_unit": "MR points",
         "earn_program": "Membership Rewards",
-        "earn_cap": 30000.0,
-        "cap_period": "annual",
-        "notes": "Combined food & drink cap $30k/yr"
+        "earn_cap": 2500.0,
+        "cap_period": "monthly",
+        "cap_group": "cobalt_food_drink",
+        "overflow_rate": 1.0,
+        "notes": "Combined food and drink cap of $2,500 monthly"
       },
       {
         "card_id": 1,
@@ -1851,12 +1868,12 @@
       {
         "card_id": 10,
         "category": "travel",
-        "earn_rate": 8.0,
+        "earn_rate": 2.0,
         "earn_unit": "TD Rewards",
         "earn_program": "TD Rewards",
         "earn_cap": null,
         "cap_period": null,
-        "notes": "8 pts/$1 via Expedia for TD; 6 pts/$1 on other travel"
+        "notes": "Broad travel estimate uses the 2 pts/$1 base rate; Expedia for TD earns 8 pts/$1"
       },
       {
         "card_id": 10,
@@ -1864,19 +1881,21 @@
         "earn_rate": 6.0,
         "earn_unit": "TD Rewards",
         "earn_program": "TD Rewards",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 25000.0,
+        "cap_period": "annual",
+        "overflow_rate": 2.0,
         "notes": "6 pts/$1 on dining"
       },
       {
         "card_id": 10,
         "category": "groceries",
-        "earn_rate": 4.0,
+        "earn_rate": 6.0,
         "earn_unit": "TD Rewards",
         "earn_program": "TD Rewards",
-        "earn_cap": null,
-        "cap_period": null,
-        "notes": "4 pts/$1 on groceries"
+        "earn_cap": 25000.0,
+        "cap_period": "annual",
+        "overflow_rate": 2.0,
+        "notes": "6 pts/$1 on groceries"
       },
       {
         "card_id": 10,
@@ -1884,8 +1903,9 @@
         "earn_rate": 4.0,
         "earn_unit": "TD Rewards",
         "earn_program": "TD Rewards",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 25000.0,
+        "cap_period": "annual",
+        "overflow_rate": 2.0,
         "notes": "4 pts/$1 on recurring bills"
       },
       {
@@ -1929,17 +1949,17 @@
       {
         "card_id": 15,
         "category": "groceries",
-        "earn_rate": 6.0,
+        "earn_rate": 5.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
-        "notes": "Canadian grocery stores"
+        "notes": "Broad grocery rate; participating Sobeys-family stores earn 6 pts/$1"
       },
       {
         "card_id": 15,
         "category": "dining",
-        "earn_rate": 6.0,
+        "earn_rate": 5.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
@@ -1949,7 +1969,7 @@
       {
         "card_id": 15,
         "category": "entertainment",
-        "earn_rate": 6.0,
+        "earn_rate": 5.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
@@ -2630,6 +2650,8 @@
         "earn_program": "cash_back",
         "earn_cap": 25000.0,
         "cap_period": "annual",
+        "cap_group": "momentum_four_percent",
+        "overflow_rate": 1.0,
         "notes": "$25k cap"
       },
       {
@@ -2640,6 +2662,8 @@
         "earn_program": "cash_back",
         "earn_cap": 25000.0,
         "cap_period": "annual",
+        "cap_group": "momentum_four_percent",
+        "overflow_rate": 1.0,
         "notes": "Recurring bills $25k cap"
       },
       {
@@ -2648,8 +2672,10 @@
         "earn_rate": 2.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 25000.0,
+        "cap_period": "annual",
+        "cap_group": "momentum_two_percent",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -2658,8 +2684,10 @@
         "earn_rate": 2.0,
         "earn_unit": "cash_back_pct",
         "earn_program": "cash_back",
-        "earn_cap": null,
-        "cap_period": null,
+        "earn_cap": 25000.0,
+        "cap_period": "annual",
+        "cap_group": "momentum_two_percent",
+        "overflow_rate": 1.0,
         "notes": null
       },
       {
@@ -2949,17 +2977,17 @@
       {
         "card_id": 16,
         "category": "groceries",
-        "earn_rate": 3.0,
+        "earn_rate": 2.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
-        "notes": null
+        "notes": "Broad grocery rate; participating Sobeys-family stores earn 3 pts/$1"
       },
       {
         "card_id": 16,
         "category": "dining",
-        "earn_rate": 3.0,
+        "earn_rate": 2.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
@@ -2969,7 +2997,7 @@
       {
         "card_id": 16,
         "category": "entertainment",
-        "earn_rate": 3.0,
+        "earn_rate": 2.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
@@ -3383,12 +3411,12 @@
       {
         "card_id": 17,
         "category": "groceries",
-        "earn_rate": 3.0,
+        "earn_rate": 1.0,
         "earn_unit": "Scene+ points",
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
-        "notes": "3x at Empire/Sobeys banner stores"
+        "notes": "Broad rate; participating grocery partners earn 2 pts/$1"
       },
       {
         "card_id": 17,
@@ -3580,7 +3608,7 @@
       {
         "card_id": 25,
         "category": "travel",
-        "earn_rate": 5.0,
+        "earn_rate": 1.0,
         "earn_unit": "\u00c0 la carte",
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
@@ -3590,7 +3618,7 @@
       {
         "card_id": 25,
         "category": "groceries",
-        "earn_rate": 3.0,
+        "earn_rate": 2.0,
         "earn_unit": "\u00c0 la carte",
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
@@ -3600,7 +3628,7 @@
       {
         "card_id": 25,
         "category": "restaurants",
-        "earn_rate": 3.0,
+        "earn_rate": 2.0,
         "earn_unit": "\u00c0 la carte",
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
@@ -3812,7 +3840,7 @@
     "min_income_personal": 80000.0,
     "min_income_household": null,
     "credit_score_required": null,
-    "source_url": "https://www.pcfinancial.ca/en/credit-cards/pcf-world-elite-mastercard/",
+    "source_url": "https://www.pcfinancial.ca/en/credit-cards/world-elite/",
     "source_name": "seed",
     "last_scraped": "2026-08-17T18:16:46Z",
     "first_seen": "2026-08-17T18:16:46Z",
@@ -3826,22 +3854,22 @@
       {
         "card_id": 29,
         "category": "loblaws_stores",
-        "earn_rate": 45.0,
-        "earn_unit": "PC Optimum",
-        "earn_program": "PC Optimum",
-        "earn_cap": null,
-        "cap_period": null,
-        "notes": "45 pts/$1 at Loblaws banner stores"
-      },
-      {
-        "card_id": 29,
-        "category": "shoppers",
         "earn_rate": 30.0,
         "earn_unit": "PC Optimum",
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
-        "notes": "30 pts/$1 at Shoppers Drug Mart"
+        "notes": "30 pts/$1 at participating Loblaw banner stores"
+      },
+      {
+        "card_id": 29,
+        "category": "shoppers",
+        "earn_rate": 45.0,
+        "earn_unit": "PC Optimum",
+        "earn_program": "PC Optimum",
+        "earn_cap": null,
+        "cap_period": null,
+        "notes": "45 total pts/$1 at Shoppers Drug Mart including base member points"
       },
       {
         "card_id": 29,
@@ -3856,12 +3884,12 @@
       {
         "card_id": 29,
         "category": "travel",
-        "earn_rate": 30.0,
+        "earn_rate": 10.0,
         "earn_unit": "PC Optimum",
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
-        "notes": "30 pts/$1 at PC Travel"
+        "notes": "10 pts/$1 broad purchase rate"
       },
       {
         "card_id": 29,
