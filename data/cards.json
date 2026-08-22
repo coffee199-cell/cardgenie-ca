@@ -1214,7 +1214,18 @@
         "notes": "1.25 pts/$1 on all eligible purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 6,
+      "bonus_type": "points",
+      "bonus_value": 80000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 800.0,
+      "spend_requirement": 15000.0,
+      "spend_window_months": 3,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "80,000 points after $15,000 in net purchases in the first 3 months. The advertised additional 40,000 points for a purchase in months 15-17 are excluded because they are not attainable in the first year."
+    },
     "insurance": []
   },
   {
@@ -1353,7 +1364,18 @@
         "notes": "1% on all other purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 40,
+      "bonus_type": "cash_back",
+      "bonus_value": 50.0,
+      "bonus_unit": "CAD",
+      "estimated_cad": 50.0,
+      "spend_requirement": 1000.0,
+      "spend_window_months": 3,
+      "first_year_value": null,
+      "expiry_date": "2026-09-09",
+      "conditions": "5% bonus cash back on up to $1,000 in net purchases during the first 3 months, for a maximum $50 welcome bonus; regular cash back earned on the same purchases is excluded from the bonus value."
+    },
     "insurance": []
   },
   {
@@ -1417,7 +1439,18 @@
         "notes": "0.5% on all other purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 13,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "Card discontinued; RBC states the RBC Royal Bank Visa Cash Back product has not been offered since June 2017."
+    },
     "insurance": []
   },
   {
@@ -1947,7 +1980,18 @@
         "notes": "1 pt/$1 everywhere else"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 23,
+      "bonus_type": "points",
+      "bonus_value": 25000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 175.0,
+      "spend_requirement": 1500.0,
+      "spend_window_months": 3,
+      "first_year_value": null,
+      "expiry_date": "2026-10-31",
+      "conditions": "20,000 welcome points after $1,500 in net purchases in the first 3 months, plus up to 5,000 first-year points: 2,500 for paying the full balance on time for 12 consecutive months and 2,500 for redeeming at least 12,000 points toward the statement balance during the year."
+    },
     "insurance": []
   },
   {
@@ -2035,7 +2079,18 @@
         "notes": "2 pts/$1 everywhere else"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 10,
+      "bonus_type": "points",
+      "bonus_value": 146000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 730.0,
+      "spend_requirement": 7500.0,
+      "spend_window_months": 6,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "20,000 points after the first purchase plus 126,000 points after $7,500 in purchases within 180 days of account opening."
+    },
     "insurance": []
   },
   {
@@ -2585,7 +2640,7 @@
       "spend_window_months": 6,
       "first_year_value": null,
       "expiry_date": "2026-11-04",
-      "conditions": "7,000 on approval + 14,000 after $1,500 spend in 6mo + 7,000 at first anniversary; est. at 0.8cpp (ION+ base Avion redemption)"
+      "conditions": "7,000 on approval + 14,000 after $1,500 spend in 6mo + 7,000 at first anniversary"
     },
     "insurance": []
   },
@@ -2638,7 +2693,18 @@
         "notes": "10 pts/$1 everywhere else"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 30,
+      "bonus_type": "points",
+      "bonus_value": 50000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 50.0,
+      "spend_requirement": 100.0,
+      "spend_window_months": 2,
+      "first_year_value": null,
+      "expiry_date": "2026-12-31",
+      "conditions": "50,000 PC Optimum points after at least $100 in total qualifying purchases within 60 days at participating Loblaw-banner grocery stores, The Mobile Shop, Joe Fresh, Shoppers Drug Mart/Pharmaprix, Esso or Mobil in Canada."
+    },
     "insurance": []
   },
   {
@@ -2690,7 +2756,18 @@
         "notes": "1% on all other purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 34,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "No public welcome offer as of 2026-08-21; current issuer benefits are ongoing earn/redemption benefits, and current Canadian comparison data lists no issuer welcome bonus."
+    },
     "insurance": []
   },
   {
@@ -2754,7 +2831,18 @@
         "notes": "1% on all other eligible purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 35,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "Card discontinued for new applicants; Rogers Bank states it is no longer accepting new applications for the Fido Mastercard."
+    },
     "insurance": []
   },
   {
@@ -2794,7 +2882,18 @@
         "notes": "0.5% guaranteed everywhere; up to 5% at Neo partner merchants"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 38,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "No public welcome offer as of 2026-08-21; the issuer's public page lists regular cash-back rates only."
+    },
     "insurance": []
   },
   {
@@ -3054,7 +3153,18 @@
         "notes": null
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 31,
+      "bonus_type": "cash_back",
+      "bonus_value": 100.0,
+      "bonus_unit": "CAD",
+      "estimated_cad": 100.0,
+      "spend_requirement": 1000.0,
+      "spend_window_months": 2,
+      "first_year_value": null,
+      "expiry_date": "2026-09-30",
+      "conditions": "10% bonus cash back on up to $1,000 in net purchases posted during the first 60 days after activation, for a maximum $100 bonus; activate within 45 days of approval."
+    },
     "insurance": []
   },
   {
@@ -3142,7 +3252,18 @@
         "notes": "1.5% on all other purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 27,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "No public welcome offer as of 2026-08-21; the public card page lists ongoing earn rates and benefits only."
+    },
     "insurance": []
   },
   {
@@ -3598,7 +3719,18 @@
         "notes": "1 pt/$1 everywhere else"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 26,
+      "bonus_type": "points",
+      "bonus_value": 35000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 350.0,
+      "spend_requirement": 10000.0,
+      "spend_window_months": 12,
+      "first_year_value": null,
+      "expiry_date": "2026-11-04",
+      "conditions": "10,000 points for keeping optional credit-card payment insurance active for at least 3 months, 10,000 after $2,500 in net purchases in 3 months, and 15,000 after $10,000 in net purchases in 12 months."
+    },
     "insurance": []
   },
   {
@@ -4071,7 +4203,18 @@
         "notes": "1.5% effective on all other (3 HSBC pts/$1)"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 28,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "Card discontinued for new applicants following RBC's acquisition of HSBC Bank Canada and the March 2024 client migration."
+    },
     "insurance": []
   },
   {
@@ -4159,7 +4302,18 @@
         "notes": "10 pts/$1 everywhere else"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 29,
+      "bonus_type": "points",
+      "bonus_value": 50000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 50.0,
+      "spend_requirement": 100.0,
+      "spend_window_months": 2,
+      "first_year_value": null,
+      "expiry_date": "2026-12-31",
+      "conditions": "50,000 PC Optimum points after at least $100 in total qualifying purchases within 60 days at participating Loblaw-banner grocery stores, The Mobile Shop, Joe Fresh, Shoppers Drug Mart/Pharmaprix, Esso or Mobil in Canada. PC Financial determines which no-fee PC Mastercard tier an applicant receives."
+    },
     "insurance": []
   },
   {
@@ -4211,7 +4365,18 @@
         "notes": null
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 33,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "No public welcome offer as of 2026-08-21; current Canadian comparison data lists no issuer welcome bonus."
+    },
     "insurance": []
   },
   {
@@ -4251,7 +4416,18 @@
         "notes": "1.5% base cash back; higher at Brim partner merchants"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 36,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "No conventional public welcome offer as of 2026-08-21; Brim's merchant-specific first-use offers cannot be quantified before card membership."
+    },
     "insurance": []
   },
   {
@@ -4291,7 +4467,18 @@
         "notes": "1% guaranteed everywhere; higher at Neo partner merchants"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 39,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "No public welcome offer as of 2026-08-21; the issuer's public page lists regular cash-back rates and card benefits only."
+    },
     "insurance": []
   },
   {
@@ -4367,7 +4554,18 @@
         "notes": "0.5% on all other purchases"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 32,
+      "bonus_type": "cash_back",
+      "bonus_value": 100.0,
+      "bonus_unit": "CAD",
+      "estimated_cad": 100.0,
+      "spend_requirement": 1500.0,
+      "spend_window_months": 3,
+      "first_year_value": null,
+      "expiry_date": "2026-09-30",
+      "conditions": "$100 Money-Back bonus after at least $1,500 in net purchases posted during the first 90 days after activation; activate within 45 days of approval."
+    },
     "insurance": []
   },
   {
@@ -4407,7 +4605,18 @@
         "notes": "1% base cash back; higher at Brim partner merchants"
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 37,
+      "bonus_type": "none",
+      "bonus_value": null,
+      "bonus_unit": null,
+      "estimated_cad": null,
+      "spend_requirement": null,
+      "spend_window_months": null,
+      "first_year_value": null,
+      "expiry_date": null,
+      "conditions": "Card not offered to new applicants as of 2026-08-21; Brim's public signup identifies only the Brim Mastercard and Brim World Elite Mastercard."
+    },
     "insurance": []
   }
 ]
