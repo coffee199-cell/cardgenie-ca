@@ -2002,7 +2002,7 @@
     "network": "Visa",
     "card_tier": null,
     "annual_fee": 139.0,
-    "annual_fee_waived_first_year": 0,
+    "annual_fee_waived_first_year": 1,
     "supplementary_card_fee": null,
     "min_income_personal": 60000.0,
     "min_income_household": null,
@@ -2089,7 +2089,7 @@
       "spend_window_months": 6,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": "20,000 points after the first purchase plus 126,000 points after $7,500 in purchases within 180 days of account opening."
+      "conditions": "20,000 points after the first purchase plus 126,000 points after $7,500 in purchases within 180 days of account opening. First-year annual fee rebated."
     },
     "insurance": []
   },
