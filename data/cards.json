@@ -31,6 +31,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Air Canada purchases"
       },
       {
@@ -53,6 +55,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -75,6 +79,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -85,6 +91,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Bonus pts at Aeroplan partners"
       }
     ],
@@ -243,6 +251,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -253,6 +263,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -263,6 +275,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -273,6 +287,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -283,6 +299,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -441,6 +459,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -451,6 +471,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -461,6 +483,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -471,6 +495,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -481,6 +507,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -639,6 +667,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -649,6 +679,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -659,6 +691,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -669,6 +703,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -679,6 +715,8 @@
         "earn_program": "Aeroplan",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -728,6 +766,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Eligible travel purchases"
       },
       {
@@ -738,6 +778,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -748,6 +790,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -758,6 +802,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -768,6 +814,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -926,6 +974,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "All travel spend"
       },
       {
@@ -936,6 +986,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -1094,6 +1146,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -1104,6 +1158,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -1153,6 +1209,8 @@
         "earn_program": "American Express Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1.25 pts/$1 on all eligible purchases"
       }
     ],
@@ -1191,9 +1249,9 @@
         "earn_program": "cash_back",
         "earn_cap": 15000.0,
         "cap_period": "annual",
+        "cap_group": "td_cashback_bonus",
         "overflow_rate": 1.0,
-        "notes": null,
-        "cap_group": "td_cashback_bonus"
+        "notes": null
       },
       {
         "card_id": 9,
@@ -1203,9 +1261,9 @@
         "earn_program": "cash_back",
         "earn_cap": 15000.0,
         "cap_period": "annual",
+        "cap_group": "td_cashback_bonus",
         "overflow_rate": 1.0,
-        "notes": null,
-        "cap_group": "td_cashback_bonus"
+        "notes": null
       },
       {
         "card_id": 9,
@@ -1215,9 +1273,9 @@
         "earn_program": "cash_back",
         "earn_cap": 15000.0,
         "cap_period": "annual",
+        "cap_group": "td_cashback_bonus",
         "overflow_rate": 1.0,
-        "notes": "Pre-authorized recurring bills",
-        "cap_group": "td_cashback_bonus"
+        "notes": "Pre-authorized recurring bills"
       },
       {
         "card_id": 9,
@@ -1227,6 +1285,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -1276,6 +1336,8 @@
         "earn_program": "RBC Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% at eligible grocery stores"
       },
       {
@@ -1286,6 +1348,8 @@
         "earn_program": "RBC Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% on all other purchases"
       }
     ],
@@ -1324,6 +1388,8 @@
         "earn_program": "RBC Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% at eligible grocery stores"
       },
       {
@@ -1334,6 +1400,8 @@
         "earn_program": "RBC Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% on gas"
       },
       {
@@ -1344,6 +1412,8 @@
         "earn_program": "RBC Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "0.5% on all other purchases"
       }
     ],
@@ -1382,6 +1452,7 @@
         "earn_program": "cash_back",
         "earn_cap": 500.0,
         "cap_period": "monthly",
+        "cap_group": null,
         "overflow_rate": 1.0,
         "notes": null
       },
@@ -1393,6 +1464,7 @@
         "earn_program": "cash_back",
         "earn_cap": 300.0,
         "cap_period": "monthly",
+        "cap_group": null,
         "overflow_rate": 1.0,
         "notes": "Recurring transit bills"
       },
@@ -1404,6 +1476,7 @@
         "earn_program": "cash_back",
         "earn_cap": 300.0,
         "cap_period": "monthly",
+        "cap_group": null,
         "overflow_rate": 1.0,
         "notes": null
       },
@@ -1415,6 +1488,7 @@
         "earn_program": "cash_back",
         "earn_cap": 500.0,
         "cap_period": "monthly",
+        "cap_group": null,
         "overflow_rate": 1.0,
         "notes": null
       },
@@ -1426,6 +1500,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -1511,6 +1587,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Eligible streaming subscriptions"
       },
       {
@@ -1521,6 +1599,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Taxis, rideshare, transit"
       },
       {
@@ -1531,6 +1611,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Booked through Amex Travel"
       },
       {
@@ -1541,6 +1623,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -1699,6 +1783,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -1709,6 +1795,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -1719,6 +1807,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "EV charging, transit, rideshare"
       },
       {
@@ -1729,6 +1819,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -1739,6 +1831,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -1749,6 +1843,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -1798,6 +1894,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "5 pts/$1 on groceries"
       },
       {
@@ -1808,6 +1906,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "5 pts/$1 on dining & food delivery"
       },
       {
@@ -1818,6 +1918,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "5 pts/$1 on recurring bills"
       },
       {
@@ -1828,6 +1930,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "5 pts/$1 on transit & rideshare"
       },
       {
@@ -1838,6 +1942,8 @@
         "earn_program": "BMO Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1 pt/$1 everywhere else"
       }
     ],
@@ -1876,6 +1982,8 @@
         "earn_program": "TD Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Broad travel estimate uses the 2 pts/$1 base rate; Expedia for TD earns 8 pts/$1"
       },
       {
@@ -1886,6 +1994,7 @@
         "earn_program": "TD Rewards",
         "earn_cap": 25000.0,
         "cap_period": "annual",
+        "cap_group": null,
         "overflow_rate": 2.0,
         "notes": "6 pts/$1 on dining"
       },
@@ -1897,6 +2006,7 @@
         "earn_program": "TD Rewards",
         "earn_cap": 25000.0,
         "cap_period": "annual",
+        "cap_group": null,
         "overflow_rate": 2.0,
         "notes": "6 pts/$1 on groceries"
       },
@@ -1908,6 +2018,7 @@
         "earn_program": "TD Rewards",
         "earn_cap": 25000.0,
         "cap_period": "annual",
+        "cap_group": null,
         "overflow_rate": 2.0,
         "notes": "4 pts/$1 on recurring bills"
       },
@@ -1919,6 +2030,8 @@
         "earn_program": "TD Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2 pts/$1 everywhere else"
       }
     ],
@@ -1957,6 +2070,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Broad grocery rate; participating Sobeys-family stores earn 6 pts/$1"
       },
       {
@@ -1967,6 +2082,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Restaurants, food delivery"
       },
       {
@@ -1977,6 +2094,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Movies, live events"
       },
       {
@@ -1987,6 +2106,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -1997,6 +2118,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2007,6 +2130,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2017,6 +2142,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -2175,6 +2302,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Flights, hotels, car rentals"
       },
       {
@@ -2185,6 +2314,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2195,6 +2326,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2205,6 +2338,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2215,6 +2350,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -2373,6 +2510,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2383,6 +2522,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2393,6 +2534,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2403,6 +2546,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2413,6 +2558,8 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -2423,10 +2570,23 @@
         "earn_program": "RBC Avion",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
-    "welcome_bonus": null,
+    "welcome_bonus": {
+      "card_id": 14,
+      "bonus_type": "points",
+      "bonus_value": 28000.0,
+      "bonus_unit": "points",
+      "estimated_cad": 224.0,
+      "spend_requirement": 1500.0,
+      "spend_window_months": 6,
+      "first_year_value": null,
+      "expiry_date": "2026-11-04",
+      "conditions": "7,000 on approval + 14,000 after $1,500 spend in 6mo + 7,000 at first anniversary; est. at 0.8cpp (ION+ base Avion redemption)"
+    },
     "insurance": []
   },
   {
@@ -2461,6 +2621,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "25 pts/$1 at Loblaw banner stores"
       },
       {
@@ -2471,6 +2633,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "10 pts/$1 everywhere else"
       }
     ],
@@ -2509,6 +2673,8 @@
         "earn_program": "Rogers Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on Rogers/Fido/Shaw bills"
       },
       {
@@ -2519,6 +2685,8 @@
         "earn_program": "Rogers Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% on all other purchases"
       }
     ],
@@ -2557,6 +2725,8 @@
         "earn_program": "Fido Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1.5% on eligible recurring payments"
       },
       {
@@ -2567,6 +2737,8 @@
         "earn_program": "Fido Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1.5% on streaming subscriptions"
       },
       {
@@ -2577,6 +2749,8 @@
         "earn_program": "Fido Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% on all other eligible purchases"
       }
     ],
@@ -2615,6 +2789,8 @@
         "earn_program": "Neo Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "0.5% guaranteed everywhere; up to 5% at Neo partner merchants"
       }
     ],
@@ -2701,6 +2877,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -2859,6 +3037,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Choose 2 categories at 2%"
       },
       {
@@ -2869,6 +3049,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -2907,6 +3089,8 @@
         "earn_program": "Desjardins BONUSDOLLARS",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "3% on grocery and pharmacy"
       },
       {
@@ -2917,6 +3101,8 @@
         "earn_program": "Desjardins BONUSDOLLARS",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on restaurant purchases"
       },
       {
@@ -2927,6 +3113,8 @@
         "earn_program": "Desjardins BONUSDOLLARS",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on gas"
       },
       {
@@ -2937,6 +3125,8 @@
         "earn_program": "Desjardins BONUSDOLLARS",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on travel"
       },
       {
@@ -2947,6 +3137,8 @@
         "earn_program": "Desjardins BONUSDOLLARS",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1.5% on all other purchases"
       }
     ],
@@ -2985,6 +3177,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Broad grocery rate; participating Sobeys-family stores earn 3 pts/$1"
       },
       {
@@ -2995,6 +3189,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3005,6 +3201,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3015,6 +3213,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3025,6 +3225,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -3183,6 +3385,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Eligible restaurants"
       },
       {
@@ -3193,6 +3397,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Amex Travel bookings"
       },
       {
@@ -3203,6 +3409,8 @@
         "earn_program": "Membership Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -3361,6 +3569,8 @@
         "earn_program": "National Bank \u00c0 la carte",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2 pts/$1 on groceries"
       },
       {
@@ -3371,6 +3581,8 @@
         "earn_program": "National Bank \u00c0 la carte",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2 pts/$1 on gas"
       },
       {
@@ -3381,6 +3593,8 @@
         "earn_program": "National Bank \u00c0 la carte",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1 pt/$1 everywhere else"
       }
     ],
@@ -3419,6 +3633,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "Broad rate; participating grocery partners earn 2 pts/$1"
       },
       {
@@ -3429,6 +3645,8 @@
         "earn_program": "Scene+",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1x everywhere else"
       }
     ],
@@ -3478,6 +3696,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3488,6 +3708,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3498,6 +3720,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -3547,6 +3771,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3557,6 +3783,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3567,6 +3795,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -3616,6 +3846,8 @@
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "\u00c0 la carte Travel purchases"
       },
       {
@@ -3626,6 +3858,8 @@
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3636,6 +3870,8 @@
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3646,6 +3882,8 @@
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       },
       {
@@ -3656,6 +3894,8 @@
         "earn_program": "\u00c0 la carte Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -3814,6 +4054,8 @@
         "earn_program": "HSBC Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "3% effective on travel (6 HSBC pts/$1 at ~0.5cpp)"
       },
       {
@@ -3824,6 +4066,8 @@
         "earn_program": "HSBC Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1.5% effective on all other (3 HSBC pts/$1)"
       }
     ],
@@ -3843,7 +4087,7 @@
     "min_income_personal": 80000.0,
     "min_income_household": null,
     "credit_score_required": null,
-    "source_url": "https://www.pcfinancial.ca/en/credit-cards/world-elite/",
+    "source_url": "https://www.pcfinancial.ca/en/credit-cards/pcf-world-elite-mastercard/",
     "source_name": "seed",
     "last_scraped": "2026-08-17T18:16:46Z",
     "first_seen": "2026-08-17T18:16:46Z",
@@ -3862,6 +4106,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "30 pts/$1 at participating Loblaw banner stores"
       },
       {
@@ -3872,6 +4118,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "45 total pts/$1 at Shoppers Drug Mart including base member points"
       },
       {
@@ -3882,6 +4130,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "30 pts/L at Esso/Mobil"
       },
       {
@@ -3892,6 +4142,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "10 pts/$1 broad purchase rate"
       },
       {
@@ -3902,6 +4154,8 @@
         "earn_program": "PC Optimum",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "10 pts/$1 everywhere else"
       }
     ],
@@ -3940,6 +4194,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "US dollar purchases (offsets FX)"
       },
       {
@@ -3950,6 +4206,8 @@
         "earn_program": "cash_back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": null
       }
     ],
@@ -3988,6 +4246,8 @@
         "earn_program": "Brim Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1.5% base cash back; higher at Brim partner merchants"
       }
     ],
@@ -4026,6 +4286,8 @@
         "earn_program": "Neo Cash Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% guaranteed everywhere; higher at Neo partner merchants"
       }
     ],
@@ -4064,6 +4326,8 @@
         "earn_program": "Tangerine Money-Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on chosen money-back category"
       },
       {
@@ -4074,6 +4338,8 @@
         "earn_program": "Tangerine Money-Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on chosen money-back category"
       },
       {
@@ -4084,6 +4350,8 @@
         "earn_program": "Tangerine Money-Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "2% on chosen money-back category"
       },
       {
@@ -4094,6 +4362,8 @@
         "earn_program": "Tangerine Money-Back",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "0.5% on all other purchases"
       }
     ],
@@ -4132,6 +4402,8 @@
         "earn_program": "Brim Rewards",
         "earn_cap": null,
         "cap_period": null,
+        "cap_group": null,
+        "overflow_rate": null,
         "notes": "1% base cash back; higher at Brim partner merchants"
       }
     ],
