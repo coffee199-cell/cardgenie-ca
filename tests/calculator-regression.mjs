@@ -46,6 +46,17 @@ closeTo(
   'Scotia Momentum shared 4% cap is applied',
 );
 
+// groceries+gas+bills share ONE $15k/yr 3% cap, not three separate caps.
+// 60k combined spend => 15k@3% + 45k@1% = $900 reward (buggy per-category = $1500).
+closeTo(
+  context.calculator.rewardBreakdown(
+    cards.get('td-cash-back-visa-infinite'),
+    spend({ groceries:2000, gas:1000, bills:2000 }),
+  ).value,
+  900,
+  'TD Cash Back groceries/gas/bills share one combined 3% cap',
+);
+
 const cobalt = context.calculator.rewardBreakdown(
   cards.get('american-express-cobalt-card'),
   spend({ groceries:2000, dining:1000 }),

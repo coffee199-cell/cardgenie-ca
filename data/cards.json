@@ -1192,7 +1192,8 @@
         "earn_cap": 15000.0,
         "cap_period": "annual",
         "overflow_rate": 1.0,
-        "notes": null
+        "notes": null,
+        "cap_group": "td_cashback_bonus"
       },
       {
         "card_id": 9,
@@ -1203,7 +1204,8 @@
         "earn_cap": 15000.0,
         "cap_period": "annual",
         "overflow_rate": 1.0,
-        "notes": null
+        "notes": null,
+        "cap_group": "td_cashback_bonus"
       },
       {
         "card_id": 9,
@@ -1214,7 +1216,8 @@
         "earn_cap": 15000.0,
         "cap_period": "annual",
         "overflow_rate": 1.0,
-        "notes": "Pre-authorized recurring bills"
+        "notes": "Pre-authorized recurring bills",
+        "cap_group": "td_cashback_bonus"
       },
       {
         "card_id": 9,

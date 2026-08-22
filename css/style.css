@@ -1023,6 +1023,11 @@ input[type="range"]::-moz-range-track {
   padding: 28px 0 8px;
   cursor: grab;
   user-select: none;
+  /* Perspective lives on the fixed viewport, NOT the moving track, so the
+     vanishing point stays locked to the viewport centre at any scroll offset. */
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+  touch-action: pan-y;
 }
 
 .rolodex:active { cursor: grabbing; }
@@ -1030,8 +1035,7 @@ input[type="range"]::-moz-range-track {
 .rolodex__track {
   display: flex;
   gap: 16px;
-  perspective: 1400px;
-  perspective-origin: 50% 40%;
+  transform-style: preserve-3d; /* pass the viewport's perspective to the cards */
   transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }

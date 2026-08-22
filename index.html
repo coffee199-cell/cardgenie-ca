@@ -521,7 +521,8 @@
     </div><!-- /.container -->
 
     <!-- Rolodex sits outside .container so it spans the full viewport width -->
-    <div class="rolodex" id="rolodex">
+    <div class="rolodex" id="rolodex" tabindex="0" role="listbox"
+         aria-label="Credit card matches, ranked best-first. Use arrow keys to browse.">
       <div class="rolodex__track" id="rolodex-track"></div>
     </div>
     <p class="rolodex__hint">&#8592; scroll to compare &nbsp;&#183;&nbsp; best match centred automatically</p>
@@ -779,7 +780,7 @@ function singleCardRewards(card, spend) {
 }
 
 function stackRewards(stack, spend) {
-  let best = { value:-Infinity, unitsByProgram:{} };
+  let best = { value:-Infinity, unitsByProgram:{}, split:null };
   // Route each broad spending category to one card. This preserves each card's
   // own caps and valuation instead of merging two reward currencies or rates.
   for (let mask = 0; mask < (1 << CATS.length); mask++) {
@@ -794,7 +795,7 @@ function stackRewards(stack, spend) {
     const unitsByProgram = {};
     for (const part of parts) for (const [unit, amount] of Object.entries(part.unitsByProgram))
       unitsByProgram[unit] = (unitsByProgram[unit] || 0) + amount;
-    best = { value, unitsByProgram };
+    best = { value, unitsByProgram, split };
   }
   return best;
 }
@@ -814,8 +815,15 @@ function qualifiesForWelcome(card, spend) {
 }
 
 function welcomeValue(card, spend) {
-  if (card.isStack) return card.cards.reduce((sum, item) =>
-    sum + (qualifiesForWelcome(item, spend) ? item.welcome : 0), 0);
+  if (card.isStack) {
+    // Qualify each card against the spend actually routed to it (same optimal
+    // split the reward engine uses), not the household total — otherwise both
+    // welcome bonuses can qualify on spend only one card ever sees.
+    const split = stackRewards(card, spend).split
+      || card.cards.map(() => spend);
+    return card.cards.reduce((sum, item, i) =>
+      sum + (qualifiesForWelcome(item, split[i]) ? item.welcome : 0), 0);
+  }
   return qualifiesForWelcome(card, spend) ? card.welcome : 0;
 }
 
@@ -984,7 +992,7 @@ function cardHTML(c, i, spend) {
     ? `<div class="rolodex__pts" id="rp-${c.slug}">${pts}</div>`
     : `<div class="rolodex__pts" id="rp-${c.slug}"></div>`;
   const isCompared = compareSet.has(c.slug);
-  return `<div class="rolodex__card${c.isStack ? ' rolodex__card--stack' : ''}" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" onclick="selectCard(${i})">
+  return `<div class="rolodex__card${c.isStack ? ' rolodex__card--stack' : ''}" id="rc-${c.slug}" data-slug="${c.slug}" data-index="${i}" role="option" aria-selected="${i === activeIndex}" onclick="selectCard(${i})">
     <div class="rolodex__tag" style="background:${c.tc}">${c.tag}</div>
     <div class="rolodex__issuer">${c.issuer}</div>
     <div class="rolodex__name">${nameHtml}</div>
@@ -1106,6 +1114,7 @@ function applyClasses() {
     el.classList.toggle('active',      isActive);
     el.classList.toggle('adjacent',    isAdj);
     el.classList.toggle('hidden-card', !inView);
+    el.setAttribute('aria-selected', isActive);
     if (inView) {
       // Fan: cards curve away from centre — clamped ±40°
       const rotY  = Math.max(Math.min(dist * 20, 40), -40);
@@ -1256,21 +1265,40 @@ document.getElementById('hidden-panel').addEventListener('click', e => {
   }
 });
 
-// ── Drag / swipe ───────────────────────────────────────────────────────────
+// ── Drag / swipe / wheel / keyboard ─────────────────────────────────────────
 (function () {
   const rolodex = document.getElementById('rolodex');
+  const total = () => document.querySelectorAll('.rolodex__card').length;
+  const step  = dir => selectCard(dir > 0
+    ? Math.min(activeIndex + 1, total() - 1)
+    : Math.max(activeIndex - 1, 0));
+
   let startX = 0, live = false;
   rolodex.addEventListener('pointerdown', e => { startX = e.clientX; live = true; });
   rolodex.addEventListener('pointermove', e => {
     if (!live) return;
     const dx = e.clientX - startX;
-    if (Math.abs(dx) > 36) {
-      live = false;
-      const total = document.querySelectorAll('.rolodex__card').length;
-      selectCard(dx < 0 ? Math.min(activeIndex + 1, total - 1) : Math.max(activeIndex - 1, 0));
-    }
+    if (Math.abs(dx) > 36) { live = false; step(dx < 0 ? 1 : -1); }
   });
   rolodex.addEventListener('pointerup', () => { live = false; });
+
+  // Horizontal wheel / trackpad scroll (the hint promises "scroll to compare").
+  let wheelLock = false;
+  rolodex.addEventListener('wheel', e => {
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (Math.abs(delta) < 8) return;
+    e.preventDefault();
+    if (wheelLock) return;
+    wheelLock = true;
+    step(delta > 0 ? 1 : -1);
+    setTimeout(() => { wheelLock = false; }, 220);
+  }, { passive: false });
+
+  // Keyboard: arrow keys move focus through the deck.
+  rolodex.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  });
 })();
 
 // ── Init ───────────────────────────────────────────────────────────────────
