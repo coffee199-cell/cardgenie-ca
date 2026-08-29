@@ -305,6 +305,10 @@ img {
   font-size: 0.72rem;
   color: var(--color-text-muted);
   margin: 6px 0 14px;
+  /* small muted type directly over the gold hero artwork needs a backing */
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 6px;
+  padding: 6px 10px;
 }
 
 .calc__grid {
@@ -700,7 +704,7 @@ input[type="range"]::-moz-range-track {
 
 /* ===== Page intro (category pages) ===== */
 .page-intro {
-  background: transparent;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.82));
   padding: 44px 0 36px;
   border-bottom: 1px solid var(--color-border);
 }
@@ -721,14 +725,31 @@ input[type="range"]::-moz-range-track {
 }
 
 /* ===== Editorial content and collection hubs ===== */
-.editorial {
+/* Long-form text needs a readable surface: the fixed genie artwork behind the
+   page is high-contrast gold and makes running body copy hard to read. A soft
+   translucent panel keeps the artwork visible around the column without
+   competing with the text sitting on top of it. */
+.editorial,
+.content-body {
   max-width: 860px;
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(61, 31, 138, 0.07);
+  border-radius: 14px;
+  padding: 38px 44px 34px;
+  box-shadow: 0 2px 20px rgba(61, 31, 138, 0.06);
 }
 
 .editorial > p,
 .editorial li {
   color: var(--color-text-muted);
+}
+
+.editorial > h2:first-child,
+.content-body > h2:first-child {
+  margin-top: 0;
 }
 
 .editorial > p {
@@ -1406,10 +1427,6 @@ input[type="range"]::-moz-range-track {
 }
 
 /* ===== Comparison pages ===== */
-.content-body {
-  max-width: 800px;
-}
-
 .content-body p {
   margin-bottom: 16px;
   color: var(--color-text);
@@ -1553,6 +1570,11 @@ input[type="range"]::-moz-range-track {
   .hero__layout {
     flex-direction: column-reverse;
     gap: 24px;
+    /* The base rule sets align-items: flex-start for the two-column desktop
+       layout. Once this flips to a column the cross axis is horizontal, so
+       flex-start sized .hero__left to max-content and pushed the hero wider
+       than its container, where .hero { overflow: hidden } clipped it. */
+    align-items: stretch;
   }
 
   .hero__art {
@@ -1579,12 +1601,45 @@ input[type="range"]::-moz-range-track {
     margin-left: 0;
   }
 
+  /* minmax(0, 1fr) rather than 1fr: an auto minimum resolves to min-content,
+     which the labelled slider fields cannot honour on a narrow screen. That
+     forced .calc wider than the viewport, and .hero { overflow: hidden }
+     clipped the hero rather than scrolling it. */
   .calc__grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .calc {
+    padding: 24px 18px;
+  }
+
+  /* Two side-by-side option columns do not fit once the calculator is the
+     full width of a phone; stack them and drop the vertical rule. */
+  .calc-options {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .calc-options__col--right {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    border-top: 1px solid var(--color-border);
+    padding-top: 14px;
+  }
+
+  .stack-toggle {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .stack-toggle__hint {
+    flex: 1 1 100%;
+    min-width: 0;
   }
 
   .cat-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .steps {
@@ -1614,9 +1669,19 @@ input[type="range"]::-moz-range-track {
     font-size: 1.35rem;
   }
 
+  .editorial,
+  .content-body {
+    padding: 26px 20px 22px;
+    border-radius: 10px;
+  }
+
   .nav__inner {
     flex-wrap: wrap;
-    row-gap: 10px;
+    row-gap: 8px;
+    height: auto;
+    min-height: 62px;
+    padding-top: 8px;
+    padding-bottom: 10px;
   }
 
   .nav__links {
@@ -1628,7 +1693,7 @@ input[type="range"]::-moz-range-track {
 
 @media (max-width: 480px) {
   .calc__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .nav__links {
@@ -1642,7 +1707,7 @@ input[type="range"]::-moz-range-track {
   }
 
   .cat-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero__headline {
