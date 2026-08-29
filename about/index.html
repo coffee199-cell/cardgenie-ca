@@ -39,15 +39,37 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About CardGenie",
-    "url": "https://cardgenie.ca/about/",
-    "description": "CardGenie is a Canadian credit card comparison tool that tracks 40+ cards in a live database, updated daily. We use a spending calculator to model actual rewards value for each card against a user's specific spending profile.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CardGenie",
-      "url": "https://cardgenie.ca/"
-    }
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "name": "About CardGenie",
+        "url": "https://cardgenie.ca/about/",
+        "description": "CardGenie is a Canadian credit card comparison tool that tracks 40+ cards in a structured database, updated daily, and models each card's net annual value against your actual spending.",
+        "publisher": {"@id": "https://cardgenie.ca/#organization"},
+        "mainEntity": {"@id": "https://cardgenie.ca/#organization"}
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://cardgenie.ca/#organization",
+        "name": "CardGenie",
+        "url": "https://cardgenie.ca/",
+        "logo": {"@type": "ImageObject", "url": "https://cardgenie.ca/images/logo.png"},
+        "email": "coffee199@gmail.com",
+        "areaServed": {"@type": "Country", "name": "Canada"},
+        "description": "Canadian credit card comparison site and spending calculator, tracking 40 cards across 15 issuers in a database updated daily.",
+        "founder": {"@id": "https://cardgenie.ca/about/#ryan-billings"},
+        "knowsAbout": ["Canadian credit cards", "credit card rewards", "cash back credit cards", "travel rewards", "Aeroplan", "credit card annual fees"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://cardgenie.ca/about/#ryan-billings",
+        "name": "Ryan Billings",
+        "url": "https://cardgenie.ca/about/",
+        "email": "coffee199@gmail.com",
+        "description": "Independent site operator who builds and maintains CardGenie, including the Canadian credit card database and the spending calculator. Not a licensed financial advisor.",
+        "worksFor": {"@id": "https://cardgenie.ca/#organization"}
+      }
+    ]
   }
   </script>
 </head>
@@ -153,6 +175,17 @@
         <p>CardGenie content is informational only. We do not provide personalized financial advice and nothing on this site should be construed as a recommendation to apply for any specific product. Credit card suitability depends on individual financial circumstances that we cannot assess.</p>
         <p>CardGenie currently has no preferred partner relationships, affiliate agreements, or sponsored placements with any credit card issuer. Our rankings and content are not influenced by commercial relationships with card issuers. If affiliate or referral arrangements are established in the future, they will be disclosed clearly on all affected pages and in our site footer.</p>
         <p>We aim to present card features accurately based on publicly available information. Where figures represent estimates — such as points valuations — we note this. We do not guarantee that data is error-free or current at the exact moment you read it; always verify with the issuer before making a financial decision.</p>
+      </div>
+
+      <div class="divider">&#9670;</div>
+
+      <div class="about-section">
+        <h2>Who Runs CardGenie</h2>
+        <p>CardGenie is built and maintained by Ryan Billings, an independent site operator based in Ontario. There is no editorial team and no outside ownership. One person writes the comparisons, maintains the card database and runs the daily update jobs, and that person is accountable for everything published here.</p>
+        <p>To be explicit about what that does and does not mean: Ryan is not a financial advisor, not a licensed professional in any financial field, and does not hold credentials in banking or lending. Nothing on CardGenie is personalized financial advice, and it should not be treated as a substitute for advice from someone qualified to assess your circumstances.</p>
+        <p>What CardGenie does offer is verifiable method rather than credentials. Every earn rate, fee, cap and interest rate on the site is recorded in a structured database with a source URL and a date attached, cross-referenced against the Government of Canada's Financial Consumer Agency database, and updated on an automated daily schedule. Every change an issuer makes is logged with a timestamp. The dollar figures in comparison articles are generated from that same database using published point valuations, so an article and the calculator cannot quietly disagree with each other.</p>
+        <p>That approach is deliberate. Credit card advice is easy to write confidently and hard to write accurately, because the details that decide the answer, particularly category caps and how they are shared across categories, are buried in issuer documentation and change without announcement. Recording the data properly and showing the arithmetic is more useful than an opinion, and it is checkable, which an opinion is not.</p>
+        <p>If you find a figure on this site that is wrong or out of date, please report it to <a href="mailto:coffee199@gmail.com">coffee199@gmail.com</a>. Corrections are made to the database, which propagates to every page that uses the figure.</p>
       </div>
 
       <div class="divider">&#9670;</div>
