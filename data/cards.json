@@ -7,7 +7,7 @@
     "network": "Visa",
     "card_tier": null,
     "annual_fee": 139.0,
-    "annual_fee_waived_first_year": 0,
+    "annual_fee_waived_first_year": 1,
     "supplementary_card_fee": null,
     "min_income_personal": 60000.0,
     "min_income_household": null,
@@ -99,14 +99,14 @@
     "welcome_bonus": {
       "card_id": 7,
       "bonus_type": "points",
-      "bonus_value": 40000.0,
+      "bonus_value": 50000.0,
       "bonus_unit": "points",
-      "estimated_cad": 600.0,
-      "spend_requirement": 750.0,
+      "estimated_cad": 750.0,
+      "spend_requirement": 12000.0,
       "spend_window_months": 12,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": null
+      "conditions": "10,000 Aeroplan points on the first purchase, 15,000 after $3,000 in purchases within 90 days, plus a 25,000-point anniversary bonus after $12,000 in purchases within 12 months of account opening. First-year annual fee rebated."
     },
     "insurance": [
       {
@@ -227,7 +227,7 @@
     "network": "Visa",
     "card_tier": null,
     "annual_fee": 139.0,
-    "annual_fee_waived_first_year": 0,
+    "annual_fee_waived_first_year": 1,
     "supplementary_card_fee": null,
     "min_income_personal": 60000.0,
     "min_income_household": null,
@@ -310,11 +310,11 @@
       "bonus_value": 50000.0,
       "bonus_unit": "points",
       "estimated_cad": 750.0,
-      "spend_requirement": null,
-      "spend_window_months": null,
+      "spend_requirement": 12000.0,
+      "spend_window_months": 12,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": null
+      "conditions": "10,000 Aeroplan points on the first purchase, 15,000 after $6,000 in purchases in the first 6 monthly statement periods, plus a 25,000-point anniversary bonus after $12,000 in net purchases in the first 12 statement periods. One-time first-year annual fee rebate."
     },
     "insurance": [
       {
@@ -1367,14 +1367,14 @@
     "welcome_bonus": {
       "card_id": 40,
       "bonus_type": "cash_back",
-      "bonus_value": 50.0,
+      "bonus_value": 100.0,
       "bonus_unit": "CAD",
-      "estimated_cad": 50.0,
-      "spend_requirement": 1000.0,
-      "spend_window_months": 3,
+      "estimated_cad": 100.0,
+      "spend_requirement": 2000.0,
+      "spend_window_months": 6,
       "first_year_value": null,
-      "expiry_date": "2026-09-09",
-      "conditions": "5% bonus cash back on up to $1,000 in net purchases during the first 3 months, for a maximum $50 welcome bonus; regular cash back earned on the same purchases is excluded from the bonus value."
+      "expiry_date": "2027-02-02",
+      "conditions": "Extra 5% cash back on up to $2,000 in net purchases in the first 6 months, for up to $100. Applications October 1, 2026 to February 2, 2027."
     },
     "insurance": []
   },
@@ -1665,13 +1665,13 @@
       "card_id": 1,
       "bonus_type": "points",
       "bonus_value": 15000.0,
-      "bonus_unit": "MR points",
+      "bonus_unit": "points",
       "estimated_cad": 150.0,
-      "spend_requirement": 500.0,
-      "spend_window_months": 1,
+      "spend_requirement": 9000.0,
+      "spend_window_months": 12,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": "1,250 pts/mo for first 12 months on eligible spend; total 15,000"
+      "conditions": "1,250 Membership Rewards points for each monthly billing period with $750 in spend during the first year, up to 15,000 points."
     },
     "insurance": [
       {
@@ -2082,14 +2082,14 @@
     "welcome_bonus": {
       "card_id": 10,
       "bonus_type": "points",
-      "bonus_value": 146000.0,
+      "bonus_value": 160000.0,
       "bonus_unit": "points",
-      "estimated_cad": 730.0,
+      "estimated_cad": 800.0,
       "spend_requirement": 7500.0,
       "spend_window_months": 6,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": "20,000 points after the first purchase plus 126,000 points after $7,500 in purchases within 180 days of account opening. First-year annual fee rebated."
+      "conditions": "20,000 points after the first purchase plus 140,000 points after $7,500 in net purchases within 180 days of account opening. First-year annual fee rebated."
     },
     "insurance": []
   },
@@ -2205,14 +2205,14 @@
     "welcome_bonus": {
       "card_id": 15,
       "bonus_type": "points",
-      "bonus_value": 1000.0,
+      "bonus_value": 50000.0,
       "bonus_unit": "points",
-      "estimated_cad": 10.0,
-      "spend_requirement": 950.0,
-      "spend_window_months": 3,
+      "estimated_cad": 500.0,
+      "spend_requirement": 7500.0,
+      "spend_window_months": 12,
       "first_year_value": null,
-      "expiry_date": null,
-      "conditions": null
+      "expiry_date": "2026-11-01",
+      "conditions": "30,000 bonus Scene+ points after $2,000 in everyday eligible purchases in the first 3 months, plus 20,000 more after $7,500 in the first year. Accounts opened July 2 to November 1, 2026."
     },
     "insurance": [
       {
@@ -2414,13 +2414,13 @@
       "card_id": 2,
       "bonus_type": "points",
       "bonus_value": 60000.0,
-      "bonus_unit": "MR points",
+      "bonus_unit": "points",
       "estimated_cad": 600.0,
-      "spend_requirement": 3000.0,
-      "spend_window_months": 3,
+      "spend_requirement": 12000.0,
+      "spend_window_months": 12,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": "40k after min spend + 20k after $1k more in first 3mo (varies)"
+      "conditions": "5,000 Membership Rewards points for each monthly billing period with $1,000 in spend during the first year, up to 60,000 points."
     },
     "insurance": [
       {
@@ -3162,7 +3162,7 @@
       "spend_requirement": 1000.0,
       "spend_window_months": 2,
       "first_year_value": null,
-      "expiry_date": "2026-09-30",
+      "expiry_date": "2026-11-30",
       "conditions": "10% bonus cash back on up to $1,000 in net purchases posted during the first 60 days after activation, for a maximum $100 bonus; activate within 45 days of approval."
     },
     "insurance": []
@@ -3354,14 +3354,14 @@
     "welcome_bonus": {
       "card_id": 16,
       "bonus_type": "points",
-      "bonus_value": 1000.0,
+      "bonus_value": 25000.0,
       "bonus_unit": "points",
-      "estimated_cad": 10.0,
-      "spend_requirement": null,
-      "spend_window_months": null,
+      "estimated_cad": 250.0,
+      "spend_requirement": 2000.0,
+      "spend_window_months": 3,
       "first_year_value": null,
-      "expiry_date": null,
-      "conditions": null
+      "expiry_date": "2026-11-01",
+      "conditions": "25,000 bonus Scene+ points after $2,000 in everyday eligible purchases in the first 3 months. Accounts opened August 4 to November 1, 2026. The separate 10,000-point annual bonus at $40,000 spend is an ongoing card feature, not part of the welcome offer."
     },
     "insurance": [
       {
@@ -3860,14 +3860,14 @@
     "welcome_bonus": {
       "card_id": 5,
       "bonus_type": "cash_back",
-      "bonus_value": 125.0,
+      "bonus_value": 100.0,
       "bonus_unit": "CAD",
-      "estimated_cad": 125.0,
-      "spend_requirement": 2500.0,
-      "spend_window_months": 5,
+      "estimated_cad": 100.0,
+      "spend_requirement": 2000.0,
+      "spend_window_months": 3,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": "5% cash back on first $2.5k spend (max $125), first 5mo"
+      "conditions": "Bonus 5% cash back on all purchases, on up to $2,000 in purchases in the first 3 months, for up to $100."
     },
     "insurance": []
   },
@@ -3935,14 +3935,14 @@
     "welcome_bonus": {
       "card_id": 4,
       "bonus_type": "cash_back",
-      "bonus_value": 300.0,
+      "bonus_value": 200.0,
       "bonus_unit": "CAD",
-      "estimated_cad": 300.0,
-      "spend_requirement": 3000.0,
-      "spend_window_months": 6,
+      "estimated_cad": 200.0,
+      "spend_requirement": 2000.0,
+      "spend_window_months": 3,
       "first_year_value": null,
       "expiry_date": null,
-      "conditions": "10% cash back on first $3k spend (max $300), first 6mo"
+      "conditions": "Bonus 10% cash back on all purchases, on up to $2,000 in purchases in the first 3 months, for up to $200."
     },
     "insurance": []
   },
@@ -4557,14 +4557,14 @@
     "welcome_bonus": {
       "card_id": 32,
       "bonus_type": "cash_back",
-      "bonus_value": 100.0,
+      "bonus_value": 120.0,
       "bonus_unit": "CAD",
-      "estimated_cad": 100.0,
+      "estimated_cad": 120.0,
       "spend_requirement": 1500.0,
       "spend_window_months": 3,
       "first_year_value": null,
-      "expiry_date": "2026-09-30",
-      "conditions": "$100 Money-Back bonus after at least $1,500 in net purchases posted during the first 90 days after activation; activate within 45 days of approval."
+      "expiry_date": "2026-11-30",
+      "conditions": "$120 in Money-Back Rewards after $1,500 in net purchases within 90 days of activation; apply by November 30, 2026 and activate within 45 days of approval."
     },
     "insurance": []
   },
