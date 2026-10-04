@@ -674,6 +674,7 @@
     </div>
   </footer>
 
+<script src="js/point-values.js"></script>
 <script>
 // ── Card mapping (loaded from /data/cards.json) ────────────────────────────
 const ISSUER_COLOR = {
@@ -684,17 +685,11 @@ const ISSUER_COLOR = {
   'HSBC':'#db0011','Neo Financial':'#2c2c2c','Brim Financial':'#1a1a2e',
   'MBNA':'#555555','Home Trust':'#2e6b3e',
 };
-const POINT_VALUE = {
-  // Conservative redemption estimates, not guaranteed cash values.
-  'cash_back_pct':0.01,'Aeroplan':0.015,'MR points':0.01,
-  'Avion points':0.01,'BMO Rewards':0.007,'Scene+ points':0.01,
-  'PC Optimum':0.001,'À la carte':0.01,'TD Rewards':0.005,
-};
+// Conservative redemption estimates, not guaranteed cash values. Shared with
+// every points calculator on the site: edit /js/point-values.js, not here.
+const POINT_VALUE = CardGeniePointValues.fractionsByUnit();
 // Cards where standalone point value is lower than the earn_unit suggests.
-// Ion+ earns basic RBC Rewards (no airline transfers without an Avion card).
-const PV_OVERRIDE = {
-  'rbc-ion-visa': 0.008,
-};
+const PV_OVERRIDE = CardGeniePointValues.cardOverrideFractions();
 const NO_FX_SLUGS = new Set([
   'rogers-red-world-elite-mastercard','scotiabank-gold-american-express',
   'scotiabank-passport-visa-infinite','hsbc-world-elite-mastercard',
