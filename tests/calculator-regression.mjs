@@ -10,6 +10,9 @@ const raw = JSON.parse(readFileSync(resolve(root, 'data/cards.json'), 'utf8'));
 const script = html.slice(html.lastIndexOf('<script>') + 8, html.lastIndexOf('</script>'));
 const calculationOnly = script.slice(0, script.indexOf('// ── Sliders'));
 const context = { console, Date, setTimeout, clearTimeout };
+// The homepage reads its point valuations from the shared file, loaded by a
+// <script src> tag ahead of the calculator script.
+vm.runInNewContext(readFileSync(resolve(root, 'js/point-values.js'), 'utf8'), context);
 
 vm.runInNewContext(`${calculationOnly}\nglobalThis.calculator = {
   mapCard, scoreCard, rewardBreakdown,

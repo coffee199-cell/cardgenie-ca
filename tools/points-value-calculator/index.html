@@ -29,7 +29,7 @@
         "publisher": {"@id": "https://cardgenie.ca/#organization"},
         "author": {"@type": "Person", "name": "Ryan Billings", "url": "https://cardgenie.ca/about/"},
         "isPartOf": {"@type": "WebSite", "name": "CardGenie", "url": "https://cardgenie.ca/"},
-        "dateModified": "2026-08-29"
+        "dateModified": "2026-10-04"
       },
       {
         "@type": "BreadcrumbList",
@@ -98,7 +98,7 @@
       <div class="breadcrumb"><a href="https://cardgenie.ca/">Home</a><span>/</span>Points Value Calculator</div>
       <h1 class="page-intro__h1">What Are Your Credit Card Points Worth?</h1>
       <p class="page-intro__lead">A points balance is not a dollar balance. The same 50,000 points is worth CA$750 in Aeroplan, CA$500 in Scene+, CA$250 in TD Rewards and CA$50 in PC Optimum. Enter a balance below to convert it across every major Canadian program at once, and replace any valuation with your own if you know what a specific redemption is worth to you.</p>
-      <span class="updated-note">Valuations reviewed August 29, 2026</span>
+      <span class="updated-note">Valuations reviewed October 4, 2026</span>
     </div>
   </section>
 
@@ -150,6 +150,7 @@
           <tr><td>Scene+</td><td>1.0&cent;</td><td>Scotiabank and Empire, via Scotiabank cards</td></tr>
           <tr><td>Amex Membership Rewards</td><td>1.0&cent;</td><td>American Express</td></tr>
           <tr><td>RBC Avion</td><td>1.0&cent;</td><td>RBC</td></tr>
+          <tr><td>CIBC Aventura</td><td>1.0&cent;</td><td>CIBC</td></tr>
           <tr><td>BMO Rewards</td><td>0.7&cent;</td><td>BMO</td></tr>
           <tr><td>TD Rewards</td><td>0.5&cent;</td><td>TD</td></tr>
           <tr><td>PC Optimum</td><td>0.1&cent;</td><td>Loblaw, via PC Financial cards</td></tr>
@@ -160,6 +161,18 @@
       </div>
       <p>These are deliberately conservative. They describe what a cardholder can reach without specialised booking knowledge, not the best redemption a dedicated points hobbyist could find. Where a program has meaningful upside above the baseline, that upside is noted below rather than baked into the headline number, because a valuation that assumes optimal behaviour flatters cards that most people will not use optimally.</p>
 
+      <h2 id="programs">Calculators for each program</h2>
+      <p>Each major program also has its own calculator, with that program's redemption options, a tool for checking what a specific redemption is worth, and the cards in the CardGenie database that earn it.</p>
+      <ul class="other-programs">
+        <li><a href="https://cardgenie.ca/tools/aeroplan-points-value-calculator/">Aeroplan</a></li>
+        <li><a href="https://cardgenie.ca/tools/scene-plus-points-value-calculator/">Scene+</a></li>
+        <li><a href="https://cardgenie.ca/tools/td-points-value-calculator/">TD Rewards</a></li>
+        <li><a href="https://cardgenie.ca/tools/rbc-avion-points-value-calculator/">RBC Avion</a></li>
+        <li><a href="https://cardgenie.ca/tools/cibc-aventura-points-value-calculator/">CIBC Aventura</a></li>
+        <li><a href="https://cardgenie.ca/tools/bmo-points-value-calculator/">BMO Rewards</a></li>
+        <li><a href="https://cardgenie.ca/tools/pc-optimum-points-value-calculator/">PC Optimum</a></li>
+      </ul>
+
       <h2 id="basis">How each valuation is derived</h2>
       <h3 id="aeroplan">Aeroplan &mdash; 1.5 cents per point</h3>
       <p>Redemption value varies more than any other Canadian program because Aeroplan prices flights dynamically. Short-haul economy seats often land near 1.2 cents, while long-haul business class redemptions can exceed 2 cents. CardGenie publishes 1.5 cents as a conservative middle that a typical redeemer can reach without specialised booking knowledge.</p>
@@ -169,6 +182,8 @@
       <p>Redeeming for a statement credit against a purchase sets the floor at roughly 1 cent per point. The upside comes from transferring to airline partners including Aeroplan, where a good redemption can beat that. CardGenie uses the floor, because transfer value only materialises if you actually do the work.</p>
       <h3 id="avion">RBC Avion &mdash; 1.0 cents per point</h3>
       <p>Avion points booked against travel sit near 1 cent per point at the baseline level. Higher values are reachable on specific redemptions, but the floor is what a cardholder gets without optimising, so that is the figure used here.</p>
+      <h3 id="aventura">CIBC Aventura: 1.0 cents per point</h3>
+      <p>CIBC does not publish one cash value for Aventura points. Paying down the card balance gives 0.625 cents per point and flights on the Aventura Airline Rewards Chart can exceed 2 cents, while CIBC describes the no-fee Aventura Visa's welcome points at 1 cent each in travel value. CardGenie uses that 1 cent figure, and the <a href="https://cardgenie.ca/tools/cibc-aventura-points-value-calculator/">Aventura calculator</a> explains it in full.</p>
       <h3 id="bmo">BMO Rewards &mdash; 0.7 cents per point</h3>
       <p>BMO Rewards redeem against travel at a rate closer to 0.67 cents per point, rounded here to 0.7. Non-travel redemptions such as merchandise or investment deposits are generally worse, which is why the program looks weaker than its earn rates suggest.</p>
       <h3 id="td">TD Rewards &mdash; 0.5 cents per point</h3>
@@ -244,9 +259,11 @@
     </div></div>
   </footer>
 
+<script src="../../js/point-values.js"></script>
 <script>
 (function () {
-  var PROGRAMS = [{"k": "aeroplan", "n": "Aeroplan", "c": 1.5}, {"k": "scene", "n": "Scene+", "c": 1.0}, {"k": "mr", "n": "Amex Membership Rewards", "c": 1.0}, {"k": "avion", "n": "RBC Avion", "c": 1.0}, {"k": "bmo", "n": "BMO Rewards", "c": 0.7}, {"k": "td", "n": "TD Rewards", "c": 0.5}, {"k": "pcoptimum", "n": "PC Optimum", "c": 0.1}, {"k": "alacarte", "n": "National Bank \u00c0 la carte", "c": 1.0}, {"k": "cashback", "n": "Cash back", "c": 1.0}];
+  // Shared valuations: /js/point-values.js is the single source for every calculator.
+  var PROGRAMS = CardGeniePointValues.programs;
   var balanceEl = document.getElementById('pv-balance');
   var programEl = document.getElementById('pv-program');
   var resultsEl = document.getElementById('pv-results');
